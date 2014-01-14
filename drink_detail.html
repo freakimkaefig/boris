@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BORIS - Your cocktail mixer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+
+    <!-- Add custom CSS here -->
+    <link href="css/custom.css" rel="stylesheet"/>
+  <style type="text/css"></style></head>
+
+  <body class="">
+    <div class="container">
+        <div class="action-bar">
+            <div class="logo-wrapper inline-block">
+                <a href="drink_list.html"><img class="img-responsive center-block" src="img/logo_boris.png"/></a>
+            </div>     
+            <div class="action-bar-buttons inline-block"> 
+                <!--TODO: Decide which button to show (tablet: order / smartphone: rate)-->
+                <button id="btn_rate" type="button" class="btn btn-actionbar">                    
+                    <span class="glyphicon glyphicon-star-empty"></span> 
+                    Rate
+                </button>
+                <button id="btn_order" type="button" class="btn btn-actionbar">                    
+                    <span class="glyphicon glyphicon-bell"></span> 
+                    Order
+                </button>
+            </div>
+        </div>
+        <div class="description">
+            <div class="center-x">
+                <img class="img-responsive inline-block" src="img/drink_example.jpg" width="200px" />
+                <div class="inline-block drink-header center-y">
+                    <div class="h1">Gin Fizz</div>
+                    <div class="glyphicon glyphicon-star glyphicon-marked"></div>
+                    <div class="glyphicon glyphicon-star glyphicon-marked"></div>
+                    <div class="glyphicon glyphicon-star glyphicon-marked"></div>
+                    <div class="glyphicon glyphicon-star glyphicon-marked"></div>  
+                    <div class="glyphicon glyphicon-star glyphicon-unmarked"></div>  
+                </div>
+            </div>
+            <!--
+            <div class="btn-order center-x">
+                <button id="btn_order" type="button" class="btn btn-success btn-order">Order</button>
+            </div>-->
+            <div>
+                <label>Infos</label>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Available</td><td><span class="badge">Yes</span></td>
+                    </tr>
+                    <tr>
+                        <td>Rank by number of purchases</td><td><span class="badge">2</span></td>
+                    </tr>
+                    <tr>
+                        <td>Number of purchases</td><td><span class="badge">20</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sour</td><td><span class="badge">Strongly</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sweet</td><td><span class="badge">Lightly</span></td>
+                    </tr>
+                    <tr>
+                        <td>Bitter</td><td><span class="badge">Lightly</span></td>
+                    </tr>
+                    <tr>
+                        <td>Alcohol percentage</td><td><span class="badge">30%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Strength taste</td><td><span class="badge">Middle</span></td>
+                    </tr>
+                    <tr>
+                        <td>Look</td><td><span class="badge">4/5</span></td>
+                    </tr>
+                    <tr>
+                        <td>Categories</td><td><span class="badge">At the beach</span></td>
+                    </tr>
+                </table>
+            </div>
+            <hr />
+            <label>Similar cocktails</label>
+            <div class="row row-alternatives center-x">
+                <div class="col-xs-1">
+                    <span class="glyphicon glyphicon-chevron-left"></span>                
+                </div>
+                <div class="col-xs-3 test-border">
+                    <img src="img/drink_example.jpg" class="img-responsive img-alternative" alt="Drink"/><br />
+                    Gin Fizz
+                </div>
+                <div class="col-xs-3 test-border">
+                    <img src="img/drink_example2.jpg" class="img-responsive img-alternative" alt="Drink" /><br />
+                    Cuba Libre                   
+                </div>
+                <div class="col-xs-3">
+                    <img src="img/drink_example.jpg" class="img-responsive img-alternative test-border" alt="Drink"/><br />
+                    Gin Fizz
+                </div>
+                <div class="col-xs-1">
+                    <span class="glyphicon glyphicon-chevron-right"></span>  
+                </div>
+            </div>
+            <hr />
+            <div>
+                <label>Ingredients</label>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Gin</td><td><span class="badge">4cl</span></td>
+                    </tr>
+                    <tr>
+                        <td>Lemon juice</td><td><span class="badge">2cl</span></td>
+                    </tr>
+                    <tr>
+                        <td>Powdered sugar</td><td><span class="badge">2cl</span></td>
+                    </tr>
+                    <tr>
+                        <td>Carbonated water</td><td><span class="badge">2</span></td>
+                    </tr>
+                </table>
+                <label>Recipe</label><br />
+                <ol>
+                    <li>Shake gin, juice of lemon, and powdered sugar</li>
+                    <li>Strain into a highball glass over two ice cubes. </li>
+                    <li>Fill with carbonated water, stir, and serve. </li>
+                </ol>
+                <label>Description</label><br />
+                <span>A Gin Fizz is the best-known cocktail in the Fizz family. The first printed reference to a fizz (spelled "fiz") is in the 1887 
+                edition of Jerry Thomas' Bartender's Guide, which contains six fizz recipes. 
+                The Fizz became widely popular in America between 1900 and the 1940s. Known 
+                as a hometown specialty of New Orleans, the Gin Fizz was so popular that bars 
+                would employ scrums of bartenders working in teams that would take turns shaking 
+                the fizzes. Demand for fizzes went international as evidenced by the inclusion of 
+                the cocktail in the French cookbook L'Art Culinaire Francais published in 1950.[1]</span>
+            </div>       
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="js/jquery-ui-1.10.3/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="js/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <script>
+        // Activates the Carousel
+        $('.carousel').carousel({
+            interval: 5000
+        });
+
+	</script>
+
+  
+</body></html>

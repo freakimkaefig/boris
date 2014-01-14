@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="config.php" server="D:/XAMPP/htdocs/ammi/" local="130331438360000000" remote="130331438360000000" Dst="1" />
+<file name="getIngredients.php" server="D:/XAMPP/htdocs/ammi/" local="130331448440000000" remote="130331448440000000" Dst="1" />
+<file name="getRecipe.php" server="D:/XAMPP/htdocs/ammi/" local="130331448200000000" remote="130331448200000000" Dst="1" />
+<file name="getTags.php" server="D:/XAMPP/htdocs/ammi/" local="130331447100000000" remote="130331447100000000" Dst="1" />
+<file name="addRating.php" server="D:/XAMPP/htdocs/ammi/" local="130341670487385802" remote="130341670480000000" Dst="1" />
+<file name="filterByTag.php" server="D:/XAMPP/htdocs/ammi/" local="130341672770978560" remote="130341672770000000" Dst="1" />
+<file name="getCocktail.php" server="D:/XAMPP/htdocs/ammi/" local="130341673474451715" remote="130341673470000000" Dst="1" />
+<file name="getCocktailList.php" server="D:/XAMPP/htdocs/ammi/" local="130341660832827145" remote="130341660830000000" Dst="1" />
+<file name="mixCocktail.php" server="D:/XAMPP/htdocs/ammi/" local="130341664219940585" remote="130341664210000000" Dst="1" />
+<file name="search.php" server="D:/XAMPP/htdocs/ammi/" local="130341665637780783" remote="130341665630000000" Dst="1" />
+</dwsync>
