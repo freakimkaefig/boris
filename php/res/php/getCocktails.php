@@ -72,6 +72,15 @@ while ($row = mysql_fetch_array($result)){
 }
 
 if(isset($rate)){
+
+	// FUNCTION TO SORT EVENTS
+	function eventsort($a, $b){
+		if ($a["value"] == $b["value"]) {
+			return 0;
+		}
+		return ($a["value"] > $b["value"]) ? -1 : 1;
+	}
+
 	// QUERY ALL RATINGS
 	$query = "SELECT 
 	COCKTAIL,
@@ -86,7 +95,21 @@ if(isset($rate)){
 	SUM(IF(TASTE>$rate,1,0))/COUNT(TASTE) AS TASTE,
 	AVG(TASTE) AS ATASTE,
 	SUM(IF(LOOK>$rate,1,0))/COUNT(LOOK) AS LOOK,
-	AVG(LOOK) AS ALOOK
+	AVG(LOOK) AS ALOOK,
+	SUM(`AM_STRAND`)/COUNT(*) AS beach,
+	SUM(`FIRMENFEIER`)/COUNT(*) AS businessparty,
+	SUM(`JUNGGESELLENABSCHIED`)/COUNT(*) AS statnight,
+	SUM(`HOCHZEIT`)/COUNT(*) AS wedding,
+	SUM(`COCKTAILBAR`)/COUNT(*) AS cocktailbar,
+	SUM(`NACH_DEM_ESSEN`)/COUNT(*) AS afterdinner,
+	SUM(`AUF_DEM_SOFA`)/COUNT(*) AS onthecouch,
+	SUM(`VORGLUEHEN`)/COUNT(*) AS preparty,
+	SUM(`ERSTES_DATE`)/COUNT(*) AS firstdate,
+	SUM(`DISCO`)/COUNT(*) AS disco,
+	SUM(`WG_PARTY`)/COUNT(*) AS wgparty,
+	SUM(`SOMMERABEND`)/COUNT(*) AS summernight,
+	SUM(`WINTERABEND`)/COUNT(*) AS winternight,
+	SUM(`NIE`)/COUNT(*) AS never
 	FROM `rating`";
 	if(isset($id)){
 		$query .= " WHERE COCKTAIL=".$id;
@@ -124,8 +147,83 @@ if(isset($rate)){
 		$look["average"]=$row["ALOOK"];
 		$look["value"]=$row["LOOK"];
 		$rating["look"]=$look;
-		// ASSIGN TO COCKTAIL
+		// GET THE EVENTS/LOCATIONS
+		$events = array();
+		// ON THE BEACH
+		$beach = array();
+		$beach["tag"]="on the beach";
+		$beach["value"]=$row["beach"];
+		$events[count($events)]=$beach;
+		// BUSINESSPARTY
+		$bparty = array();
+		$bparty["tag"]="at a businessparty";
+		$bparty["value"]=$row["businessparty"];
+		$events[count($events)]=$bparty;
+		// STATNIGHT
+		$statnight = array();
+		$statnight["tag"]="at a statnight";
+		$statnight["value"]=$row["statnight"];
+		$events[count($events)]=$statnight;
+		// WEDDING
+		$wedding = array();
+		$wedding["tag"]="at a wedding";
+		$wedding["value"]=$row["wedding"];
+		$events[count($events)]=$wedding;
+		// COCKTAILBAR
+		$cocktailbar = array();
+		$cocktailbar["tag"]="at a cocktailbar";
+		$cocktailbar["value"]=$row["cocktailbar"];
+		$events[count($events)]=$cocktailbar;
+		// AFTER DINNER
+		$dinner = array();
+		$dinner["tag"]="after dinner";
+		$dinner["value"]=$row["afterdinner"];
+		$events[count($events)]=$dinner;
+		// ONTHECOUCH
+		$onthecouch = array();
+		$onthecouch["tag"]="on the couch";
+		$onthecouch["value"]=$row["onthecouch"];
+		$events[count($events)]=$onthecouch;
+		// PREPARTY
+		$preparty = array();
+		$preparty["tag"]="at a preparty";
+		$preparty["value"]=$row["preparty"];
+		$events[count($events)]=$preparty;
+		// FIRSTDATE
+		$firstdate = array();
+		$firstdate["tag"]="on the first date";
+		$firstdate["value"]=$row["firstdate"];
+		$events[count($events)]=$firstdate;
+		// DISCO
+		$disco = array();
+		$disco["tag"]="in a disco";
+		$disco["value"]=$row["disco"];
+		$events[count($events)]=$disco;
+		// WG PARTY
+		$wgparty = array();
+		$wgparty["tag"]="at a home party";
+		$wgparty["value"]=$row["wgparty"];
+		$events[count($events)]=$wgparty;
+		// SUMMERNIGHT
+		$summernight = array();
+		$summernight["tag"]="on a summernight";
+		$summernight["value"]=$row["summernight"];
+		$events[count($events)]=$summernight;
+		// WINTERNIGHT
+		$winternight = array();
+		$winternight["tag"]="on a winternight";
+		$winternight["value"]=$row["winternight"];
+		$events[count($events)]=$winternight;
+		// NEVER
+		$never = array();
+		$never["tag"]="never";
+		$never["value"]=$row["never"];
+		$events[count($events)]=$never;
+		// ASSIGN RATING TO COCKTAIL
 		$cocktails[$row["COCKTAIL"]]["rating"]=$rating;
+		// ASSIGN EVENTS TO COCKTAIL
+		usort($events,"eventsort");
+		$cocktails[$row["COCKTAIL"]]["events"]=$events;
 	}
 }
 
