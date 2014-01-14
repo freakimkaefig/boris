@@ -1,0 +1,18 @@
+Zusätzliche Anforderungen - Backend
+
+Servicemenü:
+
+get/set Füllstand (setFüllstand?id=x&amount=xxx | getFüllstand <- alle Behälter)
+get/set BehälterInhalt (setBehälterInhalt?id=x&drink=xxx | getBehälterInhalt <- alle Behälter)
+get/set Glasgröße
+Alle Behälter entleeren
+Reinigungszyklus auslösen
+
+Getränkeliste:
+mixCocktail
+stopMixing
+search (nach Name, Zutat)
+addRating (Antworten des Fragebogens)
+filterByTag (filterByTag?sweet=x&fruity=x&sour=x&bitter=x&strong=x
+getCocktailInfo (alles für Detailansicht)
+getCocktails erweitern um rating, availability, alcohol amount

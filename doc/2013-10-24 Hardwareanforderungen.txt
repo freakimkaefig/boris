@@ -1,0 +1,11 @@
+Hardwareanforderungen - Cocktailmixer
+	
+	- "Glas-da"-Sensor
+	- Waage für Inhalt im Glas
+	- "Positionierer" der für präzise Position sorgt
+	- Rührquirl
+	- Startknopf für Spracheingabe
+	- mehrere Flüssigkeiten gleichzeitig ins Glas
+	- Rohr/Schlauchreinigung
+	- Barmaß mit Überlaufsensor/Kontaktsensor für das Volumen
+	- Display/Tablet
