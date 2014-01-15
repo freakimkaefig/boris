@@ -1,0 +1,10 @@
+/* CSS Document */
+
+.navbar { margin-bottom:0;}
+.navbar-header { float: left; }
+#navbar-buttons { float: right; }
+#dropdown-search { float: left; margin-right: 15px; margin-top: 5px; }
+#dropdown-filter { margin-top: 5px; }
+#search-form { float:left; border: none; margin-top:0; margin-bottom:0; }
+#search-input { width: 25%; float: left; margin-right: 10px; }
+#dropdown-filter { float: right; margin-right: 15px; }
