@@ -67,6 +67,11 @@ a:hover
     text-decoration: none;
 }
 
+.stars-line
+{
+    min-width: 100px;
+}
+    
 .img-alternative
 {
     /*height: 90%;*/
@@ -89,10 +94,11 @@ a:hover
 }
 
 
-.clickableRow 
+.row-clickable
 {
     cursor: pointer;
 }
+
 
 .clickableRow:hover
 {
@@ -111,7 +117,7 @@ a:hover
 
 .test-border
 {
-    /*border: 1px solid #f00;*/
+    border: 1px solid #f00;
 }
 
 .btn-actionbar
@@ -265,6 +271,7 @@ img.thumb-drink
 .row-drink-name 
 {
     vertical-align:middle;
+    height: 100%;
 }
 
 .img-logo 
