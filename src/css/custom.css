@@ -230,7 +230,7 @@ a:hover
     border: 1px solid #ffc;
     display: table;
     width: 100%;
-    height: 30px;
+   
 }
 
 .form-search 
@@ -291,7 +291,8 @@ img.thumb-drink
     */
     /*border: 1px solid #999;*/ /*For layout testing*/
     width: auto;
-    max-width: 500px;
+    max-width: 600px;
+
 }
 
 .description 

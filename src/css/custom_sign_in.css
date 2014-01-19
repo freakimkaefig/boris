@@ -1,0 +1,69 @@
+
+
+
+html 
+{
+
+}
+
+body 
+{
+
+
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+
+p {
+
+}
+
+hr {
+
+}
+
+
+.inline-block 
+{
+    display: inline-block;
+}
+
+.center-x 
+{
+    text-align:center;
+}
+
+
+.center-y 
+{
+    vertical-align:middle;
+}
+
+
+.action-bar
+{
+    background: #333;
+    padding: 5px 5px 5px 15px;
+    border: 1px solid #ffc;
+    display: table;
+    width: 100%;
+   
+}
+
+.logo-wrapper 
+{
+    vertical-align: middle;
+    display: table-cell;
+    width: 25%;
+    
+}
+
+.container 
+{   
+    width: auto;
+    max-width: 400px;
+
+}
