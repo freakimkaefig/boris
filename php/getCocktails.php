@@ -147,6 +147,8 @@ if(isset($rate)){
 		$look["average"]=$row["ALOOK"];
 		$look["value"]=$row["LOOK"];
 		$rating["look"]=$look;
+		
+		
 		// GET THE EVENTS/LOCATIONS
 		$events = array();
 		// ON THE BEACH
