@@ -1,5 +1,8 @@
 <?php
 	
+echo '{ "success" : '.$CODE_PERMISSION_DENIED.'}';
+exit();
+	
 function addOrUpdate($table, $idName){
 if(!isset($table)||!isset($idName))return;
 
