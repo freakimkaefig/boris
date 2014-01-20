@@ -32,14 +32,55 @@ hr
 .center-x 
 {
     text-align:center;
+    margin: 0 auto;
 }
 
 .center-y 
 {
     vertical-align:middle;
+    margin: 0 auto;
 }
 
 /*--Sign in--*/
+body
+{
+  padding-top: 80px;
+  background-image: url(../img/bg_sign_in.jpg)
+}
+
+h3
+{
+    font-color: white;
+}
+
+#sing-in-form
+{
+  max-width: 30%;
+  text-align:center;
+}
+
+.container 
+{
+  max-width: 930px;
+}
+
+#logo-sign-in
+{
+  margin-top: 20px;
+
+  
+}
+
+.form-control
+{
+ 
+}
+
+.jumbotron
+{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 
 
 
