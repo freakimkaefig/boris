@@ -1,0 +1,143 @@
+html 
+{
+    
+}
+
+body 
+{
+    
+}
+
+h1, h2, h3, h4, h5, h6 
+{
+
+}
+
+p 
+{
+
+}
+
+hr 
+{
+
+}
+
+/*--Common styles--*/
+.inline-block 
+{
+    display: inline-block;
+}
+
+.center-x 
+{
+    text-align:center;
+}
+
+.center-y 
+{
+    vertical-align:middle;
+}
+
+/*--Sign in--*/
+
+
+
+/*--Drink list--*/
+
+
+
+/*--Drink details--*/
+
+
+
+/*--Service menu--*/
+.slotName
+{
+  color: #727272 ;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.slotPercentage
+{
+  color: #81c85b ;
+  font-size: 13px;
+}
+
+.slotMilliliter{
+  color: #DE0052;
+  font-size: 13px;
+}
+
+.slotContent
+{
+  color: #727272;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.contentColor
+{
+	color: #FF9640;
+}
+
+.well
+{
+	margin-top: 20px;
+}
+
+#refillContainer
+{
+	margin-top: 20px;
+}
+
+#btnRefill
+{
+	margin-top: 20px;
+}
+
+.fillingLabel
+{
+  color: #727272;
+  font-size: 13px;
+}
+
+#inputRefill
+{
+    margin-top: 10px;
+}
+
+#slotSize
+{
+  max-width: 200px;
+  min-width: 200px;
+}
+
+
+#slotContent
+{
+  max-width: 200px;
+  min-width: 200px;
+}
+
+.inputDescription
+{
+  color: #727272 ;
+  font-size: 15px;
+}
+
+#btnEdit
+{
+  margin-top: 15px;
+}
+
+#inputEdit
+{
+  min-width: 200px;
+}
+
+#input
+{
+  margin-top: 15px;
+}
