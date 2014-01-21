@@ -27,7 +27,7 @@ hr { }
 /*-- DRINK LIST --*/
 a.no-btn { color: #333; }
 a.no-btn:hover, a.no-btn:active { color: black; }
-.drink-list-container .row { margin:0; opacity:0.8; }
+.drink-list-container .row { margin:0; opacity:0.8; padding-top:15px; padding-bottom:15px; }
 .drink-list-container .row:hover { opacity: 1.0; }
 /*.drink-list-container a:nth-child(even) .row { background:#999; }*/ /* Stripping for .row even */
 

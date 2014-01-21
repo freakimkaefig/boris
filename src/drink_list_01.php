@@ -62,9 +62,9 @@
       </li>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" />
+          <input id="search-input" type="text" class="form-control" placeholder="Search" />
         </div>
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+        <button id="search-submit" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
       </form>
       </li>
     </ul>
@@ -97,7 +97,7 @@
     </div>
     <div class="col-xs-4">
     	<?php foreach($cocktail->recipe as $ingredient_index => $ingredient): ?>
-    		<div><?php print $ingredient->name ?></div>
+    		<div><?php print $ingredient->name; ?></div>
 		<?php endforeach; ?>
     </div>
   </div>
@@ -108,6 +108,9 @@
 	<p>© Company 2013</p>
 </footer>
 <!-- /container --> 
+
+<!-- Search Javascript -->
+<script src="js/App.js"></script>
 
 <!-- Bootstrap core JavaScript
     ================================================== --> 
