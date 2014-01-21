@@ -5,14 +5,14 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "src", ".", "{AAA14AE3-F3C0-
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/main"
-		Debug.AspNetCompiler.PhysicalPath = "..\main\"
+		Debug.AspNetCompiler.PhysicalPath = "..\src\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\main\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/main"
-		Release.AspNetCompiler.PhysicalPath = "..\main\"
+		Release.AspNetCompiler.PhysicalPath = "..\src\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\main\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
@@ -20,6 +20,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "src", ".", "{AAA14AE3-F3C0-
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "10097"
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{79810967-F291-488A-83AE-018643BEDC69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,7 +6,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>BORIS - Cocktail details</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -30,31 +30,76 @@
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">
-            <img src="img/logo_boris.png" class="img" alt="Responsive image">
+            <img src="img/logo_boris.png" class="img img-responsive" alt="Responsive image">
           </a>
         </div>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <!--<div id="mixingProgress" class="nav navbar-text progress" style="min-width: 150px;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                        <span class="sr-only">60% Complete</span>
+                    </div>
+                </div>-->
+            </li>
+            <li>
+                <button id="orderDrink" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#modal_confirmOrder">
+                    Order
+                    <span class="glyphicon glyphicon-glass"></span>
+                </button>
+                <!--<button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
+                    Rate
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                </button>-->
+                <!--<a href="drink_rate.html">  
+                    <button id="btn_rate" type="button" class="btn btn-actionbar">   
+                             
+                        <span class="glyphicon glyphicon-star-empty"></span> 
+                        Rate
+                    </button>
+                    </a> -->
+                <a href="drink_rate.html" class="btn btn-default navbar-btn navbar-right">     
+                    <span class="glyphicon glyphicon-star-empty"></span> 
+                    Rate
+                </a>
+                <!--<button id="stopMixing" type="button" class="btn btn-default navbar-btn navbar-right hidden" data-toggle="modal" data-target="#modal_confirmOrder">
+                    Stop
+                    <span class="glyphicon glyphicon-stop"></span>
+                </button>-->
+            </li>
       </div>
     </div>
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modal_confirmOrder" tabindex="-1" role="dialog" aria-labelledby="Confirm order" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Cocktail order</h4>
+          </div>
+          <div class="modal-body">
+            Please confirm that you want to order this cocktail. Cheers!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id="confirmOrderDrink" type="button" class="btn btn-primary">Confirm</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
     
     <!-- Content container -->
     <div class="container">
+
       <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-xs-6 center-block">
-                <img class="img-responsive pull-right" src="img/drink_example.jpg"/>
+        <div class="row" style="height: 200px;">
+            <div class="col-xs-6">
+                <img class="img-responsive pull-right" src="img/drink_example.jpg"  style="height: 100%"/>
             </div>
-            <div class="col-xs-6 center-block">
+            <div class="col-xs-6">
                 <div class="pull-left">
                     <div class="h1">Gin Fizz</div>
                     <div class="glyphicon glyphicon-star glyphicon-marked"></div>
@@ -128,24 +173,11 @@
             <h3 class="panel-title"><strong>Similar cocktails</strong></h3>
           </div>
           <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-4 text-center">
-                    <img src="img/drink_example.jpg" alt="..." class="img-responsive center-block" />
-                    <div class="center-block">Gin Fizz</div>
-                </div>        
-                <div class="col-xs-4 text-center">
-                    <img src="img/drink_example2.jpg" alt="..." class="img-responsive center-block" />
-                    <div class="center-block">Cuba Libre</div>
-                </div>    
-                <div class="col-xs-4 text-center">
-                    <img src="img/drink_example.jpg" alt="..." class="img-responsive center-block" />
-                    <div class="center-block"><strong>Gin Fizz</strong></div>
-                </div>
+            <div class="row align-bottom">
+                <div id="similar_drinks"><!--Is filled dynamically by jQuery with similar cocktails recommendation.--></div>
             </div>
           </div>
         </div>
-        
-
         <div class="row">        
             <div class="col-xs-12 col-sm-6">
                 <div class="panel panel-default">
@@ -191,14 +223,14 @@
                 </div>
             </div>
         </div>
-      </div>
 
-      <hr />
+        <hr />
 
-      <footer>
-        <p>©Project BORIS 2014</p>
-      </footer>
-    </div> <!-- /container -->
+        <footer class="text-center">
+            <a href="#">Impressum</a>            
+        </footer>
+        <br />
+    </div>
 
 
     <!-- Bootstrap core JavaScript
@@ -214,8 +246,51 @@
         });
 
         var similar = recommend(1); // nummer des aktuellen cocktail als parameter --> gibt ein array mit ähnlichen Cocktails in absteigender reihenfolge zurück
+        console.log($(similar));
 
-        console.log(similar);
+        var count = similar.length;
+        var gridRatio = 0;
+
+        //Calculate which ratio for the columns has to be used, dependent from the number of similar cocktails
+        if (count <= 1) {gridRatio = 12; }
+        else if (count == 2) { gridRatio = 6; }
+        else { gridRatio = 4; }
+
+        //Loop through similar drinks, max. 3 times and insert them into the belonging template
+        for (var i = 0; i < count && i < 3; i++) {
+            var drinkName = "Gin Fizz";
+            var drinkImgSrc = "drink_example.jpg";
+
+            $("#similar_drinks").append(
+            '<div class="col-xs-' + gridRatio + ' text-center">' +
+                '<img src="img/' + drinkImgSrc + '" alt="' + drinkName + '" class="img-responsive center-block" />' +
+                '<strong>' + drinkName + '</strong>' +
+            '</div>');
+        }
+        /*
+        $("
+        <div class="col-xs-4 text-center">
+                <img src="img/drink_example.jpg" alt="..." class="img-responsive center-block" />
+                <strong>Gin Fizz</strong>
+            </div>        
+            <div class="col-xs-4 text-center">
+                <img src="img/drink_example2.jpg" alt="..." class="img-responsive center-block" />
+                <strong>Cuba Libre</strong>
+            </div>    
+            <div class="col-xs-4 text-center">
+                <img src="img/drink_example.jpg" alt="..." class="img-responsive center-block" />
+                <strong>Gin Fizz</strong>
+                
+        </div>*/
+
+        $("#confirmOrderDrink").click(function () {
+            console.log("confirmed order");
+            $('#modal_confirmOrder').modal('hide')
+//            $('#orderDrink').hide();
+//            $('#stopMixing').show();
+//            $('#mixingProgress').show();
+        });
+
 	</script>
 
 </body></html>

@@ -12,6 +12,7 @@ hr { }
 
 .center-x { text-align:center; margin: 0 auto; }
 .center-y { vertical-align:middle; margin: 0 auto; }
+.align-bottom { vertical-align: bottom; margin: 0 auto;}
 
 
 .inline-block { display: inline-block; }
