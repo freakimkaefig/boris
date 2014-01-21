@@ -1,105 +1,44 @@
-html 
-{
-    
-}
+html {}
+body { padding-top: 70px; /* Whatever the height of your navbar is; the default is 50px */}
+body.backgr-img { padding-top: 80px; background-image: url(../img/bg_sign_in.jpg); }
 
-body 
-{
-    padding-top: 70px; /* Whatever the height of your navbar is; the
-                             default is 50px */
-}
 
-h1, h2, h3, h4, h5, h6 
-{
+/* TEXT */
+h1, h2, h3, h4, h5, h6 { }
+h3 { font-color: white; }
+p { }
+hr { }
 
-}
 
-p 
-{
+.center-x { text-align:center; margin: 0 auto; }
+.center-y { vertical-align:middle; margin: 0 auto; }
 
-}
 
-hr 
-{
+.inline-block { display: inline-block; }
 
-}
 
-/*--Common styles--*/
-.inline-block 
-{
-    display: inline-block;
-}
+#sing-in-form { max-width: 30%; text-align:center; }
 
-.center-x 
-{
-    text-align:center;
-    margin: 0 auto;
-}
+#logo-sign-in { margin-top: 20px; }
 
-.center-y 
-{
-    vertical-align:middle;
-    margin: 0 auto;
-}
+.jumbotron { background-color: rgba(0, 0, 0, 0.7); }
 
-/*--Sign in--*/
-body
-{
-  /*padding-top: 80px;
-  background-image: url(../img/bg_sign_in.jpg)*/
-}
 
-body.backgr-img
-{
-    padding-top: 80px;
-    background-image: url(../img/bg_sign_in.jpg)
-}
+/*-- DRINK LIST --*/
+a.no-btn { color: #333; }
+a.no-btn:hover, a.no-btn:active { color: black; }
+.drink-list-container .row { margin:0; opacity:0.8; padding-top:15px; padding-bottom:15px; }
+.drink-list-container .row:hover { opacity: 1.0; }
+/*.drink-list-container a:nth-child(even) .row { background:#999; }*/ /* Stripping for .row even */
 
-h3
-{
-    font-color: white;
-}
 
-#sing-in-form
-{
-  max-width: 30%;
-  text-align:center;
-}
-
-.container 
-{
-  max-width: 930px;
-}
-
-#logo-sign-in
-{
-  margin-top: 20px;
-
-  
-}
-
-.form-control
-{
- 
-}
-
-.jumbotron
-{
-  background-color: rgba(0, 0, 0, 0.7);
-}
+/*-- DRINK DETAILS --*/
 
 
 
 
-/*--Drink list--*/
 
-
-
-/*--Drink details--*/
-
-
-
-/*--Service menu--*/
+/*-- SERVICE MENU --*/
 .slotName
 {
   color: #727272 ;
