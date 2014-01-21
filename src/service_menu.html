@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Boris Service Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/common.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class= "container">
+      <div class="col-xs-12 col-sm-12">
+        <nav class="navbar navbar-inverse" role= "navigation">
+          <a class="navbar-brand">Boris Service Menu</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-xs-12 col-sm-12">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#">Bottle</a></li>
+          <li><a href="#">Common</a></li>
+          <li><a href="#">Cleaning</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class = "container" id="bottleContainer">
+      <div class="row" align="center">
+        <div class="col-xs-6 col-sm-3" align="center">
+          <div class ="slot1">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3" align="center">
+            <div class ="slot2">
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-3" align="center">
+          <div class="slot3">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3" align="center">
+          <div class="slot4">
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-3" align="center">
+          <div class="slot5">
+          </div>
+         </div>
+        <div class="col-xs-6 col-sm-3" align="center">
+          <div class="slot6">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3" align="center">
+          <div class="slot7">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3" align="center">
+          <div class="slot8">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-3" align="center">
+          <div class="slot9">
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-3" align="center">
+          <div class="slot10">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="setupContainer" hidden="true">
+      <div class="col-xs-12 col-sm-12">
+        <div class="row" id="input">
+          <div class="col-xs-3 col-sm-3" align="center">
+            <span class="inputDescription">
+              Content Type:
+            </span>
+          </div>
+          <div class="col-xs-3 col-sm-3" align="center">
+            <select id="slotContent" class="selectpicker">
+            </select>
+          </div>
+        </div>
+        <div class="row" id="input">
+          <div class="col-xs-3 col-sm-3" align="center">
+            <span class="inputDescription">
+              Slot Size(ml):
+            </span>
+          </div>
+          <div class="col-xs-3 col-sm-3" align="center">
+            <select id="slotSize" class="selectpicker" >
+            </select>
+          </div>
+        </div>
+        <div class="row" id="input">
+          <div class="col-xs-3 col-sm-3" align="center">
+            <span class="inputDescription">
+              Filling Level:
+            </span>
+          </div>
+          <div class="col-xs-6 col-sm-3" align="center">
+            <div class="input-group" id="inputEdit" >
+              <input type="number" class="form-control" id="inputEditMilliliter" >
+              <span class="input-group-addon">ml</span>
+            </div>
+          </div>
+        </div>
+        <div class ="row" id="btnEdit">
+          <div class="col-xs-10 col-xs-offset-1 col-sm-10  col-sm-offset-1" align="center">
+            <div class="btn-group">
+              <button class="btn btn-default btn-sm" id="btnEditCancel">
+               Cancel
+              </button> 
+              <button class="btn btn-warning btn-sm" id="btnEditSubmit">
+               Submit
+              </button> 
+            </div>         
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="refillContainer" hidden="true">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-6  col-sm-offset-3">
+        <span class="slotName" id="infoTextRefill" align="center">
+        </span>
+        <div class="input-group" id="inputRefill" >
+          <input type="number" class="form-control" id="inputRefillMilliliter" >
+          <span class="input-group-addon">ml</span>
+        </div>
+        <div class ="row" >
+          <div class="col-xs-10 col-xs-offset-1 col-sm-10  col-sm-offset-1" align="center">
+            <div class="btn-group" id="btnRefill">
+              <button class="btn btn-default btn-sm" id="btnRefillCancel">
+               Cancel
+              </button> 
+              <button class="btn btn-warning btn-sm" id="btnRefillSubmit">
+               Submit
+              </button> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    
+    <script type="text/javascript" charset="utf-8">
+        var refillID = 0,
+        editID = 0;
+
+        var slotData =
+         [{id:1, percentage: 20, milliliter: 100, content: "gin", size: 500},{id:2, percentage: 40, milliliter: 400, content: "saft", size: 500},{id:3, percentage: 10, milliliter: 400, content: "cola", size: 500},{id:4, percentage: 20, milliliter: 100, content: "gin", size: 500},{id:5, percentage: 40, milliliter: 400, content: "saft", size: 500},{id:6, percentage: 10, milliliter: 400, content: "cola", size: 500},{id:7, percentage: 20, milliliter: 100, content: "gin", size: 500},{id:8, percentage: 40, milliliter: 400, content: "saft", size: 1500},{id:9, percentage: 10, milliliter: 400, content: "cola", size: 500},{id:10, percentage: 20, milliliter: 100, content: "gin", size: 500}];
+
+        slotData.forEach(function(entry){
+          $(".slot"+ entry.id).append('<div class="well well-sm"><div class= "slotName" id="slotName'+ entry.id +'"> Slot '+ entry.id +' </div> <span class="glyphicon glyphicon-tint"></span><div class ="row"> <div class="col-xs-6 col-sm-6" align="center">  <span class= "slotMilliliter" id="slotMilliliter'+ entry.id +'">  '+ entry.milliliter +' ml  </span>  </div>  <div class="col-xs-5 col-sm-5" align="center">      <span class = "slotPercentage" id="slotPercentage'+ entry.id +'">    ('+ Math.round(entry.milliliter/entry.size*100) +' %)   </span>  </div></div><div class ="slotContent" >   containing   <span class="contentColor" id="slotContent'+ entry.id +'">'+ entry.content +'</span> </div>    <div class ="row"><div class="col-xs-6 col-sm-6" align="center"> <button class="btn btn-default btn-sm" id="btnRefill'+ entry.id +'">Refill</button>  </div><div class="col-xs-6 col-sm-6" align="center">  <button class="btn btn-default btn-sm" id="btnEdit'+ entry.id +'" onclick = "initDropdown('+entry.id+')">Edit</button> </div> </div> </div> ');
+
+            $( "#btnRefill" + entry.id).click(function() {
+              var id = $(this).attr("id").replace('btnRefill','');
+              refillID= id;
+
+              $("#infoTextRefill").text( "Refill Slot "+id+" with "+ slotData[id-1].content);
+
+              $("#bottleContainer").hide();
+              $("#refillContainer").show();
+            });
+
+            $( "#btnEdit" + entry.id).click(function() {
+              var id = $(this).attr("id").replace('btnEdit','');
+              editID = id;
+              
+              $("#bottleContainer").hide();
+              $("#setupContainer").show();
+            });
+        });
+
+        
+
+        function initDropdown(id){ 
+          $("#slotContent").empty();
+          $("#slotSize").empty();
+
+          
+          $("#slotContent").append("<option>"+slotData[id-1].content+"</option>");
+          $("#slotContent").append('<option>nothing</option><option>Google Chrome</option> <option>Firefox</option>');
+
+          $("#slotSize").append("<option>"+slotData[id-1].size+"</option>");
+          $("#slotSize").append("<option>500</option><option>1500</option>");
+
+           $('.selectpicker').selectpicker('refresh');
+              
+        };
+      
+
+        $( "#btnRefillCancel").click(function() {
+              $("#bottleContainer").show();
+              $("#refillContainer").hide();
+              refillID = 0;
+        });
+
+        $( "#btnEditCancel").click(function() {
+              $("#bottleContainer").show();
+              $("#setupContainer").hide();
+              editID = 0;
+        });
+
+        $( "#btnRefillSubmit").click(function() {
+              //request einauen und abwarten, vll noch ein alert mit bestätigung?
+              milliliter = $("#inputRefillMilliliter").val();
+              number = Math.round(milliliter/slotData[refillID-1].size*100);
+          
+              $("#slotMilliliter"+ refillID).text(milliliter+ " ml");
+              $("#slotPercentage"+ refillID).text("("+ number +"%)");
+              $("#bottleContainer").show();
+
+              $("#refillContainer").hide();
+              refillID = 0;
+        });
+
+         $( "#btnEditSubmit").click(function() {
+              //request einauen und abwarten, vll noch ein alert mit bestätigung?
+              milliliter = $("#inputEditMilliliter").val();
+              slotSize = $("#slotSize").val();
+              slotContent = $("#slotContent").val();
+
+              $("#slotMilliliter"+ editID).text(milliliter+ " ml");
+              $("#slotContent"+ editID).text(slotContent);
+              $("#slotPercentage"+ editID).text("("+ Math.round(milliliter/slotSize*100)+"%)");
+
+              console.log("submit"+milliliter+slotContent+slotSize);
+              $("#bottleContainer").show();
+              $("#setupContainer").hide();
+              editID = 0;
+        });
+          
+   </script>
+  
+  </body>
+</html>
