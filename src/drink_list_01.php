@@ -35,29 +35,23 @@
         <!--Dropdown <b class="caret"></b>--> 
         </a>
         <ul class="dropdown-menu">
-          <li class="dropdown-header">Taste</li>
-          <li>
-            <div class="input-group"> <span class="input-group-addon">
-              <input type="checkbox" />
-              Sweet </span> <br />
-              <span class="input-group-addon">
-              <input type="checkbox" />
-              Fruity </span> <span class="input-group-addon">
-              <input type="checkbox" />
-              Very sour </span> <span class="input-group-addon">
-              <input type="checkbox" />
-              Bitter </span> </div>
-          </li>
-          <li class="divider"></li>
-          <li class="dropdown-header">Taste</li>
-          <li>
-            <div class="btn-group">
-              <button type="button" class="btn btn-default">Alc-Free</button>
-              <button type="button" class="btn btn-default">Weak</button>
-              <button type="button" class="btn btn-default">Middle</button>
-              <button type="button" class="btn btn-default">Strong</button>
-            </div>
-          </li>
+
+            <li class="dropdown-header">Taste</li>
+              <ul class="input-group" style="list-style-type:none">
+                  <li><input id="checkbox-1" type="checkbox"/>Sweet</li>
+                  <li><input id="checkbox-2" type="checkbox"/>Fruity</li>
+                  <li><input id="checkbox-3" type="checkbox"/>Sour</li>
+                  <li><input id="checkbox-4" type="checkbox"/>Bitter</li>
+              </ul>
+
+            <li class="input-group dropdown-header">Alcohol Strength</li>
+              <ul class="input-group" style="list-style-type:none">
+                  <li><input id="radio-1" type="radio"/>Alc-Free</li>
+                  <li><input id="radio-2" type="radio"/>Weak</li>
+                  <li><input id="radio-3" type="radio"/>Middle</li>
+                  <li><input id="radio-4" type="radio"/>Strong</li>
+              </ul>
+
         </ul>
       </li>
       <form class="navbar-form navbar-left" role="search">
