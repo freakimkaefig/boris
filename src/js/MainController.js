@@ -2,7 +2,8 @@ Boris.MainController = function() {
     var that = {},
     mainModel = null,
     listView = null,
-	searchView = null,
+    searchView = null,
+	filterView = null,
     signView = null,
     $signInButton = null,
 
@@ -19,6 +20,9 @@ Boris.MainController = function() {
 		//SearchView initialisieren
 		searchView = Boris.SearchView();
 		searchView.init();
+
+        filterView = Boris.FilterView();
+        filterView.init();
 
         signView = Boris.SignView();
         signView.init();
