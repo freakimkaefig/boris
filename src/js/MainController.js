@@ -18,6 +18,7 @@ Boris.MainController = function() {
 		
 		//SearchView initialisieren
 		searchView = Boris.SearchView();
+		searchView.init();
 
         signView = Boris.SignView();
         signView.init();
