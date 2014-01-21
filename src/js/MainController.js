@@ -7,6 +7,8 @@ Boris.MainController = function() {
     signView = null,
     $signInButton = null,
 
+    $$radioAlcGroup = null,
+
     init = function() {
         console.log("controller init");
         //model initialisieren
@@ -28,7 +30,15 @@ Boris.MainController = function() {
         signView.init();
 
         $signInButton = $("#sign-in-button");
-        $signInButton.on("click", signIn);       
+        $signInButton.on("click", signIn);   
+
+        //init radio groups for filtering       
+        $radioTasteGroup = $(".taste");    
+        $radioAlcGroup = $(".alc");
+        
+        //set listener to radio button groups
+        setRadioListenerTaste();
+        setRadioListenerAlc();
 
     },
 
@@ -42,7 +52,21 @@ Boris.MainController = function() {
             console.log("wrong pw");
         }
         
-    }
+    },
+
+    setRadioListenerTaste = function() {
+        //reacts to change event and sends value to model
+        $radioTasteGroup.change(function() {             
+            mainModel.setSelectedTaste(event.target.value);
+        });
+    },
+
+    setRadioListenerAlc = function() {
+        //reacts to change event and sends value to model
+        $radioAlcGroup.change(function() {           
+            mainModel.setSelectedAlcStrength(event.target.value);
+        });
+    };
 
     that.init = init;
 

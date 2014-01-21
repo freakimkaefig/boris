@@ -38,18 +38,18 @@
 
             <li class="dropdown-header">Taste</li>
               <ul class="input-group" style="list-style-type:none">
-                  <li><input id="checkbox-1" type="checkbox"/>Sweet</li>
-                  <li><input id="checkbox-2" type="checkbox"/>Fruity</li>
-                  <li><input id="checkbox-3" type="checkbox"/>Sour</li>
-                  <li><input id="checkbox-4" type="checkbox"/>Bitter</li>
+                  <li><input id="radio-taste-1" type="radio" name="groupTaste" value="Sweet" class="taste"/>Sweet</li>
+                  <li><input id="radio-taste-2" type="radio" name="groupTaste" value="Fruity" class="taste"/>Fruity</li>
+                  <li><input id="radio-taste-3" type="radio" name="groupTaste" value="Sour" class="taste"/>Sour</li>
+                  <li><input id="radio-taste-4" type="radio" name="groupTaste" value="Bitter" class="taste"/>Bitter</li>
               </ul>
 
             <li class="input-group dropdown-header">Alcohol Strength</li>
               <ul class="input-group" style="list-style-type:none">
-                  <li><input id="radio-1" type="radio"/>Alc-Free</li>
-                  <li><input id="radio-2" type="radio"/>Weak</li>
-                  <li><input id="radio-3" type="radio"/>Middle</li>
-                  <li><input id="radio-4" type="radio"/>Strong</li>
+                  <li><input id="radio-alc-1" type="radio" name="groupAlc" value="Alc-Free" class="alc"/>Alc-Free</li>
+                  <li><input id="radio-alc-2" type="radio" name="groupAlc" value="Weak" class="alc"/>Weak</li>
+                  <li><input id="radio-alc-3" type="radio" name="groupAlc" value="Middle" class="alc"/>Middle</li>
+                  <li><input id="radio-alc-4" type="radio" name="groupAlc" value="Strong" class="alc"/>Strong</li>
               </ul>
 
         </ul>
@@ -113,6 +113,7 @@
 <script src="js/App.js"></script>
 <script src="js/ListView.js"></script>
 <script src="js/SearchView.js"></script>
+<script src="js/FilterView.js"></script>
 <script src="js/MainController.js"></script>
 <script src="js/MainModel.js"></script>
 <script src="js/SignView.js"></script>
