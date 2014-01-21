@@ -45,8 +45,14 @@ hr
 /*--Sign in--*/
 body
 {
-  padding-top: 80px;
-  background-image: url(../img/bg_sign_in.jpg)
+  /*padding-top: 80px;
+  background-image: url(../img/bg_sign_in.jpg)*/
+}
+
+body.backgr-img
+{
+    padding-top: 80px;
+    background-image: url(../img/bg_sign_in.jpg)
 }
 
 h3
