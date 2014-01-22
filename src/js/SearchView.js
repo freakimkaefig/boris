@@ -1,10 +1,15 @@
 Boris.SearchView = function() {
     var that = {},
+		mainController,
 		searchInput,
 		searchSubmit,
 
     init = function() {
         console.log("search view init");
+		
+		mainController = Boris.MainController();
+		$(mainController).on('searchresult', onSearchResult);
+		
         $searchInput = $("#search-input");
         $searchSubmit = $("#search-submit");
 		
@@ -16,14 +21,33 @@ Boris.SearchView = function() {
 	},
 	
 	onSearchSubmitClick = function() {
-		console.log("search", getSearchInput());
 		$(that).trigger('search', getSearchInput());
-		//Trigger Search Clicked -> Übergebe Wert aus eingabefeld
-		//Controller registriert sich am event und stellt beide anfragen (name, ingredient)
+	},
+	
+	onSearchResult = function(result) {
+		console.log("searchResult", result);	
+		if(result.name && !result.ingredient) {
+			//	Name & !Zutat
+			console.log("Name & !Zutat");
+			
+		} else if(!result.name && result.ingredient) {
+			//	!Name & Zutat
+			console.log("!Name & Zutat");
+			
+		} else if(!result.name && !result.ingredient) {
+			//	!Name & !Zutat
+			console.log("!Name & !Zutat");
+			
+		} else if(result.name && result.ingredient) {
+			//	Name & Zutat
+			console.log("Name & Zutat");
+			
+		}
 	};
 
 
     that.init = init;
+	that.onSearchResult = onSearchResult;
 
 
     return that;

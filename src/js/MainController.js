@@ -69,14 +69,25 @@ Boris.MainController = function() {
         });
     },
 	
-	onSearch = function(event, query) {
-		console.log("onSearch", event, query);
-		
-		$.get('http://localhost/boris/src/php/', function(data) {
-			$outputBody.text(JSON.stringify(data));
+	onSearch = function(event, query) {		
+		var result = {};
+		$.get(mainModel.getResUrl("search") + '?name=' + query, function(data) {
+			if(data.data.length != 0) {
+				result.name = data;
+			}
+			
+			if(mainModel.checkIfIngredient(query)) {
+				$.get(mainModel.getResUrl("search") + '?data={"ingredients":["' + query + '"]}', function(data) {
+					//console.log("ingredient", data);
+					result.ingredient = data;
+					searchView.onSearchResult(result);
+				});
+			} else {
+				searchView.onSearchResult(result);
+			}
 		});
 	};
-
+	
     that.init = init;
 
     return that;
