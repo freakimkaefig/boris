@@ -11,6 +11,13 @@ Boris.MainController = function() {
     $radioTasteGroup = null,
     $radioAlcGroup = null,
 
+    //Likert Scales
+    $radioBitterLikert = null,
+    $radioSweetLikert = null,
+    $radioSourLikert = null,
+    $radioFruityLikert = null,
+    $radioStrongLikert = null,
+
     init = function() {
         console.log("controller init");
         //model initialisieren
@@ -38,6 +45,18 @@ Boris.MainController = function() {
         //set listener to radio button groups
         setRadioListenerTaste();
         setRadioListenerAlc();
+
+        $radioBitterLikert = $(".likertHerb");
+        $radioSweetLikert = $(".likertSüß");
+        $radioSourLikert = $(".likertSauer");
+        $radioFruityLikert = $(".likertFruchtig");
+        $radioStrongLikert = $(".likertStark");
+
+        setRadioListenerBitterLikert();
+        setRadioListenerSweetLikert();
+        setRadioListenerSourLikert();
+        setRadioListenerFruityLikert();
+        setRadioListenerStrongLikert();
     },
 
     signIn = function(event) {
@@ -48,7 +67,9 @@ Boris.MainController = function() {
             } 
             else if(mainModel.getUsernameForSettings() == signView.getInputValueUsername()) {
                 //var myWindow = window.open("drink_list.html","_self"); 
-                console.log("susis settings");
+                //hier eig settings seite
+                //zum testen erst mal cocktail rating
+                var myWindow = window.open("cocktail_rating.php","_self"); 
             }
             else {
                 console.log("wrong username");
@@ -70,11 +91,41 @@ Boris.MainController = function() {
         });
     },
 
-    //QuestionnaireListener
-    setRadioListenerAlc = function() {
-        //reacts to change event and sends value to model
-        $radioAlcGroup.change(function() {           
-            mainModel.setSelectedAlcStrength(event.target.value);
+    //------------------QuestionnaireListener-----------------
+    setRadioListenerBitterLikert = function() {
+
+        $radioBitterLikert.change(function() {           
+        
+            mainModel.setLikertBitterVal(event.target.value);
+
+        });
+    },
+
+    setRadioListenerSweetLikert = function() {
+        $radioSweetLikert.change(function() {  
+                
+            mainModel.setLikertSweetVal(event.target.value);
+        });
+    },
+
+    setRadioListenerSourLikert = function() {
+        $radioSourLikert.change(function() {  
+               
+            mainModel.setLikertSourVal(event.target.value);
+        });
+    },
+
+    setRadioListenerFruityLikert = function() {
+        $radioFruityLikert.change(function() {  
+              
+            mainModel.setLikertFruityVal(event.target.value);
+        });
+    },
+
+    setRadioListenerStrongLikert = function() {
+        $radioStrongLikert.change(function() {    
+            
+            mainModel.setLikertStrongVal(event.target.value);
         });
     },
 	

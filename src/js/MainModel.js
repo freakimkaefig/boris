@@ -9,6 +9,14 @@ Boris.MainModel = function() {
 	numCocktailsTotal = 0,
 	ingredientsList = null,
 
+	likertBitterVal = null,
+    likertSweetVal = null,
+    likertSourVal = null,
+    likertFruityVal = null,
+	likertStrongVal = null,
+
+    //PHP data is rate.php
+
     init = function() {
         //console.log("model init");
         initPhpRepo();
@@ -106,6 +114,40 @@ Boris.MainModel = function() {
     setSelectedAlcStrength = function(alc) {
         alcStrength = alc;
         console.log(alcStrength);
+    },
+    //getter and setter for likert scale in questionnaire
+    getLikertBitterVal = function() {
+        return likertBitterVal;
+    },    
+    getLikertSweetVal = function() {
+        return likertSweetVal;
+    },
+    getLikertSourVal = function() {
+        return likertSourVal;
+    },
+    getLikertFruityVal = function() {
+        return likertFruityVal;
+    },
+    getLikertStrongVal = function() {
+        return likertStrongVal;
+    },
+    setLikertBitterVal = function(likertBitterVal) {
+        this.likertBitterVal = likertBitterVal;
+        console.log("likert Bitter " + likertBitterVal);
+    },
+    setLikertSweetVal = function(likertSweetVal) {
+        this.likertSweetVal = likertSweetVal;
+        console.log("likert Sweet " + likertSweetVal);
+    },
+    setLikertSourVal = function(likertSourVal) {
+        this.likertSourVal = likertSourVal;
+        console.log("likert Sour " + likertSourVal);
+    },setLikertFruityVal = function(likertFruityVal) {
+        this.likertFruityVal = likertFruityVal;
+        console.log("likert Fruity " + likertFruityVal);
+    },setLikertStrongVal = function(likertStrongVal) {
+        this.likertStrongVal = likertStrongVal;
+        console.log("likert Strong " + likertStrongVal);
     };
 
     that.init = init;
@@ -119,6 +161,16 @@ Boris.MainModel = function() {
     that.getSelectedAlcStrength = getSelectedAlcStrength;
     that.setSelectedTaste = setSelectedTaste;
     that.setSelectedAlcStrength = setSelectedAlcStrength;
+    that.getLikertBitterVal = getLikertBitterVal;
+    that.getLikertSweetVal = getLikertSweetVal;
+    that.getLikertSourVal = getLikertSourVal;
+    that.getLikertFruityVal = getLikertFruityVal;
+    that.getLikertStrongVal = getLikertStrongVal;
+    that.setLikertBitterVal = setLikertBitterVal;
+    that.setLikertSweetVal = setLikertSweetVal;
+    that.setLikertSourVal = setLikertSourVal;
+    that.setLikertFruityVal = setLikertFruityVal;
+    that.setLikertStrongVal = setLikertStrongVal;
 
     return that;
 };
