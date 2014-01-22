@@ -55,13 +55,21 @@ Boris.MainController = function() {
         }     
     },
 
+    //Filter
     setRadioListenerTaste = function() {
         //reacts to change event and sends value to model
         $radioTasteGroup.change(function() {             
             mainModel.setSelectedTaste(event.target.value);
         });
     },
+    setRadioListenerAlc = function() {
+        //reacts to change event and sends value to model
+        $radioAlcGroup.change(function() {           
+            mainModel.setSelectedAlcStrength(event.target.value);
+        });
+    },
 
+    //QuestionnaireListener
     setRadioListenerAlc = function() {
         //reacts to change event and sends value to model
         $radioAlcGroup.change(function() {           
