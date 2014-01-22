@@ -16,8 +16,8 @@ Boris.SearchView = function() {
 	},
 	
 	onSearchSubmitClick = function() {
-		//console.log("search", getSearchInput());
-		
+		console.log("search", getSearchInput());
+		$(that).trigger('search', getSearchInput());
 		//Trigger Search Clicked -> Übergebe Wert aus eingabefeld
 		//Controller registriert sich am event und stellt beide anfragen (name, ingredient)
 	};

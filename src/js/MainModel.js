@@ -3,12 +3,20 @@ Boris.MainModel = function() {
     correctUsername = "testuser",
     correctPW = "0000",
     taste = null,
-    alcStrength = null;
+    alcStrength = null,
+	phpRepo = null,
 
     init = function() {
         console.log("model init");
-        
+        initPhpRepo();
     },
+	
+	initPhpRepo = function() {
+		phpRepo = {};
+		console.log(document.baseURI.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, ''));
+		//var baseUrl = "http://localhost/boris/src/php/
+		phpRepo.search = "php/search.php"
+	},
 
     //sign in stuff
     getCorrectUsername = function() {

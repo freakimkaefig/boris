@@ -69,9 +69,10 @@
 <div class="container drink-list-container"> 
   <!-- Example row of columns -->
   <?php
-	$base_url = 'http://localhost/boris/src/php/';
-	$url = $base_url . 'getCocktails.php?recipe=1';
+	$base_url = dirname('http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']) . "/";
+	$url = $base_url . "php/getCocktails.php?recipe=1";
 	$result = json_decode(file_get_contents($url));
+	
 	$cocktails = $result->data;
 	//print_r ($cocktails);
 ?>
