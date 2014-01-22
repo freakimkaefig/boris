@@ -276,5 +276,21 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Custom Javascript -->
+    <script src="js/App.js"></script>
+    <script src="js/SearchView.js"></script>
+    <script src="js/FilterView.js"></script>
+    <script src="js/MainController.js"></script>
+    <script src="js/MainModel.js"></script>
+    <script src="js/SignView.js"></script>
+    <script src="js/QuestionnaireView.js"></script>
+
+    <script>
+    $(function() {
+        Boris.init();
+    });
+    </script>
+    
 </body>
 </html>

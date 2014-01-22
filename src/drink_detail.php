@@ -116,26 +116,9 @@
                 <div class="pull-left">
                     <div class="h1"><?php print $cocktail->name; ?></div>
                     <?php 
-                    /*
-                        function renderRating($ratingCount, $ratingMax, $filledContent, $emptyContent) { 
-                            for($i=1;$i<=5;$i++)
-                            {
-                                if($i <=  $ratingCount) { print($filledContent); }
-                                else { print($emptyContent); }
-                            }
-                        }*/
-                        
                         $rating = round($cocktail->rating->taste->average, 0, PHP_ROUND_HALF_UP);
-                        
-                        
-                        /*
-                        for($i=1;$i<=5;$i++)
-                        {
-                            if($i <=  $rating) { print('<div class="glyphicon glyphicon-star"></div>'); }
-                            else { print('<div class="glyphicon glyphicon-star-empty"></div>'); }
-                        }
-                        */
-                        echo renderRating($rating,5,'<div class="glyphicon glyphicon-star"></div>','<div class="glyphicon glyphicon-star-empty"></div>');
+                        echo renderRating($rating,5,
+                            '<div class="glyphicon glyphicon-star"></div>','<div class="glyphicon glyphicon-star-empty"></div>');
                     ?>
                 </div>
             </div>
@@ -154,12 +137,9 @@
                         <tr>
                             <td>Sour</td><td><span class="badge">
                             <?php 
-                            /*
-                                $rating = round($cocktail->rating->sour, 0, PHP_ROUND_HALF_UP);
-                                for($i=1;$i<=5;$i++)
-                                {
-                                    if($i <=  $rating) {
-                                }*/
+                                $rating = $cocktail->rating->sour->average;
+                                echo renderRating($rating,5,
+                                    '<div class="glyphicon glyphicon-star"></div>','<div class="glyphicon glyphicon-star-empty"></div>');
                             ?>
                             </span></td>
                         </tr>
