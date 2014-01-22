@@ -101,21 +101,20 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6"> <!-- Geschmack -->
                 <div class="row">
-                    <div class="col-xs-4 col-md-4" align=right>
-                    <h5>trifft nicht zu</h5>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
-                    <div class="col-xs-4 col-md-4">
-                    
+                    <div class="col-xs-7 col-sm-7 col-md-7">
+                        <p class="alignleft">&#60;Trifft nicht zu</p>
+                        <p class="alignright">Trifft zu&#62;</p>
                     </div>
-                    <div class="col-xs-4 col-md-4" align=left>
-                    <h5>trifft zu</h5>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
                     </div>
                 </div>  
                 <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                         <h4>Herb</h4>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4"> <!-- Herb -->
+                    <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Herb -->
                             <label class="radio-inline">
                                 <input name="radioGroup1" id="Herb1" value="1" type="radio"></label>
                             <label class="radio-inline">
@@ -127,14 +126,14 @@
                             <label class="radio-inline">
                                 <input name="radioGroup1" id="Herb5" value="5" type="radio"></label>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                         <h4>Süß</h4>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4"> <!-- Süß -->
+                    <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Süß -->
                         <label class="radio-inline">
                             <input name="radioGroup2" id="Süß1" value="1" type="radio"></label>
                         <label class="radio-inline">
@@ -146,14 +145,14 @@
                         <label class="radio-inline">
                             <input name="radioGroup2" id="Süß5" value="5" type="radio"></label>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                         <h4>Sauer</h4>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4"> <!-- Sauer -->
+                    <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Sauer -->
                         <label class="radio-inline">
                             <input name="radioGroup3" id="Sauer1" value="1" type="radio"></label>
                         <label class="radio-inline">
@@ -165,14 +164,14 @@
                         <label class="radio-inline">
                             <input name="radioGroup3" id="Sauer5" value="5" type="radio"></label>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                         <h4>Fruchtig</h4>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4"> <!-- Fruchtig -->
+                    <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Fruchtig -->
                         <label class="radio-inline">
                             <input name="radioGroup4" id="Fruchtig1" value="1" type="radio"></label>
                         <label class="radio-inline">
@@ -184,14 +183,14 @@
                         <label class="radio-inline">
                             <input name="radioGroup4" id="Fruchtig5" value="5" type="radio"></label>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                         <h4>Stark</h4>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4"> <!-- Stark -->
+                    <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Stark -->
                         <label class="radio-inline">
                             <input name="radioGroup5" id="Stark1" value="1" type="radio"></label>
                         <label class="radio-inline">
@@ -203,7 +202,7 @@
                         <label class="radio-inline">
                             <input name="radioGroup5" id="Stark5" value="5" type="radio"></label>
                     </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
                 </div>
             </div> <!-- end Geschmack -->
