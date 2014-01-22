@@ -17,6 +17,8 @@ hr { }
 .center-y { vertical-align:middle; margin: 0 auto; }
 .align-bottom { vertical-align: bottom; margin: 0 auto;}
 
+.alignleft {float: left;}
+.alignright {float: right;}
 
 .inline-block { display: inline-block; }
 

@@ -22,7 +22,20 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-  <style type="text/css"></style></head>
+    <style type="text/css"></style>
+    
+    <?php
+        include 'php/helper.php';
+        
+	    $base_url = 'http://localhost/boris/src/php/';
+	    $getCoktailsUrl = $base_url . 'getCocktails.php?id=1&rating=1&recipe=1';
+	    $result = json_decode(file_get_contents($getCoktailsUrl));
+	    $cocktailArray = $result->data;
+        $cocktail = reset($cocktailArray);
+    ?>  
+    </head>
+  
+  
 
   <body style="">
     <!-- Navbar -->
@@ -101,12 +114,12 @@
             </div>
             <div class="col-xs-6">
                 <div class="pull-left">
-                    <div class="h1">Gin Fizz</div>
-                    <div class="glyphicon glyphicon-star glyphicon-marked"></div>
-                    <div class="glyphicon glyphicon-star glyphicon-marked"></div>
-                    <div class="glyphicon glyphicon-star glyphicon-marked"></div>
-                    <div class="glyphicon glyphicon-star glyphicon-marked"></div>  
-                    <div class="glyphicon glyphicon-star glyphicon-unmarked"></div>  
+                    <div class="h1"><?php print $cocktail->name; ?></div>
+                    <?php 
+                        $rating = round($cocktail->rating->taste->average, 0, PHP_ROUND_HALF_UP);
+                        echo renderRating($rating,5,
+                            '<div class="glyphicon glyphicon-star"></div>','<div class="glyphicon glyphicon-star-empty"></div>');
+                    ?>
                 </div>
             </div>
         </div>
@@ -117,12 +130,18 @@
                   <div class="panel-heading">
                     <h2 class="panel-title"><strong>Infos</strong></h2>
                   </div>
-                    <table class="table table-striped"">
+                    <table class="table table-striped">
                         <tr>
-                            <td>Most orders rank</td><td><span class="badge">2</span></td>
+                            <td>Most orders rank</td><td><span class="badge"><?php print $cocktail->orders; ?></span></td>
                         </tr>
                         <tr>
-                            <td>Sour</td><td><span class="badge">Strongly</span></td>
+                            <td>Sour</td><td><span class="badge">
+                            <?php 
+                                $rating = $cocktail->rating->sour->average;
+                                echo renderRating($rating,5,
+                                    '<div class="glyphicon glyphicon-star"></div>','<div class="glyphicon glyphicon-star-empty"></div>');
+                            ?>
+                            </span></td>
                         </tr>
                         <tr>
                             <td>Sweet</td><td><span class="badge">Lightly</span></td>
