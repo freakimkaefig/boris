@@ -6,11 +6,10 @@ Boris.MainModel = function() {
     taste = null,
     alcStrength = null,
 	phpRepo = null,
-	numCocktailsTotal = 0,
 	ingredientsList = null,
 
     init = function() {
-        //console.log("model init");
+        console.log("model init");
         initPhpRepo();
     },
 	
@@ -19,16 +18,10 @@ Boris.MainModel = function() {
 		baseUrl = document.baseURI.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, '') + "/";
 		//var baseUrl = "http://localhost/boris/src/php/
 		phpRepo.search = "php/search.php";
-		phpRepo.getIngredients = "php/getIngredients.php";
-		phpRepo.getCocktails = "php/getCocktails.php";
+		phpRepo.ingredients = "php/getIngredients.php";
 		//to be continued...
 		
-		updateDatabaseCache();
-	},
-	
-	updateDatabaseCache = function() {
 		initIngredientsList();
-		initNumCocktails();
 	},
 	
 	getResUrl = function(which) {
@@ -36,11 +29,9 @@ Boris.MainModel = function() {
 			case "search":
 				return phpRepo.search;
 				break;
-			case "getIngredients":
-				return phpRepo.getIngredients;
+			case "ingredients":
+				return phpRepo.ingredients;
 				break;
-			case "getCocktails":
-				return phpRepo.getCocktails;
 			default:
 				return false;
 				break;	
@@ -49,7 +40,7 @@ Boris.MainModel = function() {
 	
 	initIngredientsList = function() {
 		ingredientsList = new Array();
-		$.get(getResUrl("getIngredients"), function(data) {
+		$.get(getResUrl("ingredients"), function(data) {
 			var tempArr = $.map(data.data, function(value, index) {
 				return [value];
 			});
@@ -60,25 +51,11 @@ Boris.MainModel = function() {
 		});
 	},
 	
-	initNumCocktails = function() {
-		$.get(getResUrl("getCocktails"), function(data) {
-			//console.log("initNumCocktails", data);
-			var tempArr = $.map(data.data, function(value, index) {
-				return [value];
-			});
-			numCocktailsTotal = tempArr.length;
-		});
-	},
-	
 	checkIfIngredient = function(query) {
 		for (var j=0; j<ingredientsList.length; j++) {
         	if (ingredientsList[j].match(query)) return j;
     	}
     	return false;
-	},
-	
-	getNumCocktails = function() {
-		return numCocktailsTotal;
 	},
 
     //sign in stuff
@@ -111,7 +88,6 @@ Boris.MainModel = function() {
     that.init = init;
     that.getResUrl = getResUrl;
     that.checkIfIngredient = checkIfIngredient;
-	that.getNumCocktails = getNumCocktails;
     that.getUsernameForDrinkList = getUsernameForDrinkList;
     that.getUsernameForSettings = getUsernameForSettings;
     that.getCorrectPassword = getCorrectPassword;

@@ -25,7 +25,8 @@ Boris.SearchView = function() {
 	},
 	
 	onSearchResult = function(result) {
-		console.log("searchResult", result);	
+		console.log("searchResult", result);
+		
 		if(result.name && !result.ingredient) {
 			//	Name & !Zutat
 			console.log("Name & !Zutat");
@@ -33,6 +34,25 @@ Boris.SearchView = function() {
 		} else if(!result.name && result.ingredient) {
 			//	!Name & Zutat
 			console.log("!Name & Zutat");
+			//console.log(result.ingredient);
+			var cocktailIdsToHide = new Array();
+			var tempArr = $.map(result.ingredient.data, function(value, index) {
+				//console.log("map", value, index);
+				return [parseInt(index)];
+			});
+			console.log("tempArr", tempArr)
+			
+			//Prüfen, welche ID nicht in tempArr enthalten!!!
+			
+			/*
+			for (var i=1; i<=result.numCocktails; i++) {
+				if(i != tempArr[i]) {
+					//console.log("hide", i);
+				}
+			}
+			*/
+			//console.log("hide", cocktailIdsToHide);
+			//hideCocktailsById();
 			
 		} else if(!result.name && !result.ingredient) {
 			//	!Name & !Zutat
@@ -43,6 +63,10 @@ Boris.SearchView = function() {
 			console.log("Name & Zutat");
 			
 		}
+	},
+	
+	hideCocktailsById = function(arrayIds) {
+		
 	};
 
 

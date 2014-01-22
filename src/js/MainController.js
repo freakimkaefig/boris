@@ -80,6 +80,7 @@ Boris.MainController = function() {
 	
 	onSearch = function(event, query) {		
 		var result = {};
+		result.numCocktails = mainModel.getNumCocktails();
 		$.get(mainModel.getResUrl("search") + '?name=' + query, function(data) {
 			if(data.data.length != 0) {
 				result.name = data;
