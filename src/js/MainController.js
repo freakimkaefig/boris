@@ -6,6 +6,7 @@ Boris.MainController = function() {
 	filterView = null,
     signView = null,
     $signInButton = null,
+	$searchButton = null,
 
     $$radioAlcGroup = null,
 
@@ -22,6 +23,7 @@ Boris.MainController = function() {
 		//SearchView initialisieren
 		searchView = Boris.SearchView();
 		searchView.init();
+		$(searchView).on('search', onSearch);
 
         filterView = Boris.FilterView();
         filterView.init();
@@ -39,7 +41,6 @@ Boris.MainController = function() {
         //set listener to radio button groups
         setRadioListenerTaste();
         setRadioListenerAlc();
-
     },
 
     signIn = function(event) {
@@ -66,7 +67,15 @@ Boris.MainController = function() {
         $radioAlcGroup.change(function() {           
             mainModel.setSelectedAlcStrength(event.target.value);
         });
-    };
+    },
+	
+	onSearch = function(event, query) {
+		console.log("onSearch", event, query);
+		
+		$.get('http://localhost/boris/src/php/', function(data) {
+			$outputBody.text(JSON.stringify(data));
+		});
+	};
 
     that.init = init;
 
