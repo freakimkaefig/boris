@@ -8,7 +8,8 @@ Boris.MainController = function() {
     $signInButton = null,
 	$searchButton = null,
 
-    $$radioAlcGroup = null,
+    $radioTasteGroup = null,
+    $radioAlcGroup = null,
 
     init = function() {
         console.log("controller init");
