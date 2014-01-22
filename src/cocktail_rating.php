@@ -21,14 +21,22 @@
     <style type="text/css"></style>
 </head>
 <body style="">
+<div class="row">
+
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
+        <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
                     <img src="img/logo_boris.png" class="img img-responsive" alt="Responsive image">
                 </a>
             </div>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8">
+            <div class=row>
             <ul class="nav navbar-nav navbar-right">
+            
+                <div class="col-xs-2 col-sm-2 col-md-2">
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <button type="button" class="btn btn-default">
                         <span class="glyphicon glyphicon-filter"></span>
@@ -60,17 +68,27 @@
                         </ul>
                     </ul>
                 </li>
-                <form class="navbar-form navbar-left" role="search">
+                </div>
+                <div class="col-xs-10 col-sm-10 col-md-10">
+                <div class=row>
+                <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search" />
                 </div>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2">
                 <button type="submit" class="btn btn-default">
                     <span class="glyphicon glyphicon-search"></span>
-                </button>
-                </form>
-                </li>
+                </button> 
+                </div>
+                </div>  
+                </div>
+                
             </ul>
+            </div>
+            </div>
         </div>
+    </div>
     </div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="container">
@@ -116,15 +134,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Herb -->
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb1" value="1" type="radio" class="likertHerb"></label>
+                                <input name="radioGroup1" id="Herb1" value="1" type="radio"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb2" value="2" type="radio" class="likertHerb"></label>
+                                <input name="radioGroup1" id="Herb2" value="2" type="radio"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb3" value="3" type="radio" class="likertHerb"></label>
+                                <input name="radioGroup1" id="Herb3" value="3" type="radio"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb4" value="4" type="radio" class="likertHerb"></label>
+                                <input name="radioGroup1" id="Herb4" value="4" type="radio"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb5" value="5" type="radio" class="likertHerb"></label>
+                                <input name="radioGroup1" id="Herb5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -135,15 +153,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Süß -->
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß1" value="1" type="radio" class="likertSüß"></label>
+                            <input name="radioGroup2" id="Süß1" value="1" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß2" value="2" type="radio" class="likertSüß"></label>
+                            <input name="radioGroup2" id="Süß2" value="2" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß3" value="3" type="radio" class="likertSüß"></label>
+                            <input name="radioGroup2" id="Süß3" value="3" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß4" value="4" type="radio" class="likertSüß"></label>
+                            <input name="radioGroup2" id="Süß4" value="4" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß5" value="5" type="radio" class="likertSüß"></label>
+                            <input name="radioGroup2" id="Süß5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8">
                     </div>
@@ -154,15 +172,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Sauer -->
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer1" value="1" type="radio" class="likertSauer"></label>
+                            <input name="radioGroup3" id="Sauer1" value="1" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer2" value="2" type="radio" class="likertSauer"></label>
+                            <input name="radioGroup3" id="Sauer2" value="2" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer3" value="3" type="radio" class="likertSauer"></label>
+                            <input name="radioGroup3" id="Sauer3" value="3" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer4" value="4" type="radio" class="likertSauer"></label>
+                            <input name="radioGroup3" id="Sauer4" value="4" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer5" value="5" type="radio" class="likertSauer"></label>
+                            <input name="radioGroup3" id="Sauer5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -173,15 +191,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Fruchtig -->
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig1" value="1" type="radio" class="likertFruchtig"></label>
+                            <input name="radioGroup4" id="Fruchtig1" value="1" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig2" value="2" type="radio" class="likertFruchtig"></label>
+                            <input name="radioGroup4" id="Fruchtig2" value="2" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig3" value="3" type="radio" class="likertFruchtig"></label>
+                            <input name="radioGroup4" id="Fruchtig3" value="3" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig4" value="4" type="radio" class="likertFruchtig"></label>
+                            <input name="radioGroup4" id="Fruchtig4" value="4" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig5" value="5" type="radio" class="likertFruchtig"></label>
+                            <input name="radioGroup4" id="Fruchtig5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -192,15 +210,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Stark -->
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark1" value="1" type="radio" class="likertStark"></label>
+                            <input name="radioGroup5" id="Stark1" value="1" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark2" value="2" type="radio" class="likertStark"></label>
+                            <input name="radioGroup5" id="Stark2" value="2" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark3" value="3" type="radio" class="likertStark"></label>
+                            <input name="radioGroup5" id="Stark3" value="3" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark4" value="4" type="radio" class="likertStark"></label>
+                            <input name="radioGroup5" id="Stark4" value="4" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark5" value="5" type="radio" class="likertStark"></label>
+                            <input name="radioGroup5" id="Stark5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -258,5 +276,21 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Custom Javascript -->
+    <script src="js/App.js"></script>
+    <script src="js/SearchView.js"></script>
+    <script src="js/FilterView.js"></script>
+    <script src="js/MainController.js"></script>
+    <script src="js/MainModel.js"></script>
+    <script src="js/SignView.js"></script>
+    <script src="js/QuestionnaireView.js"></script>
+
+    <script>
+    $(function() {
+        Boris.init();
+    });
+    </script>
+    
 </body>
 </html>

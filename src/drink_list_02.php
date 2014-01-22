@@ -12,7 +12,7 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="css/common.css" rel="stylesheet">
+<link href="css/common_02.css" rel="stylesheet">
 
 <!-- Just for debugging purposes. Don't actually copy this line! -->
 <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -26,14 +26,44 @@
 </head>
 
 <body style="">
+<div id="action-bar">
+	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
+    <div id="filter">
+    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button></a>
+        <ul class="dropdown-menu">
+
+            <li class="dropdown-header">Taste</li>
+              <ul class="input-group" style="list-style-type:none">
+                  <li><input id="radio-taste-1" type="radio" name="groupTaste" value="Sweet" class="taste"/>Sweet</li>
+                  <li><input id="radio-taste-2" type="radio" name="groupTaste" value="Fruity" class="taste"/>Fruity</li>
+                  <li><input id="radio-taste-3" type="radio" name="groupTaste" value="Sour" class="taste"/>Sour</li>
+                  <li><input id="radio-taste-4" type="radio" name="groupTaste" value="Bitter" class="taste"/>Bitter</li>
+              </ul>
+
+            <li class="dropdown-header">Alcohol Strength</li>
+              <ul class="input-group" style="list-style-type:none">
+                  <li><input id="radio-alc-1" type="radio" name="groupAlc" value="Alc-Free" class="alc"/>Alc-Free</li>
+                  <li><input id="radio-alc-2" type="radio" name="groupAlc" value="Weak" class="alc"/>Weak</li>
+                  <li><input id="radio-alc-3" type="radio" name="groupAlc" value="Middle" class="alc"/>Middle</li>
+                  <li><input id="radio-alc-4" type="radio" name="groupAlc" value="Strong" class="alc"/>Strong</li>
+              </ul>
+
+        </ul>
+    </div>
+    <div id="search">
+    	<input id="search-input" type="text" class="form-control" placeholder="Search" />
+        <button id="search-submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+    </div>
+</div>
+<!--
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header"> <a class="navbar-brand" href="#"> <img src="img/logo_boris.png" class="img img-responsive" alt="Responsive image"> </a> </div>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button>
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button>-->
         <!--Dropdown <b class="caret"></b>--> 
-        </a>
+        <!--</a>
         <ul class="dropdown-menu">
 
             <li class="dropdown-header">Taste</li>
@@ -64,6 +94,7 @@
     </ul>
   </div>
 </div>
+-->
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="container drink-list-container"> 
