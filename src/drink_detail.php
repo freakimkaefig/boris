@@ -27,11 +27,20 @@
     <?php
         include 'php/helper.php';
         
+        $drinkId = '11';
+        
 	    $base_url = 'http://localhost/boris/src/php/';
-	    $getCoktailsUrl = $base_url . 'getCocktails.php?id=1&rating=1&recipe=1';
-	    $result = json_decode(file_get_contents($getCoktailsUrl));
+        
+	    $getCocktailUrl = $base_url . 'getCocktails.php?id=' . $drinkId . '&rating=1&recipe=1';
+	    $result = json_decode(file_get_contents($getCocktailUrl));        
+        
 	    $cocktailArray = $result->data;
         $cocktail = reset($cocktailArray);
+        
+        $recipe = $cocktail -> recipe;
+        
+        $ratingFilledRendering = '<div class="glyphicon glyphicon-star"></div>';
+        $ratingEmptyRendering = '<div class="glyphicon glyphicon-star-empty"></div>';
     ?>  
     </head>
   
@@ -59,10 +68,10 @@
                     Order
                     <span class="glyphicon glyphicon-glass"></span>
                 </button>
-                <!--<button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
+                <button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
                     Rate
                     <span class="glyphicon glyphicon-star-empty"></span>
-                </button>-->
+                </button>
                 <!--<a href="drink_rate.html">  
                     <button id="btn_rate" type="button" class="btn btn-actionbar">   
                              
@@ -70,10 +79,12 @@
                         Rate
                     </button>
                     </a> -->
-                <a href="drink_rate.html" class="btn btn-default navbar-btn navbar-right">     
+                <!-- <a href="cocktail_rating.php" class="btn btn-default navbar-btn navbar-right">     
                     <span class="glyphicon glyphicon-star-empty"></span> 
                     Rate
-                </a>
+                </a> -->
+                
+                
                 <!--<button id="stopMixing" type="button" class="btn btn-default navbar-btn navbar-right hidden" data-toggle="modal" data-target="#modal_confirmOrder">
                     Stop
                     <span class="glyphicon glyphicon-stop"></span>
@@ -118,7 +129,7 @@
                     <?php 
                         $rating = round($cocktail->rating->taste->average, 0, PHP_ROUND_HALF_UP);
                         echo renderRating($rating,5,
-                            '<div class="glyphicon glyphicon-star"></div>','<div class="glyphicon glyphicon-star-empty"></div>');
+                            $ratingFilledRendering,$ratingEmptyRendering);
                     ?>
                 </div>
             </div>
@@ -135,31 +146,66 @@
                             <td>Most orders rank</td><td><span class="badge"><?php print $cocktail->orders; ?></span></td>
                         </tr>
                         <tr>
-                            <td>Sour</td><td><span class="badge">
+                            <td>Sour</td><td>
                             <?php 
-                                $rating = $cocktail->rating->sour->average;
+                                if(array_key_exists('sour', $cocktail->rating)) {
+                                    $rating = $cocktail->rating->sour;
+                                    if($rating != null) {
+                                        echo renderRating($rating -> average,5,
+                                            $ratingFilledRendering,$ratingEmptyRendering);
+                                    }
+                                }
+                                else {
+                                    print ('<span class="badge">No ratings</span>');
+                                }
+                            ?></td>
+                        </tr>
+                        <tr>
+                            <td>Sweet</td><td>
+                            <?php 
+                                $rating = $cocktail->rating->sweet->average;
                                 echo renderRating($rating,5,
-                                    '<div class="glyphicon glyphicon-star"></div>','<div class="glyphicon glyphicon-star-empty"></div>');
-                            ?>
+                                    $ratingFilledRendering,$ratingEmptyRendering);
+                            ?></td>
+                        </tr>
+                        <tr>
+                            <td>Bitter</td><td>
+                            <?php 
+                                $rating = $cocktail->rating->bitter->average;
+                                echo renderRating($rating,5,
+                                    $ratingFilledRendering,$ratingEmptyRendering);
+                            ?></td>
+                        </tr>
+                        <tr>
+                            <td>Fruity</td><td>
+                            <?php 
+                                $rating = $cocktail->rating->sweet->average;
+                                echo renderRating($rating,5,
+                                    $ratingFilledRendering,$ratingEmptyRendering);
+                            ?></td>
+                        </tr>
+                        <tr>
+                            <td>Alcohol percentage</td><td><span class="badge"><?php print $cocktail->orders; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td>Strength taste</td><td><span class="badge">
+                                <?php 
+                                    $strengthRounded = round($cocktail->rating->strong->average, 1, PHP_ROUND_HALF_UP);
+                                    print $strengthRounded . " / 5";                                
+                                ?>
                             </span></td>
                         </tr>
                         <tr>
-                            <td>Sweet</td><td><span class="badge">Lightly</span></td>
-                        </tr>
-                        <tr>
-                            <td>Bitter</td><td><span class="badge">Lightly</span></td>
-                        </tr>
-                        <tr>
-                            <td>Fruity</td><td><span class="badge">Lightly</span></td>
-                        </tr>
-                        <tr>
-                            <td>Alcohol percentage</td><td><span class="badge">30%</span></td>
-                        </tr>
-                        <tr>
-                            <td>Strength taste</td><td><span class="badge">Middle</span></td>
-                        </tr>
-                        <tr>
-                            <td>Events</td><td><span class="badge">At the beach</span></td>
+                            <td>Events</td><td>
+                            <?php 
+                                foreach ($cocktail->events as $event) {    
+                                    if((double)$event->value > 0.3) { 
+                                        print '<span class="badge">' . $event -> tag . "</span> "; 
+                                    }
+                                }
+                            ?>
+                            </span>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -170,19 +216,12 @@
                     <div class="panel-heading">
                         <h2 class="panel-title"><strong>Ingredients</strong></h2>
                     </div>
-                    <table class="table table-striped"">
-                        <tr>
-                            <td>Gin</td><td><span class="badge">4cl</span></td>
-                        </tr>
-                        <tr>
-                            <td>Lemon juice</td><td><span class="badge">2cl</span></td>
-                        </tr>
-                        <tr>
-                            <td>Powdered sugar</td><td><span class="badge">2cl</span></td>
-                        </tr>
-                        <tr>
-                            <td>Carbonated water</td><td><span class="badge">2</span></td>
-                        </tr>
+                    <table class="table table-striped">
+                        <?php 
+                            foreach ($cocktail->recipe as $ingredient) {    
+                                print '<tr><td>' . $ingredient->name . '</td><td><span class="badge">' . ($ingredient->amount * 100) . 'cl</span></td></tr>';
+                            }
+                        ?>
                     </table>
                 </div>
             </div>
@@ -215,12 +254,20 @@
                     <div class="panel-heading">
                         <h2 class="panel-title"><strong>Further infos</strong></h2>
                     </div>
-                    <table class="table table-striped"">
-                        <tr>
-                        <td>Look</td><td><span class="badge">4/5</span></td>
+                    <table class="table table-striped">
+                    <tr>
+                        <td>Look</td><td><span class="badge">
+                        <?php 
+                            print round($cocktail->rating->look->average, 0, PHP_ROUND_HALF_UP) . ' / 5';
+                        ?></span></td>
                     </tr>
                     <tr>
-                        <td>Number of purchases</td><td><span class="badge">20</span></td>
+                        <td>Number of purchases</td><td><span class="badge">
+                        <?php 
+                            $orders = $cocktail->orders;
+                            if((int) $orders > 0) { print $orders; } 
+                            else { print 0; }
+                        ?></td></span>
                     </tr>
                     </table>
                 </div>                
@@ -258,13 +305,13 @@
     <script src="js/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/Recommender.js" type="text/javascript"></script>
-    <script>
+    <script type="text/javascript">
         // Activates the Carousel
         $('.carousel').carousel({
             interval: 5000
         });
 
-        var similar = recommend(1); // nummer des aktuellen cocktail als parameter --> gibt ein array mit ähnlichen Cocktails in absteigender reihenfolge zurück
+        var similar = recommend("<?php echo $drinkId; ?>"); // nummer des aktuellen cocktail als parameter --> gibt ein array mit ähnlichen Cocktails in absteigender reihenfolge zurück
         console.log($(similar));
 
         var count = similar.length;
@@ -277,7 +324,9 @@
 
         //Loop through similar drinks, max. 3 times and insert them into the belonging template
         for (var i = 0; i < count && i < 3; i++) {
-            var drinkName = "Gin Fizz";
+            console.log(similar[i]);
+
+            var drinkName = "Gin Fiz";
             var drinkImgSrc = "drink_example.jpg";
 
             $("#similar_drinks").append(
@@ -308,6 +357,10 @@
 //            $('#orderDrink').hide();
 //            $('#stopMixing').show();
 //            $('#mixingProgress').show();
+        });
+        
+        $("#rateDrink").click(function(){
+            window.location = 'cocktail_rating.php'
         });
 
 	</script>
