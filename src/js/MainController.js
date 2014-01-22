@@ -15,10 +15,6 @@ Boris.MainController = function() {
         //model initialisieren
         mainModel = Boris.MainModel();
         mainModel.init();
-
-        // view initialisieren
-        listView = Boris.ListView();
-        listView.init();
 		
 		//SearchView initialisieren
 		searchView = Boris.SearchView();
@@ -45,14 +41,18 @@ Boris.MainController = function() {
 
     signIn = function(event) {
         
-        if(mainModel.getCorrectUsername() == signView.getInputValueUsername()
-            && mainModel.getCorrectPassword() == signView.getInputValuePassword()) {
-            var myWindow = window.open("drink_list.html","_self");
-            
-        } else {
-            console.log("wrong pw");
-        }
-        
+        if(mainModel.getCorrectPassword() == signView.getInputValuePassword()) {
+            if(mainModel.getUsernameForDrinkList() == signView.getInputValueUsername()) {
+                var myWindow = window.open("drink_list_01.php","_self"); 
+            } 
+            else if(mainModel.getUsernameForSettings() == signView.getInputValueUsername()) {
+                //var myWindow = window.open("drink_list.html","_self"); 
+                console.log("susis settings");
+            }
+            else {
+                console.log("wrong username");
+            }    
+        }     
     },
 
     setRadioListenerTaste = function() {

@@ -1,6 +1,7 @@
 Boris.MainModel = function() {
     var that = {},
-    correctUsername = "testuser",
+    normalUsername = "normaluser",
+    settingsUsername = "settingsuser",
     correctPW = "0000",
     taste = null,
     alcStrength = null,
@@ -19,8 +20,11 @@ Boris.MainModel = function() {
 	},
 
     //sign in stuff
-    getCorrectUsername = function() {
-        return correctUsername;
+    getUsernameForDrinkList = function() {
+        return normalUsername;
+    },
+    getUsernameForSettings = function() {
+        return settingsUsername;
     },
     getCorrectPassword = function() {
         return correctPW;
@@ -43,7 +47,8 @@ Boris.MainModel = function() {
     };
 
     that.init = init;
-    that.getCorrectUsername = getCorrectUsername;
+    that.getUsernameForDrinkList = getUsernameForDrinkList;
+    that.getUsernameForSettings = getUsernameForSettings;
     that.getCorrectPassword = getCorrectPassword;
     that.getSelectedTaste = getSelectedTaste;
     that.getSelectedAlcStrength = getSelectedAlcStrength;
