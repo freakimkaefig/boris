@@ -31,9 +31,12 @@
  
             <fieldset>
                 <p></p>
-
                 <div class="form-group">
-                    <input id = "username" type="text" class="form-control" placeholder="username" required autofocus>
+                    <!--<input id = "username" type="text" class="form-control" placeholder="username" required autofocus> -->
+                    <select id = "username" class="form-control">
+                      <option>normaluser</option>
+                      <option>settingsuser</option>                   
+                    </select>
                     <input id = "password" type="password" class="form-control" placeholder="Password" required>
                 </div>
                 <button id="sign-in-button" class="btn btn-lg btn-primary btn-block" 
@@ -55,10 +58,11 @@
         <script src="js/App.js"></script>
         <script src="js/FilterView.js"></script>
         <script src="js/SearchView.js"></script>
-        <script src="js/ListView.js"></script>
         <script src="js/MainController.js"></script>
         <script src="js/MainModel.js"></script>
         <script src="js/SignView.js"></script>
+        <script src="js/QuestionnairView.js"></script>
+    
 
         <script>
             $(function() {

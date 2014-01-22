@@ -1,14 +1,13 @@
-Boris.ListView = function() {
+Boris.FilterView = function() {
     var that = {},
     
 
     init = function() {
-        console.log("list view init");
+        console.log("filter view init");
 
     };
 
     that.init = init;
-
 
     return that;
 };

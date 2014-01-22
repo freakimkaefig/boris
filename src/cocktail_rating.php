@@ -116,15 +116,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Herb -->
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb1" value="1" type="radio"></label>
+                                <input name="radioGroup1" id="Herb1" value="1" type="radio" class="likertHerb"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb2" value="2" type="radio"></label>
+                                <input name="radioGroup1" id="Herb2" value="2" type="radio" class="likertHerb"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb3" value="3" type="radio"></label>
+                                <input name="radioGroup1" id="Herb3" value="3" type="radio" class="likertHerb"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb4" value="4" type="radio"></label>
+                                <input name="radioGroup1" id="Herb4" value="4" type="radio" class="likertHerb"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb5" value="5" type="radio"></label>
+                                <input name="radioGroup1" id="Herb5" value="5" type="radio" class="likertHerb"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -135,15 +135,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Süß -->
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß1" value="1" type="radio"></label>
+                            <input name="radioGroup2" id="Süß1" value="1" type="radio" class="likertSüß"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß2" value="2" type="radio"></label>
+                            <input name="radioGroup2" id="Süß2" value="2" type="radio" class="likertSüß"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß3" value="3" type="radio"></label>
+                            <input name="radioGroup2" id="Süß3" value="3" type="radio" class="likertSüß"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß4" value="4" type="radio"></label>
+                            <input name="radioGroup2" id="Süß4" value="4" type="radio" class="likertSüß"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß5" value="5" type="radio"></label>
+                            <input name="radioGroup2" id="Süß5" value="5" type="radio" class="likertSüß"></label>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8">
                     </div>
@@ -154,15 +154,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Sauer -->
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer1" value="1" type="radio"></label>
+                            <input name="radioGroup3" id="Sauer1" value="1" type="radio" class="likertSauer"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer2" value="2" type="radio"></label>
+                            <input name="radioGroup3" id="Sauer2" value="2" type="radio" class="likertSauer"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer3" value="3" type="radio"></label>
+                            <input name="radioGroup3" id="Sauer3" value="3" type="radio" class="likertSauer"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer4" value="4" type="radio"></label>
+                            <input name="radioGroup3" id="Sauer4" value="4" type="radio" class="likertSauer"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer5" value="5" type="radio"></label>
+                            <input name="radioGroup3" id="Sauer5" value="5" type="radio" class="likertSauer"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -173,15 +173,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Fruchtig -->
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig1" value="1" type="radio"></label>
+                            <input name="radioGroup4" id="Fruchtig1" value="1" type="radio" class="likertFruchtig"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig2" value="2" type="radio"></label>
+                            <input name="radioGroup4" id="Fruchtig2" value="2" type="radio" class="likertFruchtig"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig3" value="3" type="radio"></label>
+                            <input name="radioGroup4" id="Fruchtig3" value="3" type="radio" class="likertFruchtig"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig4" value="4" type="radio"></label>
+                            <input name="radioGroup4" id="Fruchtig4" value="4" type="radio" class="likertFruchtig"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig5" value="5" type="radio"></label>
+                            <input name="radioGroup4" id="Fruchtig5" value="5" type="radio" class="likertFruchtig"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -192,15 +192,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Stark -->
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark1" value="1" type="radio"></label>
+                            <input name="radioGroup5" id="Stark1" value="1" type="radio" class="likertStark"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark2" value="2" type="radio"></label>
+                            <input name="radioGroup5" id="Stark2" value="2" type="radio" class="likertStark"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark3" value="3" type="radio"></label>
+                            <input name="radioGroup5" id="Stark3" value="3" type="radio" class="likertStark"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark4" value="4" type="radio"></label>
+                            <input name="radioGroup5" id="Stark4" value="4" type="radio" class="likertStark"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark5" value="5" type="radio"></label>
+                            <input name="radioGroup5" id="Stark5" value="5" type="radio" class="likertStark"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
