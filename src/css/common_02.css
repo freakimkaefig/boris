@@ -30,13 +30,14 @@ hr { }
 .jumbotron { background-color: rgba(0, 0, 0, 0.3); }
 
 /*-- NAVBAR --*/
-#action-bar { width:100%; height:60px; background:#000; min-width:360px; }
+#action-bar { width:100%; height:60px; background:#000; min-width:340px; position:fixed; top:0; z-index:99999; }
 #action-bar #logo { float:left; margin-left:15px; margin-top:15px; }
 #action-bar #search, #action-bar #filter { float:right; margin-right:15px; margin-top:15px; }
 #action-bar #search #search-input { float:left; width:100px; margin-right:15px; margin-top:-3px; }
 #action-bar #search #search-submit { float:left; }
 body { padding-top:0px; }
 .dropdown-menu { top:60px; right:0; left:auto; }
+.drink-list-container { margin-top: 90px; }
 
 /*-- DRINK LIST --*/
 a.no-btn { color: #333; }
