@@ -1,6 +1,9 @@
 html {}
 body { padding-top: 70px; /* Whatever the height of your navbar is; the default is 50px */}
-body.backgr-img { padding-top: 80px; background-image: url(../img/bg_sign_in.jpg); }
+body.backgr-img { 
+  padding-top: 80px; 
+  background-image: url(../img/bg_sign_in.jpg);
+  background-size:100% auto; }
 
 
 /* TEXT */
@@ -22,7 +25,7 @@ hr { }
 
 #logo-sign-in { margin-top: 20px; }
 
-.jumbotron { background-color: rgba(0, 0, 0, 0.7); }
+.jumbotron { background-color: rgba(0, 0, 0, 0.3); }
 
 
 /*-- DRINK LIST --*/
