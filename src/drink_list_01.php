@@ -44,7 +44,7 @@
                   <li><input id="radio-taste-4" type="radio" name="groupTaste" value="Bitter" class="taste"/>Bitter</li>
               </ul>
 
-            <li class="input-group dropdown-header">Alcohol Strength</li>
+            <li class="dropdown-header">Alcohol Strength</li>
               <ul class="input-group" style="list-style-type:none">
                   <li><input id="radio-alc-1" type="radio" name="groupAlc" value="Alc-Free" class="alc"/>Alc-Free</li>
                   <li><input id="radio-alc-2" type="radio" name="groupAlc" value="Weak" class="alc"/>Weak</li>
