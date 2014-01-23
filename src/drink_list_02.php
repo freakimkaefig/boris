@@ -87,12 +87,12 @@
 ?>
 
   <?php foreach ($cocktails as $cocktail_id  => $cocktail): ?>
-  <a href="#" class="no-btn" role="button">
+  <a href="drink_detail.php?id=<?php print $cocktail_id; ?>" class="no-btn" role="button">
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 inline-block row row-<?php print $cocktail_id; ?><?php if($cocktail_id==1) print " first"?><?php if($cocktail==end($cocktails)) print " last" ?>">
       <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="cocktail-title"><h2><?php print $cocktail->name; ?></h2></div>
-            <div class="cocktail-rating">
+            <div class="cocktail-title col-xs-6"><h3><?php print $cocktail->name; ?></h3></div>
+            <div class="cocktail-rating col-xs-6">
                 <div class="stars-line">
                 <?php 
                     $rating = round($cocktail->rating->taste->average, 0, PHP_ROUND_HALF_UP);
