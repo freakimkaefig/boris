@@ -17,9 +17,12 @@ hr { }
 #action-bar #search, #action-bar #filter { float:right; margin-right:15px; margin-top:15px; }
 #action-bar #search #search-input { float:left; width:150px; margin-right:15px; margin-top:-3px; }
 #action-bar #search #search-submit { float:left; }
-body { padding-top:0px; }
+body.drink-list { padding-top:0px; }
 #filter .dropdown-menu { top:58px; right:0; left:auto; }
 #search .dropdown-menu { top:58px; right:68px; left:auto; }
+
+#rateDrink {margin-right: 15px;}
+#orderDrink {margin-right: 25px;}
 
 .drink-list-container { margin-top: 90px; }
 
@@ -50,6 +53,10 @@ a.no-btn:hover, a.no-btn:active { color: black; }
 .drink-list-container .row { margin:0; opacity:0.8; padding-top:15px; padding-bottom:15px; }
 .drink-list-container .row:hover { opacity: 1.0; }
 /*.drink-list-container a:nth-child(even) .row { background:#999; }*/ /* Stripping for .row even */
+.drink-list-container .panel-heading { height:67px; }
+.drink-list-container .cocktail-title { float:left; padding:0; }
+.drink-list-container .cocktail-title h3 { margin:0; }
+.drink-list-container .cocktail-rating .stars-line { margin-top:8px; text-align:right; padding:0; }
 
 
 /*-- DRINK DETAILS --*/

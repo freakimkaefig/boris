@@ -5,18 +5,26 @@ Boris.MainController = function() {
     searchView = null,
 	filterView = null,
     signView = null,
+    signView = null,
     $signInButton = null,
 	$searchButton = null,
 
     $radioTasteGroup = null,
     $radioAlcGroup = null,
 
+    //-----------Questionnaire--------------
     //Likert Scales
     $radioBitterLikert = null,
     $radioSweetLikert = null,
     $radioSourLikert = null,
     $radioFruityLikert = null,
     $radioStrongLikert = null,
+    //age field
+    $ageInput = null,
+    //gender radios group
+    $radioGenderGroup = null,
+    //-----------Questionnaire_end--------------
+
 
     init = function() {
         console.log("controller init");
@@ -52,11 +60,19 @@ Boris.MainController = function() {
         $radioFruityLikert = $(".likertFruchtig");
         $radioStrongLikert = $(".likertStark");
 
+        //!!!age input methoden fehlen noch
+        $ageInput = $("#age-questionnaire");
+        $radioGenderGroup = $(".genderRadios");
+
         setRadioListenerBitterLikert();
         setRadioListenerSweetLikert();
         setRadioListenerSourLikert();
         setRadioListenerFruityLikert();
         setRadioListenerStrongLikert();
+
+        setRadioGender();
+
+
     },
 
     signIn = function(event) {
@@ -126,6 +142,12 @@ Boris.MainController = function() {
         $radioStrongLikert.change(function() {    
             
             mainModel.setLikertStrongVal(event.target.value);
+        });
+    },
+
+    setRadioGender = function() {
+        $radioGenderGroup.change(function() {    
+            mainModel.setGenderVal(event.target.value);
         });
     },
 	
