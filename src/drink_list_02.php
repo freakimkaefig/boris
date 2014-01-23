@@ -138,6 +138,9 @@
 	$(function() {
     	Boris.init();
 	});
+	$('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e) {
+        e.stopPropagation();
+    });
 </script>
 </body>
 </html>

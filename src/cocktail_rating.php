@@ -263,7 +263,7 @@
     $(function() {
         Boris.init();
     });
-    $('#search-input').click(function (e) {
+    $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e) {
         e.stopPropagation();
     });
     </script>
