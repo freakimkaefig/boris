@@ -43,6 +43,9 @@ Boris.MainController = function() {
         signView = Boris.SignView();
         signView.init();
 
+        detailView = Boris.DetailView();
+        detailView.init();
+
         $signInButton = $("#sign-in-button");
         $signInButton.on("click", signIn);   
 
