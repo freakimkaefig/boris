@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 19. Jan 2014 um 14:01
+-- Erstellungszeit: 23. Jan 2014 um 17:01
 -- Server Version: 5.5.27
 -- PHP-Version: 5.4.7
 
@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `cocktail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` varchar(1000) DEFAULT NULL,
+  `recipedescription` varchar(500) NOT NULL,
   `image` varchar(100) DEFAULT NULL,
   `orders` int(11) DEFAULT NULL,
   `offers` int(11) DEFAULT NULL,
@@ -40,26 +41,26 @@ CREATE TABLE IF NOT EXISTS `cocktail` (
 -- Daten für Tabelle `cocktail`
 --
 
-INSERT INTO `cocktail` (`id`, `name`, `description`, `image`, `orders`, `offers`) VALUES
-(1, 'Barbados', '', '', 0, 0),
-(2, 'Emerald Dreams', NULL, NULL, NULL, NULL),
-(3, 'Green Devil', NULL, NULL, NULL, NULL),
-(4, 'Captain Chaos', NULL, NULL, NULL, NULL),
-(5, 'Men in blue', NULL, NULL, NULL, NULL),
-(6, 'Santo Domingo', NULL, NULL, NULL, NULL),
-(7, 'Swamp Water', NULL, NULL, NULL, NULL),
-(8, 'The Waikiki', NULL, NULL, NULL, NULL),
-(9, 'Yellow G-Point', NULL, NULL, NULL, NULL),
-(10, 'Soft Poison', NULL, NULL, NULL, NULL),
-(11, 'Baltic', NULL, NULL, NULL, NULL),
-(12, 'Gin and Juice', NULL, NULL, NULL, NULL),
-(13, 'Green Eyes', NULL, NULL, NULL, NULL),
-(14, 'The Dodo', NULL, NULL, NULL, NULL),
-(15, 'Hurricane', NULL, NULL, NULL, NULL),
-(16, 'Monkey Wrench', NULL, NULL, NULL, NULL),
-(17, 'Rum Orange', NULL, NULL, NULL, NULL),
-(18, 'Safari', NULL, NULL, NULL, NULL),
-(19, 'Screwdriver', 'Wodka-O', NULL, NULL, NULL);
+INSERT INTO `cocktail` (`id`, `name`, `description`, `recipedescription`, `image`, `orders`, `offers`) VALUES
+(1, 'Barbados', '', 'Stir ingredients in a cocktail shaker with ice. Strain into a cocktail glass.', '', 0, 0),
+(2, 'Emerald Dreams', NULL, 'Mix and shake the ingredients.', NULL, NULL, NULL),
+(3, 'Green Devil', NULL, 'Shake all ingredients with ice and strain into an old-fashioned glass over a few ice cubes.', NULL, NULL, NULL),
+(4, 'Captain Chaos', '', 'Shake all ingredients with ice and strain into a long drink glass over a few ice cubes.', NULL, NULL, NULL),
+(5, 'Men in blue', NULL, '', NULL, NULL, NULL),
+(6, 'Santo Domingo', NULL, '', NULL, NULL, NULL),
+(7, 'Swamp Water', NULL, 'Add ice to a 12oz cup, add vodka and brandy. Add equal parts of sweet & sour and 7-UP.', NULL, NULL, NULL),
+(8, 'The Waikiki', NULL, '', NULL, NULL, NULL),
+(9, 'Yellow G-Point', NULL, '', NULL, NULL, NULL),
+(10, 'Soft Poison', NULL, '', NULL, NULL, NULL),
+(11, 'Baltic', NULL, '', NULL, NULL, NULL),
+(12, 'Gin and Juice', NULL, '', NULL, NULL, NULL),
+(13, 'Green Eyes', NULL, '1. Place ice cubes in a highball glass<br/>\n2. Combine ingredients directly On the rocks', NULL, NULL, NULL),
+(14, 'The Dodo', NULL, '', NULL, NULL, NULL),
+(15, 'Hurricane', 'A rum drink.', 'Shake well with ice and strain into a hurricane glass filled with crushed ice.', NULL, NULL, NULL),
+(16, 'Monkey Wrench', NULL, '', NULL, NULL, NULL),
+(17, 'Rum Orange', NULL, 'Shake the ingredients.', NULL, NULL, NULL),
+(18, 'Safari', NULL, '', NULL, NULL, NULL),
+(19, 'Screwdriver', 'One of the most basic mixed alcoholic drinks, varieties exist changing the type of juice used, with grapefruit being a popular choice. Mixing vodka (or gin) with powdered juice (such as Tang) without the intermediary step of reconstituting the juice with water is an occasional fad in "coed gatherings" and not recommended.<br/><br/>\nSome bars use an actual screwdriver (the tool) as a stirrer/garnish.<br/><br/>\nOne variation adds a shot of Red Bull to make a "sonic screwdriver".', '1. Half fill the glass with ice and add the vodka.<br/>\n2. Top off with the orange juice.<br/>\n3. Garnish with slice of orange.', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -82,13 +83,13 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
 --
 
 INSERT INTO `ingredient` (`id`, `name`, `description`, `image`, `unit`, `alcohol`) VALUES
-(1, 'Ananassaft', '', 'none.png', 'cl', 0),
-(2, 'Maracujasaft', '', 'none.png', 'cl', 0),
-(3, 'Orangensaft', '', '', 'cl', 0),
-(4, 'Zitronensaft', '', '', 'cl', 0),
+(1, 'Pineapple Juice', '', 'none.png', 'cl', 0),
+(2, 'Maracuja Juice', '', 'none.png', 'cl', 0),
+(3, 'Orange Juice', '', '', 'cl', 0),
+(4, 'Lemon Juice', '', '', 'cl', 0),
 (5, 'Blue Curacao', '', '', 'cl', 25),
 (6, 'Gin', '', '', 'cl', 40),
-(7, 'Weißer Rum', '', '', 'cl', 40),
+(7, 'White Rum', '', '', 'cl', 40),
 (8, 'Wodka', '', '', 'cl', 40);
 
 -- --------------------------------------------------------

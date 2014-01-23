@@ -30,7 +30,7 @@
 <div id="action-bar"><!-- Navigation -->
 	<div id="logo"><a href="drink_list_02.php"><img src="img/logo_boris.png"></a></div>
     <div id="filter">
-    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button></a>
+    	<a href="#" class="dropdown-toggle" id="filter-dropdown" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button></a>
         <ul class="dropdown-menu">
 
             <li class="dropdown-header">Taste</li>
@@ -53,7 +53,7 @@
     </div>
     <div id="search">
     	
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></a>
+        <a href="#" class="dropdown-toggle" id="search-dropdown" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></a>
         <ul class="dropdown-menu">
 
             <li class="dropdown-header"></li>
@@ -71,7 +71,10 @@
 </div> <!-- Ende Navigation -->
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="container drink-list-container"> 
+<div class="container drink-list-container">
+    <div id="search-output"class="well">
+        <div class="output-line"><span>Results for: </span><span id="output"></span><span id="close" class="glyphicon glyphicon-remove-circle"></span></div>
+    </div>
   <!-- Example row of columns -->
   <?php
     include('php/helper.php');
@@ -136,8 +139,25 @@
 
 <script>
 	$(function() {
-    	Boris.init();
-	});
+        Boris.init();
+
+        $('#search-button').click(function () {
+            setTimeout(function () { $('#search-input').focus(); }, 0);
+        });
+
+        $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e)            { e.stopPropagation(); });
+
+        $('#search-submit').click(function (e) {
+            $('#search-dropdown').dropdown("toggle");
+        });
+        
+        $('#search-input').keypress(function (e) {
+            if (e.which == 13) {
+                $('#search-dropdown').dropdown("toggle");
+            }
+        });
+    });
 </script>
 </body>
 </html>
+

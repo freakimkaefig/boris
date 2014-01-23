@@ -19,6 +19,7 @@
 		"1" : {
 			"name" : "Testcocktail",
 			"description" : "This is a delicious test-cocktail",
+			"recipedescription" : "First do X then do Y",
 			"image" : "none.png",
 			"orders" : "0",
 			"offers" : "0"
@@ -62,6 +63,7 @@ while ($row = mysql_fetch_array($result)){
 	$cocktail = array();
 	$cocktail["name"] = $row["name"];
 	$cocktail["description"] = $row["description"];
+	$cocktail["recipedescription"] = $row["recipedescription"];
 	$cocktail["image"] = $row["image"];
 	$cocktail["orders"] = $row["orders"];
 	$cocktail["offers"] = $row["offers"];
