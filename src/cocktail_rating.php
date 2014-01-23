@@ -46,8 +46,21 @@
         </ul>
     </div>
     <div id="search">
-    	<input id="search-input" type="text" class="form-control" placeholder="Search" />
-        <button id="search-submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+    	
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></a>
+        <ul class="dropdown-menu">
+
+            <li class="dropdown-header"></li>
+              <ul class="input-group searchbarleft" style="list-style-type:none">
+                  <li><input id="search-input" type="text" class="form-control" placeholder="Search" /></li>
+              </ul>
+              <ul class="input-group searchbuttonright" style="list-style-type:none">
+                  <li><button id="search-submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></li>
+              </ul>
+                  
+
+        </ul>
+        
     </div>
 </div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -249,6 +262,9 @@
     <script>
     $(function() {
         Boris.init();
+    });
+    $('#search-input').click(function (e) {
+        e.stopPropagation();
     });
     </script>
     
