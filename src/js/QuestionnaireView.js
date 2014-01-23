@@ -1,9 +1,9 @@
-Boris.FilterView = function() {
+Boris.QuestionnaireView = function() {
     var that = {},
     
 
     init = function() {
-        console.log("filter view init");
+        console.log("QuestionnaireView view init");
 
     };
 
