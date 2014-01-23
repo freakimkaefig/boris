@@ -103,16 +103,16 @@
                 <div class="input-group">
                     <h4>
                         Alter</h4>
-                    <input type="text" class="form-control">
+                    <input id="age-questionnaire" type="text" class="form-control">
                 </div>
             </div>
             <div class="col-xs-6 col-md-3">
                 <h4>
                     Geschlecht</h4>
                 <label class="radio-inline">
-                    <input name="radioGroup" id="männlich" value="m" type="radio">m</label>
+                    <input name="radioGroup" id="männlich" value="m" type="radio" class="genderRadios">m</label>
                 <label class="radio-inline">
-                    <input name="radioGroup" id="weiblich" value="w" type="radio">w</label>
+                    <input name="radioGroup" id="weiblich" value="w" type="radio" class="genderRadios">w</label>
             </div>
         </div><!-- end first row -->
         <hr />

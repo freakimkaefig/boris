@@ -13,7 +13,9 @@ Boris.MainModel = function() {
     likertSweetVal = null,
     likertSourVal = null,
     likertFruityVal = null,
-	likertStrongVal = null,
+    likertStrongVal = null,
+
+	gender = null,
 
     //PHP data is rate.php
 
@@ -142,12 +144,22 @@ Boris.MainModel = function() {
     setLikertSourVal = function(likertSourVal) {
         this.likertSourVal = likertSourVal;
         console.log("likert Sour " + likertSourVal);
-    },setLikertFruityVal = function(likertFruityVal) {
+    },
+    setLikertFruityVal = function(likertFruityVal) {
         this.likertFruityVal = likertFruityVal;
         console.log("likert Fruity " + likertFruityVal);
-    },setLikertStrongVal = function(likertStrongVal) {
+    },
+    setLikertStrongVal = function(likertStrongVal) {
         this.likertStrongVal = likertStrongVal;
         console.log("likert Strong " + likertStrongVal);
+    },
+    //getter and setter for rest of questionnaire
+    getGenderVal = function() {
+        return gender;
+    };
+    setGenderVal = function(gender) {
+        this.gender = gender;
+        console.log("gender " + gender);
     };
 
     that.init = init;
@@ -171,6 +183,8 @@ Boris.MainModel = function() {
     that.setLikertSourVal = setLikertSourVal;
     that.setLikertFruityVal = setLikertFruityVal;
     that.setLikertStrongVal = setLikertStrongVal;
+    that.getGenderVal = getGenderVal;
+    that.setGenderVal = setGenderVal;
 
     return that;
 };
