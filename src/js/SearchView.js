@@ -40,17 +40,37 @@ Boris.SearchView = function() {
 				//console.log("map", value, index);
 				return [parseInt(index)];
 			});
-			console.log("tempArr", tempArr)
+			console.log("cocktailIds", result.numCocktails);
+			console.log("tempArr", tempArr);
 			
 			//Prüfen, welche ID nicht in tempArr enthalten!!!
-			
 			/*
 			for (var i=1; i<=result.numCocktails; i++) {
-				if(i != tempArr[i]) {
-					//console.log("hide", i);
+				for (var j=0; j<tempArr.length; j++) {
+					if(i != tempArr[j]) {
+						console.log("hide", i);
+					}
 				}
 			}
 			*/
+			thirdArray = new Array();
+			
+			for(var i = 0; i<result.numCocktails.length; i++) {
+				for (var j = 0; i<tempArr.length; j++) {
+					if(result.numCocktails[i] != tempArr[j]) {
+						if(thirdArray == null) {
+							thirdArray.push(result.numCocktails[i])
+						} else {
+							for(var x= 0; x<thirdArray.length; x++) {
+								if(result.numCocktails[i] != thirdArray[x])
+									thirdArray.push(result.numCocktails[i])
+								}
+							}
+						}
+					}
+				}
+			console.log(thirdArray);
+			
 			//console.log("hide", cocktailIdsToHide);
 			//hideCocktailsById();
 			

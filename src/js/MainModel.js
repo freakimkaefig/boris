@@ -74,7 +74,14 @@ Boris.MainModel = function() {
 			var tempArr = $.map(data.data, function(value, index) {
 				return [value];
 			});
-			numCocktailsTotal = tempArr.length;
+			
+			//numCocktailsTotal = tempArr.length;
+			
+			numCocktailsTotal = new Array();
+			for (var i=1; i<=tempArr.length; i++) {
+				numCocktailsTotal.push(i);	
+			}
+			
 		});
 	},
 	
