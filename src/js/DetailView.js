@@ -5,11 +5,20 @@ Boris.DetailView = function () {
 		searchSubmit,
         $allDrinks,
         similarDrinkIds,
+        is_tablet = false,
 
     init = function () {
         console.log("detail view init");
 
         mainController = Boris.MainController();
+
+        //Check if tablet
+        if ($.cookie('the_cookie') == "true") {
+            is_tablet = true;
+        }
+
+        console.log("Tablet?", is_tablet);
+
         /*
         $(mainController).on('searchresult', onSearchResult);
         */

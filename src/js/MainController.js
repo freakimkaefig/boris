@@ -83,7 +83,7 @@ Boris.MainController = function() {
         if(mainModel.getCorrectPassword() == signView.getInputValuePassword()) {
             if (mainModel.getUsernameForDrinkList() == signView.getInputValueUsername()) {
                 $.cookie('tablet', 'true', { expires: 2, path: '/' });
-                var myWindow = window.open("drink_list_02.php","_self"); 
+                var myWindow = window.open("drink_list.php","_self"); 
             } 
             else if(mainModel.getUsernameForSettings() == signView.getInputValueUsername()) {
                 //var myWindow = window.open("drink_list.html","_self"); 
