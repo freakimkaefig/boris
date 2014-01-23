@@ -25,7 +25,7 @@
 <style type="text/css"></style>
 </head>
 
-<body style="">
+<body class="drink-list">
 
 <div id="action-bar"><!-- Navigation -->
 	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>

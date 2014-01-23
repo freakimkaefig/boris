@@ -30,44 +30,51 @@ Boris.SearchView = function () {
 	    if (result.name && !result.ingredient) {
 	        //	Name & !Zutat
 	        console.log("Name & !Zutat");
-
 	    } else if (!result.name && result.ingredient) {
 	        //	!Name & Zutat
 	        console.log("!Name & Zutat");
-	        //console.log(result.ingredient);
-	        var cocktailIdsToHide = new Array();
-	        var tempArr = $.map(result.ingredient.data, function (value, index) {
-	            //console.log("map", value, index);
-	            return [parseInt(index)];
-	        });
-	        console.log("cocktailIds", result.numCocktails);
-	        console.log("tempArr", tempArr);
-
-	        //Prüfen, welche ID nicht in tempArr enthalten!!!
-
-	        for (var i = 1; i <= result.numCocktails.length; i++) {
-	            if (tempArr.indexOf(i) == -1) {
-	                console.log("hide", i);
-	            }
-	        }
-
-	        //console.log("hide", cocktailIdsToHide);
-	        //hideCocktailsById();
-
+	        hideCocktailsById(getCocktailsWithoutSearchedIngredient(result.numCocktails, result.ingredient.data));
 	    } else if (!result.name && !result.ingredient) {
 	        //	!Name & !Zutat
 	        console.log("!Name & !Zutat");
-
 	    } else if (result.name && result.ingredient) {
 	        //	Name & Zutat
 	        console.log("Name & Zutat");
-
+	        hideCocktailsById(getCocktailsWithoutSearchedIngredient(result.numCocktails, result.ingredient.data));
 	    }
 	},
 
-	hideCocktailsById = function (arrayIds) {
+    getCocktailsWithoutSearchedName = function () {
+        
+    },
 
-	};
+    getCocktailsWithoutSearchedIngredient = function (allIds, resultObject) {
+        var cocktailIdsToHide = new Array();
+        var tempArr = $.map(resultObject, function (value, index) {
+            //console.log("map", value, index);
+            return [parseInt(index)];
+        });
+        //Prüfen, welche ID nicht in tempArr enthalten!!!
+        for (var i = 1; i <= allIds.length; i++) {
+            if (tempArr.indexOf(i) == -1) {
+                //console.log("hide", i);
+                cocktailIdsToHide.push(i);
+            }
+        }
+        return cocktailIdsToHide;
+    },
+
+	hideCocktailsById = function (arrayIds) {
+	    console.log("hide", arrayIds);
+
+	    for (var i = 0; i < arrayIds.length; i++) {
+	        $('.drink-list-container .row.row-' + i).parent().hide();
+	    }
+	},
+
+    reshowAllCocktails = function () {
+        $('.drink-list-container .row').parent().show();
+    };
 
 
     that.init = init;
