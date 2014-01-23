@@ -28,7 +28,7 @@
 <body class="drink-list">
 
 <div id="action-bar"><!-- Navigation -->
-	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
+	<div id="logo"><a href="drink_list_02.php"><img src="img/logo_boris.png"></a></div>
     <div id="filter">
     	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button></a>
         <ul class="dropdown-menu">

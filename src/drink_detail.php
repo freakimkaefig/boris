@@ -48,7 +48,7 @@
 
   <body style="">
   <div id="action-bar"><!-- Navigation -->
-	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
+	<div id="logo"><a href="drink_list_02.php"><img src="img/logo_boris.png"></a></div>
     <ul class="nav navbar-nav navbar-right">
             <li>
                 <!--<div id="mixingProgress" class="nav navbar-text progress" style="min-width: 150px;">
@@ -62,7 +62,7 @@
                     Order
                     <span class="glyphicon glyphicon-glass"></span>
                 </button>
-                <button id="cocktail_rating" type="button" class="btn btn-default navbar-btn navbar-right">
+                <button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
                     Rate
                     <span class="glyphicon glyphicon-star-empty"></span>
                 </button>
