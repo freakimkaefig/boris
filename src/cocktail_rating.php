@@ -22,47 +22,17 @@
 </head>
 <body style="">
 <div id="action-bar"><!-- Navigation -->
-	<div id="logo"><a href="drink_list_02.php"><img src="img/logo_boris.png"></a></div>
-    <div id="filter">
-    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button></a>
-        <ul class="dropdown-menu">
-
-            <li class="dropdown-header">Taste</li>
-              <ul class="input-group" style="list-style-type:none">
-                  <li><input id="radio-taste-1" type="radio" name="groupTaste" value="Sweet" class="taste"/>Sweet</li>
-                  <li><input id="radio-taste-2" type="radio" name="groupTaste" value="Fruity" class="taste"/>Fruity</li>
-                  <li><input id="radio-taste-3" type="radio" name="groupTaste" value="Sour" class="taste"/>Sour</li>
-                  <li><input id="radio-taste-4" type="radio" name="groupTaste" value="Bitter" class="taste"/>Bitter</li>
-              </ul>
-
-            <li class="dropdown-header">Alcohol Strength</li>
-              <ul class="input-group" style="list-style-type:none">
-                  <li><input id="radio-alc-1" type="radio" name="groupAlc" value="Alc-Free" class="alc"/>Alc-Free</li>
-                  <li><input id="radio-alc-2" type="radio" name="groupAlc" value="Weak" class="alc"/>Weak</li>
-                  <li><input id="radio-alc-3" type="radio" name="groupAlc" value="Middle" class="alc"/>Middle</li>
-                  <li><input id="radio-alc-4" type="radio" name="groupAlc" value="Strong" class="alc"/>Strong</li>
-              </ul>
-
-        </ul>
-    </div>
-    <div id="search">
-    	
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></a>
-        <ul class="dropdown-menu">
-
-            <li class="dropdown-header"></li>
-              <ul class="input-group searchbarleft" style="list-style-type:none">
-                  <li><input id="search-input" type="text" class="form-control" placeholder="Search" /></li>
-              </ul>
-              <ul class="input-group searchbuttonright" style="list-style-type:none">
-                  <li><button id="search-submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></li>
-              </ul>
-                  
-
-        </ul>
+	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
+    <div id="logout">
+    	<a href="drink_list_02.php"><button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
+                    <span class="glyphicon glyphicon-off"></span>
+                </button></a>
         
     </div>
+    
 </div> <!-- Ende Navigation -->
+
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="container">
         <!-- Example row of columns -->
@@ -235,7 +205,22 @@
                
             </div> <!-- end Assoziation -->
             </div>
-        </div>
+            <hr /> <!-- liitle spacing-->
+
+            <div class="row"> <!-- Send Questionnaire -->
+                <div class="col-xs-12 col-md-12">
+
+                    <a href="#">
+                    <button id="Button1" type="button" class="btn btn-default pull-left" >
+                    <label style="font-size:20px; margin-top:5px;">Send Rating</label>
+                    <span class="glyphicon glyphicon-chevron-right" style="font-size:20px;" ></span>
+                    </button>
+                    </a>
+
+                </div>
+            </div>
+
+        </div> <!-- Ende Container -->
 
 
         <hr>
@@ -262,10 +247,24 @@
     <script>
     $(function() {
         Boris.init();
+
+        $('#search-button').click(function () {
+            setTimeout(function () { $('#search-input').focus(); }, 0);
+        });
+
+        $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e)            { e.stopPropagation(); });
+
+        $('#search-submit').click(function (e) {
+            $('#search-dropdown').dropdown("toggle");
+        });
+
+        $('#search-input').keypress(function (e) {
+            if (e.which == 13) {
+                $('#search-dropdown').dropdown("toggle");
+            }
+        });
     });
-    $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e) {
-        e.stopPropagation();
-    });
+    
     </script>
     
 </body>
