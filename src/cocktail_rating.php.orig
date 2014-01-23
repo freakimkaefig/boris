@@ -211,7 +211,11 @@
                 <div class="col-xs-12 col-md-12">
 
                     <a href="#">
+<<<<<<< HEAD
+                    <button id="button-send-rating" type="button" class="btn btn-default pull-left" >
+=======
                     <button id="send-rating" type="button" class="btn btn-default pull-left" >
+>>>>>>> 4be10d8d706b1194827dd6fcaffb32bbc2305731
                     <label style="font-size:20px; margin-top:5px;">Send Rating</label>
                     <span class="glyphicon glyphicon-chevron-right" style="font-size:20px;" ></span>
                     </button>
@@ -242,8 +246,6 @@
     <script src="js/MainController.js"></script>
     <script src="js/MainModel.js"></script>
     <script src="js/SignView.js"></script>
-    
-  
     <script src="js/QuestionnaireView.js"></script>
     <script src="js/DetailView.js"></script>
 

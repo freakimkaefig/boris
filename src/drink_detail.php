@@ -32,18 +32,18 @@
         
 	    $base_url = 'http://localhost/boris/src/php/';
         
-	    $getCocktailUrl = $base_url . 'getCocktails.php?id=' . $drinkId . '&rating=1&recipe=1';
-	    $result = json_decode(file_get_contents($getCocktailUrl));   
-        
+        //Get selected cocktail
+	    $getCocktailUrl = $base_url . 'getCocktails.php?id=' . $drinkId . '&rating=0&recipe=1';
+	    $result = json_decode(file_get_contents($getCocktailUrl));           
 	    $cocktailArray = $result->data;
-        $cocktail = reset($cocktailArray);
-        
+        $cocktail = reset($cocktailArray);        
         $recipe = $cocktail -> recipe;
         
+        //Get all cocktails
         $getCocktailsUrl = $base_url . 'getCocktails.php?rating=0';
-	    $result = json_decode(file_get_contents($getCocktailsUrl));    
+	    $allResult = json_decode(file_get_contents($getCocktailsUrl));    
         
-        $allCocktails = $result->data;
+        $allCocktails = $allResult->data;
         
         $ratingFilledRendering = '<div class="glyphicon glyphicon-star"></div>';
         $ratingEmptyRendering = '<div class="glyphicon glyphicon-star-empty"></div>';
@@ -305,116 +305,31 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
+    
+    <!-- Custom Javascript -->        
     <script src="js/Recommender.js" type="text/javascript"></script>
+    <script src="js/App.js"></script>
+    <script src="js/SearchView.js"></script>
+    <script src="js/FilterView.js"></script>
+    <script src="js/MainController.js"></script>
+    <script src="js/MainModel.js"></script>
+    <script src="js/SignView.js"></script>
+    <script src="js/QuestionnaireView.js"></script>
+    <script src="js/DetailView.js"></script>
+    
     <script type="text/javascript">
-        // Activates the Carousel
-        $('.carousel').carousel({
-            interval: 5000
-        });
+        $(function() {
+    	    Boris.init();           
+                   
+            //Read all drinks from db
+            var allCocktails = $(<?php echo json_encode($allCocktails) ?>)[0];       
+            //Set and render the similar drinks
+            detailView.setAllDrinks(allCocktails);     
+            var similars = recommend(1);
+            detailView.setSimilarDrinkIds(recommend(<?php echo $drinkId; ?>));            
+            detailView.renderSimilarDrinks();
 
-        var similar = recommend("<?php echo $drinkId; ?>"); // nummer des aktuellen cocktail als parameter --> gibt ein array mit ähnlichen Cocktails in absteigender reihenfolge zurück
-        console.log($(similar));
-
-        var count = similar.length;
-        var gridRatio = 0;
-
-        //Calculate which ratio for the columns has to be used, dependent from the number of similar cocktails
-        if (count <= 1) {gridRatio = 12; }
-        else if (count == 2) { gridRatio = 6; }
-        else { gridRatio = 4; }
-
-        //Loop through similar drinks, max. 3 times and insert them into the belonging template
-        for (var i = 0; i < count && i < 3; i++) {
-            console.log(similar[i]);
-
-            var drinkName = "";<?php //$allCocktails[similar[i]]->name array_search ?>
-            var drinkImgSrc = "drink_example.jpg";
-
-            $("#similar_drinks").append(
-            '<div class="col-xs-' + gridRatio + ' text-center">' +
-                '<img src="img/' + drinkImgSrc + '" alt="' + drinkName + '" class="img-responsive center-block" />' +
-                '<strong>' + drinkName + '</strong>' +
-            '</div>');
-        }
-        /*
-        $("
-        <div class="col-xs-4 text-center">
-                <img src="img/drink_example.jpg" alt="..." class="img-responsive center-block" />
-                <strong>Gin Fizz</strong>
-            </div>        
-            <div class="col-xs-4 text-center">
-                <img src="img/drink_example2.jpg" alt="..." class="img-responsive center-block" />
-                <strong>Cuba Libre</strong>
-            </div>    
-            <div class="col-xs-4 text-center">
-                <img src="img/drink_example.jpg" alt="..." class="img-responsive center-block" />
-                <strong>Gin Fizz</strong>
-                
-        </div>*/
-
-        $("#confirmOrderDrink").click(function () {
-            console.log("confirmed order");
-            $('#modal_confirmOrder').modal('hide')
-            //$('#orderDrink').hide();
-            //$('#stopMixing').show();
-            //$('#mixingProgress').show();
-            
-            console.log("Cors: ", $.support.cors);
-            
-            $.ajax({
-
-                // The 'type' property sets the HTTP method.
-                // A value of 'PUT' or 'DELETE' will trigger a preflight request.
-                type: 'POST',
-
-                // The URL to make the request to.
-                url: 'localhost:8009/',
-                
-                data: 'ORDER:wodka,80',
-
-                // The 'contentType' property sets the 'Content-Type' header.
-                // The JQuery default for this property is
-                // 'application/x-www-form-urlencoded; charset=UTF-8', which does not trigger
-                // a preflight. If you set this value to anything other than
-                // application/x-www-form-urlencoded, multipart/form-data, or text/plain,
-                // you will trigger a preflight request.
-                contentType: 'text/plain',
-
-                xhrFields: {
-                // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
-                // This can be used to set the 'withCredentials' property.
-                // Set the value to 'true' if you'd like to pass cookies to the server.
-                // If this is enabled, your server must respond with the header
-                // 'Access-Control-Allow-Credentials: true'.
-                    withCredentials: false
-                },
-
-                headers: {
-                // Set any custom headers here.
-                // If you set any non-simple headers, your server must include these
-                // headers in the 'Access-Control-Allow-Headers' response header.
-                },
-
-                success: function(response) {
-                // Here's where you handle a successful response.
-                    console.log("Success!", response);
-                },
-
-                error: function(xhr, ajaxOptions, thrownError) {
-                // Here's where you handle an error response.
-                // Note that if the error was due to a CORS issue,
-                // this function will still fire, but there won't be any additional
-                // information about the error.
-                    console.log("Error :(", xhr);
-                }
-            });
-            
-        });
-        
-        $("#rateDrink").click(function(){
-            window.location = 'cocktail_rating.php'
-        });
-
+	    });
 	</script>
 
 </body></html>
