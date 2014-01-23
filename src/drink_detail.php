@@ -47,15 +47,9 @@
   
 
   <body style="">
-    <!-- Navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-            <img src="img/logo_boris.png" class="img img-responsive" alt="Responsive image">
-          </a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
+  <div id="action-bar"><!-- Navigation -->
+	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
+    <ul class="nav navbar-nav navbar-right">
             <li>
                 <!--<div id="mixingProgress" class="nav navbar-text progress" style="min-width: 150px;">
                     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
@@ -68,7 +62,7 @@
                     Order
                     <span class="glyphicon glyphicon-glass"></span>
                 </button>
-                <button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
+                <button id="cocktail_rating" type="button" class="btn btn-default navbar-btn navbar-right">
                     Rate
                     <span class="glyphicon glyphicon-star-empty"></span>
                 </button>
@@ -90,8 +84,9 @@
                     <span class="glyphicon glyphicon-stop"></span>
                 </button>-->
             </li>
-      </div>
-    </div>
+    	
+</div> <!-- Ende Navigation -->
+
 
     
     <!-- Modal -->

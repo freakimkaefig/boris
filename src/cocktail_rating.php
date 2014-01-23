@@ -21,7 +21,7 @@
     <style type="text/css"></style>
 </head>
 <body style="">
-<div id="action-bar">
+<div id="action-bar"><!-- Navigation -->
 	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
     <div id="filter">
     	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button></a>
@@ -62,7 +62,7 @@
         </ul>
         
     </div>
-</div>
+</div> <!-- Ende Navigation -->
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="container">
         <!-- Example row of columns -->
