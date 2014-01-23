@@ -74,32 +74,42 @@
 <div class="container drink-list-container"> 
   <!-- Example row of columns -->
   <?php
+    include('php/helper.php');
 	$base_url = dirname('http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']) . "/";
-	$url = $base_url . "php/getCocktails.php?recipe=1";
+	$url = $base_url . "php/getCocktails.php?recipe=1&rating=1";
 	$result = json_decode(file_get_contents($url));
 	
 	$cocktails = $result->data;
 	//print_r ($cocktails);
+    
+    $ratingFilledRendering = '<div class="glyphicon glyphicon-star"></div>';
+    $ratingEmptyRendering = '<div class="glyphicon glyphicon-star-empty"></div>';
 ?>
+
   <?php foreach ($cocktails as $cocktail_id  => $cocktail): ?>
   <a href="#" class="no-btn" role="button">
-  <div class="row row-<?php print $cocktail_id; ?><?php if($cocktail_id==1) print " first"?><?php if($cocktail==end($cocktails)) print " last" ?> col-xs-12 col-md-6 col-lg-6 inline-block">
-    <div class="col-xs-4"> <img src="img/drink_example.jpg" class="img img-responsive" alt="Responsive image" /> </div>
-    <div class="col-xs-4">
-      <label><?php print $cocktail->name; ?></label>
-      <div class="stars-line">
-        <div class="glyphicon glyphicon-star"></div>
-        <div class="glyphicon glyphicon-star"></div>
-        <div class="glyphicon glyphicon-star"></div>
-        <div class="glyphicon glyphicon-star"></div>
-        <div class="glyphicon glyphicon-star"></div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 inline-block row row-<?php print $cocktail_id; ?><?php if($cocktail_id==1) print " first"?><?php if($cocktail==end($cocktails)) print " last" ?>">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="cocktail-title"><h2><?php print $cocktail->name; ?></h2></div>
+            <div class="cocktail-rating">
+                <div class="stars-line">
+                <?php 
+                    $rating = round($cocktail->rating->taste->average, 0, PHP_ROUND_HALF_UP);
+                    echo renderRating($rating,5, $ratingFilledRendering,$ratingEmptyRendering);
+                ?>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" style="clear:both;">
+            <div class="col-xs-6"> <img src="img/drink_example.jpg" class="img img-responsive" alt="Responsive image" /> </div>
+            <div class="col-xs-6">
+    	    <?php foreach($cocktail->recipe as $ingredient_index => $ingredient): ?>
+    		    <div><?php print $ingredient->name; ?></div>
+		    <?php endforeach; ?>
+            </div>
+        </div>
       </div>
-    </div>
-    <div class="col-xs-4">
-    	<?php foreach($cocktail->recipe as $ingredient_index => $ingredient): ?>
-    		<div><?php print $ingredient->name; ?></div>
-		<?php endforeach; ?>
-    </div>
   </div>
   </a>
   <?php endforeach; ?>

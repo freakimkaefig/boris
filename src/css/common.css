@@ -50,6 +50,11 @@ a.no-btn:hover, a.no-btn:active { color: black; }
 .drink-list-container .row { margin:0; opacity:0.8; padding-top:15px; padding-bottom:15px; }
 .drink-list-container .row:hover { opacity: 1.0; }
 /*.drink-list-container a:nth-child(even) .row { background:#999; }*/ /* Stripping for .row even */
+.drink-list-container .panel-heading { height:55px; }
+.drink-list-container .cocktail-title { float:left; }
+.drink-list-container .cocktail-title h2 { margin:0; }
+.drink-list-container .cocktail-rating { float:right; }
+.drink-list-container .cocktail-rating .stars-line { margin-top:8px; }
 
 
 /*-- DRINK DETAILS --*/
