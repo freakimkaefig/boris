@@ -43,6 +43,9 @@ Boris.MainController = function() {
         signView = Boris.SignView();
         signView.init();
 
+        detailView = Boris.DetailView();
+        detailView.init();
+
         $signInButton = $("#sign-in-button");
         $signInButton.on("click", signIn);   
 
@@ -78,8 +81,9 @@ Boris.MainController = function() {
     signIn = function(event) {
         
         if(mainModel.getCorrectPassword() == signView.getInputValuePassword()) {
-            if(mainModel.getUsernameForDrinkList() == signView.getInputValueUsername()) {
-                var myWindow = window.open("drink_list_01.php","_self"); 
+            if (mainModel.getUsernameForDrinkList() == signView.getInputValueUsername()) {
+                $.cookie('tablet', 'true', { expires: 2, path: '/' });
+                var myWindow = window.open("drink_list.php","_self"); 
             } 
             else if(mainModel.getUsernameForSettings() == signView.getInputValueUsername()) {
                 //var myWindow = window.open("drink_list.html","_self"); 
@@ -88,7 +92,7 @@ Boris.MainController = function() {
                 var myWindow = window.open("cocktail_rating.php","_self"); 
             }
             else {
-                console.log("wrong username");
+                alert("wrong username");
             }    
         }     
     },

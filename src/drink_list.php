@@ -71,7 +71,10 @@
 </div> <!-- Ende Navigation -->
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="container drink-list-container"> 
+<div class="container drink-list-container">
+    <div id="search-output"class="well">
+        <div class="output-line"><span>Results for: </span><span id="output"></span><span id="close" class="glyphicon glyphicon-remove-circle"></span></div>
+    </div>
   <!-- Example row of columns -->
   <?php
     include('php/helper.php');
@@ -133,6 +136,7 @@
 <script src="js/MainModel.js"></script>
 <script src="js/SignView.js"></script>
 <script src="js/QuestionnaireView.js"></script>
+<script src="js/DetailView.js"></script>
 
 <script>
 	$(function() {
