@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 19. Jan 2014 um 14:01
+-- Erstellungszeit: 23. Jan 2014 um 16:08
 -- Server Version: 5.5.27
 -- PHP-Version: 5.4.7
 
@@ -82,13 +82,13 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
 --
 
 INSERT INTO `ingredient` (`id`, `name`, `description`, `image`, `unit`, `alcohol`) VALUES
-(1, 'Ananassaft', '', 'none.png', 'cl', 0),
-(2, 'Maracujasaft', '', 'none.png', 'cl', 0),
-(3, 'Orangensaft', '', '', 'cl', 0),
-(4, 'Zitronensaft', '', '', 'cl', 0),
+(1, 'Pineapple Juice', '', 'none.png', 'cl', 0),
+(2, 'Maracuja Juice', '', 'none.png', 'cl', 0),
+(3, 'Orange Juice', '', '', 'cl', 0),
+(4, 'Lemon Juice', '', '', 'cl', 0),
 (5, 'Blue Curacao', '', '', 'cl', 25),
 (6, 'Gin', '', '', 'cl', 40),
-(7, 'Weißer Rum', '', '', 'cl', 40),
+(7, 'White Rum', '', '', 'cl', 40),
 (8, 'Wodka', '', '', 'cl', 40);
 
 -- --------------------------------------------------------
