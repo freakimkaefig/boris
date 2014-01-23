@@ -168,8 +168,15 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
+
+    <script src="js/libs/jquery.cookie.js"></script>
     
     <script type="text/javascript" charset="utf-8">
+        if ($.cookie('service') != "true") {
+            $('body').empty();
+            $('body').append("<div style='text-align:center; font-size:30px;'><p><span class='glyphicon glyphicon-warning-sign' style='font-size:160px; color:#f00;'></span></p><p>PERMISSION DENIED</p><p><a href='sign_in.html'>Login</a></p></div>");
+        }
+
         var refillID = 0,
         editID = 0;
 

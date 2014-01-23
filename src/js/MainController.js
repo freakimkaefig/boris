@@ -89,7 +89,8 @@ Boris.MainController = function() {
                 //var myWindow = window.open("drink_list.html","_self"); 
                 //hier eig settings seite
                 //zum testen erst mal cocktail rating
-                var myWindow = window.open("cocktail_rating.php","_self"); 
+                $.cookie('service', 'true', { expires: 2, path: '/' });
+                var myWindow = window.open("service_menu.html","_self"); 
             }
             else {
                 alert("wrong username");

@@ -13,11 +13,11 @@ Boris.DetailView = function () {
         mainController = Boris.MainController();
 
         //Check if tablet
-        if ($.cookie('the_cookie') == "true") {
+        if ($.cookie('tablet') == "true") {
             is_tablet = true;
+            $('#rateDrink').hide(); //Hide "Rate" Button
+            $('#orderDrink').show();    //Show "Order" Button
         }
-
-        console.log("Tablet?", is_tablet);
 
         /*
         $(mainController).on('searchresult', onSearchResult);
