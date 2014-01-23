@@ -21,75 +21,48 @@
     <style type="text/css"></style>
 </head>
 <body style="">
-<div class="row">
+<div id="action-bar">
+	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
+    <div id="filter">
+    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button></a>
+        <ul class="dropdown-menu">
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-        <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img src="img/logo_boris.png" class="img img-responsive" alt="Responsive image">
-                </a>
-            </div>
-            </div>
-            <div class="col-xs-8 col-sm-8 col-md-8">
-            <div class=row>
-            <ul class="nav navbar-nav navbar-right">
-            
-                <div class="col-xs-2 col-sm-2 col-md-2">
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-filter"></span>
-                    </button>
-                    <!--Dropdown <b class="caret"></b>-->
-                </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header">Taste</li>
-                        <ul class="input-group" style="list-style-type: none">
-                            <li>
-                                <input type="checkbox" />Sweet</li>
-                            <li>
-                                <input type="checkbox" />Fruity</li>
-                            <li>
-                                <input type="checkbox" />Sour</li>
-                            <li>
-                                <input type="checkbox" />Bitter</li>
-                        </ul>
-                        <li class="input-group dropdown-header">Taste</li>
-                        <ul class="input-group" style="list-style-type: none">
-                            <li>
-                                <input type="radio" />Alc-Free</li>
-                            <li>
-                                <input type="radio" />Weak</li>
-                            <li>
-                                <input type="radio" />Middle</li>
-                            <li>
-                                <input type="radio" />Strong</li>
-                        </ul>
-                    </ul>
-                </li>
-                </div>
-                <div class="col-xs-10 col-sm-10 col-md-10">
-                <div class=row>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" />
-                </div>
-                </div>
-                <div class="col-xs-2 col-sm-2 col-md-2">
-                <button type="submit" class="btn btn-default">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button> 
-                </div>
-                </div>  
-                </div>
-                
-            </ul>
-            </div>
-            </div>
-        </div>
+            <li class="dropdown-header">Taste</li>
+              <ul class="input-group" style="list-style-type:none">
+                  <li><input id="radio-taste-1" type="radio" name="groupTaste" value="Sweet" class="taste"/>Sweet</li>
+                  <li><input id="radio-taste-2" type="radio" name="groupTaste" value="Fruity" class="taste"/>Fruity</li>
+                  <li><input id="radio-taste-3" type="radio" name="groupTaste" value="Sour" class="taste"/>Sour</li>
+                  <li><input id="radio-taste-4" type="radio" name="groupTaste" value="Bitter" class="taste"/>Bitter</li>
+              </ul>
+
+            <li class="dropdown-header">Alcohol Strength</li>
+              <ul class="input-group" style="list-style-type:none">
+                  <li><input id="radio-alc-1" type="radio" name="groupAlc" value="Alc-Free" class="alc"/>Alc-Free</li>
+                  <li><input id="radio-alc-2" type="radio" name="groupAlc" value="Weak" class="alc"/>Weak</li>
+                  <li><input id="radio-alc-3" type="radio" name="groupAlc" value="Middle" class="alc"/>Middle</li>
+                  <li><input id="radio-alc-4" type="radio" name="groupAlc" value="Strong" class="alc"/>Strong</li>
+              </ul>
+
+        </ul>
     </div>
+    <div id="search">
+    	
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></a>
+        <ul class="dropdown-menu">
+
+            <li class="dropdown-header"></li>
+              <ul class="input-group searchbarleft" style="list-style-type:none">
+                  <li><input id="search-input" type="text" class="form-control" placeholder="Search" /></li>
+              </ul>
+              <ul class="input-group searchbuttonright" style="list-style-type:none">
+                  <li><button id="search-submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></li>
+              </ul>
+                  
+
+        </ul>
+        
     </div>
+</div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="container">
         <!-- Example row of columns -->
@@ -226,7 +199,7 @@
             </div> <!-- end Geschmack -->
             
             <div class="col-xs-12 col-sm-6 col-md-6"> <!-- Assoziation -->
-               <h5>Mit welchen dieser Ereignisse assoziieren Sie diesen Cocktail am meisten? <br />(max. 3 ankreuzen)</h5> 
+               <h5>Mit welchen dieser Ereignisse assoziieren Sie diesen Cocktail am meisten?</h5> 
                <div class="row">
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
@@ -289,6 +262,9 @@
     <script>
     $(function() {
         Boris.init();
+    });
+    $('#search-input').click(function (e) {
+        e.stopPropagation();
     });
     </script>
     
