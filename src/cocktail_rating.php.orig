@@ -21,49 +21,6 @@
     <style type="text/css"></style>
 </head>
 <body style="">
-<<<<<<< HEAD
-<div id="action-bar"><!-- Navigation -->
-	<div id="logo"><a href="drink_list_02.php"><img src="img/logo_boris.png"></a></div>
-    <div id="filter">
-    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button></a>
-        <ul class="dropdown-menu">
-
-            <li class="dropdown-header">Taste</li>
-              <ul class="input-group" style="list-style-type:none">
-                  <li><input id="radio-taste-1" type="radio" name="groupTaste" value="Sweet" class="taste"/>Sweet</li>
-                  <li><input id="radio-taste-2" type="radio" name="groupTaste" value="Fruity" class="taste"/>Fruity</li>
-                  <li><input id="radio-taste-3" type="radio" name="groupTaste" value="Sour" class="taste"/>Sour</li>
-                  <li><input id="radio-taste-4" type="radio" name="groupTaste" value="Bitter" class="taste"/>Bitter</li>
-              </ul>
-
-            <li class="dropdown-header">Alcohol Strength</li>
-              <ul class="input-group" style="list-style-type:none">
-                  <li><input id="radio-alc-1" type="radio" name="groupAlc" value="Alc-Free" class="alc"/>Alc-Free</li>
-                  <li><input id="radio-alc-2" type="radio" name="groupAlc" value="Weak" class="alc"/>Weak</li>
-                  <li><input id="radio-alc-3" type="radio" name="groupAlc" value="Middle" class="alc"/>Middle</li>
-                  <li><input id="radio-alc-4" type="radio" name="groupAlc" value="Strong" class="alc"/>Strong</li>
-              </ul>
-
-        </ul>
-    </div>
-    <div id="search">
-    	
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></a>
-        <ul class="dropdown-menu">
-
-            <li class="dropdown-header"></li>
-              <ul class="input-group searchbarleft" style="list-style-type:none">
-                  <li><input id="search-input" type="text" class="form-control" placeholder="Search" /></li>
-              </ul>
-              <ul class="input-group searchbuttonright" style="list-style-type:none">
-                  <li><button id="search-submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button></li>
-              </ul>
-                  
-
-        </ul>
-        
-    </div>
-=======
 <div id="action-bar"><!-- Navigation -->
 	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
     <div id="logout">
@@ -73,7 +30,6 @@
         
     </div>
     
->>>>>>> cb40e2d6de7f8e588928ada7a1932764210b9389
 </div> <!-- Ende Navigation -->
 
 
@@ -217,19 +173,19 @@
                <div class="row">
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="amStrand">Am Strand</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="amStrand">Am Strand</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Firmenfeier">Firmenfeier</label>
+                                <input class="checkbox-input" type="checkbox" value="option2" id="Firmenfeier">Firmenfeier</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Junggesellenabschied">Junggesellenabschied</label>
+                                <input class="checkbox-input" type="checkbox" value="option3" id="Junggesellenabschied">Junggesellenabschied</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Hochzeit">Hochzeit</label>
+                                <input type="checkbox" value="option1" id="Hochzeit">Hochzeit</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="In der Cocktailbar">In der Cocktailbar</label>
+                                <input type="checkbox" value="option1" id="In der Cocktailbar">In der Cocktailbar</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Nach dem Essen">Nach dem Essen</label>
+                                <input type="checkbox" value="option1" id="Nach dem Essen">Nach dem Essen</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Daheim auf dem Sofa">Daheim auf dem Sofa</label>
+                                <input type="checkbox" value="option1" id="Daheim auf dem Sofa">Daheim auf dem Sofa</label>
                     </div>
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
@@ -255,7 +211,11 @@
                 <div class="col-xs-12 col-md-12">
 
                     <a href="#">
-                    <button id="Button1" type="button" class="btn btn-default pull-left" >
+<<<<<<< HEAD
+                    <button id="button-send-rating" type="button" class="btn btn-default pull-left" >
+=======
+                    <button id="send-rating" type="button" class="btn btn-default pull-left" >
+>>>>>>> 4be10d8d706b1194827dd6fcaffb32bbc2305731
                     <label style="font-size:20px; margin-top:5px;">Send Rating</label>
                     <span class="glyphicon glyphicon-chevron-right" style="font-size:20px;" ></span>
                     </button>
@@ -287,27 +247,40 @@
     <script src="js/MainModel.js"></script>
     <script src="js/SignView.js"></script>
     <script src="js/QuestionnaireView.js"></script>
+    <script src="js/DetailView.js"></script>
 
     <script>
-    $(function() {
-        Boris.init();
+        $(function () {
+            Boris.init();
 
-        $('#search-button').click(function () {
-            setTimeout(function () { $('#search-input').focus(); }, 0);
-        });
+            $('#search-button').click(function () {
+                setTimeout(function () { $('#search-input').focus(); }, 0);
+            });
 
-        $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e)            { e.stopPropagation(); });
+            $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e) { e.stopPropagation(); });
 
-        $('#search-submit').click(function (e) {
-            $('#search-dropdown').dropdown("toggle");
-        });
-
-        $('#search-input').keypress(function (e) {
-            if (e.which == 13) {
+            $('#search-submit').click(function (e) {
                 $('#search-dropdown').dropdown("toggle");
-            }
+            });
+
+            $('#search-input').keypress(function (e) {
+                if (e.which == 13) {
+                    $('#search-dropdown').dropdown("toggle");
+                }
+            });
+
+
+            //Validierung des Fragebogens
+            $('#send-rating').click(function (e) {
+                if (isNaN($('#age-questionnaire').val())) {
+                    $('#age-questionnaire').addClass("attention");
+                }
+                if ($('#männlich:checked').val() == undefined && $('#weiblich:checked').val() == undefined) {
+                    //$('input[name="radioGroup"]').addClass("attention");
+                }
+
+            });
         });
-    });
     
     </script>
     

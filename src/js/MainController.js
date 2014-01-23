@@ -23,6 +23,9 @@ Boris.MainController = function() {
     $ageInput = null,
     //gender radios group
     $radioGenderGroup = null,
+    $buttonSendRating = null,
+
+    $checkbox = null,
     //-----------Questionnaire_end--------------
 
 
@@ -47,7 +50,7 @@ Boris.MainController = function() {
         detailView.init();
 
         $signInButton = $("#sign-in-button");
-        $signInButton.on("click", signIn);   
+        $signInButton.on("click", onSignIn);   
 
         //init radio groups for filtering       
         $radioTasteGroup = $(".taste");    
@@ -67,6 +70,11 @@ Boris.MainController = function() {
         $ageInput = $("#age-questionnaire");
         $radioGenderGroup = $(".genderRadios");
 
+        $buttonSendRating = $("#send-rating"); 
+        $buttonSendRating.on("click", onSendRating);
+
+        $checkbox = $(".checkbox-input");
+
         setRadioListenerBitterLikert();
         setRadioListenerSweetLikert();
         setRadioListenerSourLikert();
@@ -78,7 +86,7 @@ Boris.MainController = function() {
 
     },
 
-    signIn = function(event) {
+    onSignIn = function(event) {
         
         if(mainModel.getCorrectPassword() == signView.getInputValuePassword()) {
             if (mainModel.getUsernameForDrinkList() == signView.getInputValueUsername()) {
@@ -154,6 +162,25 @@ Boris.MainController = function() {
         $radioGenderGroup.change(function() {    
             mainModel.setGenderVal(event.target.value);
         });
+    },
+
+    handleCheckboxes = function() {
+        $checkbox.each(function(i, obj) {
+            
+        if (obj.checked) {
+              
+                mainModel.setActiveCheckboxes(obj.id);   
+            }
+        }); 
+    },
+
+    onSendRating = function(event) {
+        //hier dann ajax aufruf mit ganzen gettern und settern...
+        //event.preventDefault();
+        
+        handleCheckboxes();
+        mainModel.getActiveCheckboxes();
+        //hier noch die restlichen getter
     },
 	
 	onSearch = function(event, query) {		

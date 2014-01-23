@@ -17,6 +17,8 @@ Boris.MainModel = function() {
 
 	gender = null,
 
+    checkedCheckboxes = new Array(),
+
     //PHP data is rate.php
 
     init = function() {
@@ -163,11 +165,22 @@ Boris.MainModel = function() {
     //getter and setter for rest of questionnaire
     getGenderVal = function() {
         return gender;
-    };
+    },
     setGenderVal = function(gender) {
         this.gender = gender;
         console.log("gender " + gender);
+    },
+    //getter und setter for checked checkboxes
+    getActiveCheckboxes = function() {
+        
+        return checkedCheckboxes;
+    },
+    setActiveCheckboxes = function(checkboxId) {
+        checkedCheckboxes.push(checkboxId);
+
     };
+
+
 
     that.init = init;
     that.getResUrl = getResUrl;
@@ -192,6 +205,8 @@ Boris.MainModel = function() {
     that.setLikertStrongVal = setLikertStrongVal;
     that.getGenderVal = getGenderVal;
     that.setGenderVal = setGenderVal;
+    that.getActiveCheckboxes = getActiveCheckboxes;
+    that.setActiveCheckboxes = setActiveCheckboxes;
 
     return that;
 };

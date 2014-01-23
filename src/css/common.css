@@ -21,8 +21,10 @@ body.drink-list { padding-top:0px; }
 #filter .dropdown-menu { top:58px; right:0; left:auto; }
 #search .dropdown-menu { top:58px; right:68px; left:auto; }
 
+.attention {border-radius:5px; border-width:3px; border-color:red;}
+
 #rateDrink {margin-right: 25px;}
-#orderDrink {margin-right: 25px; display:none;}
+#orderDrink {margin-right: 25px;}
 
 .drink-list-container { margin-top: 60px; }
 

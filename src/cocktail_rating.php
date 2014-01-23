@@ -173,19 +173,19 @@
                <div class="row">
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="amStrand">Am Strand</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="amStrand">Am Strand</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Firmenfeier">Firmenfeier</label>
+                                <input class="checkbox-input" type="checkbox" value="option2" id="Firmenfeier">Firmenfeier</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Junggesellenabschied">Junggesellenabschied</label>
+                                <input class="checkbox-input" type="checkbox" value="option3" id="Junggesellenabschied">Junggesellenabschied</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Hochzeit">Hochzeit</label>
+                                <input type="checkbox" value="option1" id="Hochzeit">Hochzeit</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="In der Cocktailbar">In der Cocktailbar</label>
+                                <input type="checkbox" value="option1" id="In der Cocktailbar">In der Cocktailbar</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Nach dem Essen">Nach dem Essen</label>
+                                <input type="checkbox" value="option1" id="Nach dem Essen">Nach dem Essen</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Daheim auf dem Sofa">Daheim auf dem Sofa</label>
+                                <input type="checkbox" value="option1" id="Daheim auf dem Sofa">Daheim auf dem Sofa</label>
                     </div>
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
@@ -211,7 +211,7 @@
                 <div class="col-xs-12 col-md-12">
 
                     <a href="#">
-                    <button id="Button1" type="button" class="btn btn-default pull-left" >
+                    <button id="send-rating" type="button" class="btn btn-default pull-left" >
                     <label style="font-size:20px; margin-top:5px;">Send Rating</label>
                     <span class="glyphicon glyphicon-chevron-right" style="font-size:20px;" ></span>
                     </button>
@@ -244,29 +244,43 @@
     <script src="js/MainController.js"></script>
     <script src="js/MainModel.js"></script>
     <script src="js/SignView.js"></script>
+    
+  
     <script src="js/QuestionnaireView.js"></script>
     <script src="js/DetailView.js"></script>
 
     <script>
-    $(function() {
-        Boris.init();
+        $(function () {
+            Boris.init();
 
-        $('#search-button').click(function () {
-            setTimeout(function () { $('#search-input').focus(); }, 0);
-        });
+            $('#search-button').click(function () {
+                setTimeout(function () { $('#search-input').focus(); }, 0);
+            });
 
-        $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e)            { e.stopPropagation(); });
+            $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e) { e.stopPropagation(); });
 
-        $('#search-submit').click(function (e) {
-            $('#search-dropdown').dropdown("toggle");
-        });
-
-        $('#search-input').keypress(function (e) {
-            if (e.which == 13) {
+            $('#search-submit').click(function (e) {
                 $('#search-dropdown').dropdown("toggle");
-            }
+            });
+
+            $('#search-input').keypress(function (e) {
+                if (e.which == 13) {
+                    $('#search-dropdown').dropdown("toggle");
+                }
+            });
+
+
+            //Validierung des Fragebogens
+            $('#send-rating').click(function (e) {
+                if (isNaN($('#age-questionnaire').val())) {
+                    $('#age-questionnaire').addClass("attention");
+                }
+                if ($('#männlich:checked').val() == undefined && $('#weiblich:checked').val() == undefined) {
+                    //$('input[name="radioGroup"]').addClass("attention");
+                }
+
+            });
         });
-    });
     
     </script>
     
