@@ -24,7 +24,7 @@
 <div id="action-bar"><!-- Navigation -->
 	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
     <div id="logout">
-    	<a href="drink_list_02.html"><button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
+    	<a href="drink_list_02.php"><button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
                     <span class="glyphicon glyphicon-off"></span>
                 </button></a>
         
@@ -256,6 +256,12 @@
 
         $('#search-submit').click(function (e) {
             $('#search-dropdown').dropdown("toggle");
+        });
+
+        $('#search-input').keypress(function (e) {
+            if (e.which == 13) {
+                $('#search-dropdown').dropdown("toggle");
+            }
         });
     });
     

@@ -147,7 +147,14 @@
         $('#search-submit').click(function (e) {
             $('#search-dropdown').dropdown("toggle");
         });
+        
+        $('#search-input').keypress(function (e) {
+            if (e.which == 13) {
+                $('#search-dropdown').dropdown("toggle");
+            }
+        });
     });
 </script>
 </body>
 </html>
+
