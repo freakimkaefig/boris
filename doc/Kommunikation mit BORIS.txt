@@ -1,0 +1,63 @@
+POST-Request per jQuery senden:
+
+URL:
+http://localhost:8009/
+
+Data:
+---Verworfen, jetzt als JSON umsetzen----
+ORDER:cola,80
+ORDER:gin,80;cola,50
+REFILL:1,500
+CONFIG:gin,3,500,250 (Zutat, Slot, Max. Volumen, Akt. Füllstand)
+---------
+
+Als JSON:
+{	"order" : 
+	[
+		{
+		id: "7",
+		name: "Weißer Rum",
+		description: "",
+		unit: "cl",
+		alcohol: "40",
+		amount: "0.6",
+		order: "0",
+		},
+		...
+	],
+	"test":true/false
+}
+
+{"refill": 
+{
+	id: "1",
+	fillingLevel: "500"		
+}
+}
+
+{"config": 
+{
+	id:1, 
+	fillingLevel: 100, 
+	name: "gin", 
+	containerSize: 500		
+}
+}
+
+{"setGlassVol": 
+{
+	volume:200
+}
+}
+
+{"getStatus": "glasVol" (oder "boris")}
+
+
+
+Zu implementierende Methoden:
+SETGLASSVOL:200
+GETGLASSVOLL
+
+GETBORIS
+-> [{id:1, milliliter: 100, content: "gin", size: 500},...
+...
