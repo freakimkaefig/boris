@@ -27,7 +27,8 @@
     <?php
         include 'php/helper.php';
         
-        $drinkId = '11';
+        //$drinkId = '11';
+        $drinkId = $_GET['id'];
         
 	    $base_url = 'http://localhost/boris/src/php/';
         
