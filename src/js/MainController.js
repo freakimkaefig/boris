@@ -70,7 +70,7 @@ Boris.MainController = function() {
         $ageInput = $("#age-questionnaire");
         $radioGenderGroup = $(".genderRadios");
 
-        $buttonSendRating = $("#button-send-rating"); 
+        $buttonSendRating = $("#send-rating"); 
         $buttonSendRating.on("click", onSendRating);
 
         $checkbox = $(".checkbox-input");
