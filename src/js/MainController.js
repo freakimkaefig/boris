@@ -124,7 +124,7 @@ Boris.MainController = function() {
     setRadioListenerBitterLikert = function() {
 
         $radioBitterLikert.change(function() {           
-        
+           
             mainModel.setLikertBitterVal(event.target.value);
 
         });
@@ -166,21 +166,47 @@ Boris.MainController = function() {
 
     handleCheckboxes = function() {
         $checkbox.each(function(i, obj) {
-            
+        
         if (obj.checked) {
-              
                 mainModel.setActiveCheckboxes(obj.id);   
             }
         }); 
     },
 
     onSendRating = function(event) {
-        //hier dann ajax aufruf mit ganzen gettern und settern...
-        //event.preventDefault();
         
         handleCheckboxes();
-        mainModel.getActiveCheckboxes();
-        //hier noch die restlichen getter
+
+        //age input
+        if ($ageInput.val() > 0 && $ageInput.val() < 120) {
+            if(mainModel.getGenderVal() != null) {
+                if(mainModel.getActiveCheckboxes().length != 0) {    
+                    if(mainModel.getLikertBitterVal() != null &&
+                        mainModel.getLikertSweetVal() != null &&
+                        mainModel.getLikertSourVal() != null &&
+                        mainModel.getLikertFruityVal() != null &&
+                        mainModel.getLikertStrongVal() != null) {
+
+                            console.log($ageInput.val()); 
+                            //mainModel.getActiveCheckboxes();  
+
+                    } else {
+                        alert("likertskala nicht komplett");  
+                    } 
+                } else {
+                    alert("keine checkbox");   
+                }
+            } else {
+                alert("Bitte Geschlecht auswählen");    
+            }                   
+        } else {
+            alert("Ungültiger Wert für Alter");
+        }
+        
+       
+        
+        
+        
     },
 	
 	onSearch = function(event, query) {		
