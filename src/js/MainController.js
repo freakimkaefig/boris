@@ -175,6 +175,8 @@ Boris.MainController = function() {
 
     onSendRating = function(event) {
         
+
+        
         handleCheckboxes();
 
         //age input
@@ -190,23 +192,31 @@ Boris.MainController = function() {
                             console.log($ageInput.val()); 
                             //mainModel.getActiveCheckboxes();  
 
-                    } else {
+                    } else {                       
+                        //displayDialog("likertskala nicht komplett");  
                         alert("likertskala nicht komplett");  
                     } 
                 } else {
+                    //displayDialog("keine checkbox");   
                     alert("keine checkbox");   
                 }
             } else {
+                //displayDialog("Bitte Geschlecht auswählen");    
                 alert("Bitte Geschlecht auswählen");    
             }                   
         } else {
+            //displayDialog("Ungültiger Wert für Alter");
             alert("Ungültiger Wert für Alter");
         }
         
-       
-        
-        
-        
+ 
+    },
+
+    displayDialog = function(text) {
+        //bootbox is a library which makes it easier to display dialogs
+        bootbox.alert(text, function() {
+          //Example.show("Hello world callback");      
+        });
     },
 	
 	onSearch = function(event, query) {		

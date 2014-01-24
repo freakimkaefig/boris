@@ -234,6 +234,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/libs/bootbox.min.js"></script>
     
     <script src="js/libs/jquery.cookie.js"></script>
 
