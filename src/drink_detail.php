@@ -306,9 +306,10 @@
     <script src="js/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     
-    <!-- Custom Javascript -->        
-    <script src="js/Recommender.js" type="text/javascript"></script>
-    <script src="js/App.js"></script>
+    <!-- Custom Javascript -->         
+    <script src="js/App.js"></script>  
+    <script src="js/Recommender.js" type="text/javascript"></script>    
+    <script src="js/CommunicationHandler.js" type="text/javascript"></script>
     <script src="js/SearchView.js"></script>
     <script src="js/FilterView.js"></script>
     <script src="js/MainController.js"></script>
@@ -324,11 +325,11 @@
             //Read all drinks from db
             var allCocktails = $(<?php echo json_encode($allCocktails) ?>)[0];       
             //Set and render the similar drinks
-            detailView.setAllDrinks(allCocktails);     
+            detailView.setAllDrinks(allCocktails);    
+            
             var similars = recommend(1);
             detailView.setSimilarDrinkIds(recommend(<?php echo $drinkId; ?>));            
             detailView.renderSimilarDrinks();
-
 	    });
 	</script>
 
