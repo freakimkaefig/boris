@@ -175,22 +175,40 @@ Boris.MainController = function() {
 
     onSendRating = function(event) {
         
-
+        //mit dieser Methode kann der komplette fragebogen ausgelesen werden
+        
+        //vorher wird geprüft ob werte fehlen oder ungültige werte eingetragen wurden
         
         handleCheckboxes();
 
-        //age input
+        //age input ausgefüllt?
         if ($ageInput.val() > 0 && $ageInput.val() < 120) {
+            //gender angegeben?
             if(mainModel.getGenderVal() != null) {
+                //mindestens eine checkbox angekreuzt?
                 if(mainModel.getActiveCheckboxes().length != 0) {    
+                    //likertsakalen verwendet?
                     if(mainModel.getLikertBitterVal() != null &&
                         mainModel.getLikertSweetVal() != null &&
                         mainModel.getLikertSourVal() != null &&
                         mainModel.getLikertFruityVal() != null &&
                         mainModel.getLikertStrongVal() != null) {
 
+                            //ToDo: hier werden werte ausgelesen (über getter von model)
+                            // danach schicken an server über AJAX
                             console.log($ageInput.val()); 
-                            //mainModel.getActiveCheckboxes();  
+                            
+                            //var age = $ageInput.val();
+
+                            //mainModel.getActiveCheckboxes(); 
+                            
+                            //mainModel.getGender(); 
+
+                            //mainModel.getLikertBitterVal(); 
+                            //mainModel.getLikertSweetVal(); 
+                            //mainModel.getLikertSourVal(); 
+                            //mainModel.getLikertFruityVal(); 
+                            //mainModel.getLikertStrongVal(); 
 
                     } else {                       
                         //displayDialog("likertskala nicht komplett");  
