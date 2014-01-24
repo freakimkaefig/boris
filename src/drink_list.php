@@ -128,6 +128,8 @@
 <script src="js/jquery-ui-1.10.3/jquery-1.9.1.js"></script> 
 <script src="js/bootstrap/bootstrap.min.js"></script>
 
+<script src="js/libs/jquery.cookie.js"></script>
+
 <!-- Custom Javascript -->
 <script src="js/App.js"></script>
 <script src="js/SearchView.js"></script>

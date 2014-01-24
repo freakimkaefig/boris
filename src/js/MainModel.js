@@ -17,6 +17,8 @@ Boris.MainModel = function() {
 
 	gender = null,
 
+    checkedCheckboxes = new Array(),
+
     //PHP data is rate.php
 
     init = function() {
@@ -140,34 +142,45 @@ Boris.MainModel = function() {
     getLikertStrongVal = function() {
         return likertStrongVal;
     },
-    setLikertBitterVal = function(likertBitterVal) {
-        this.likertBitterVal = likertBitterVal;
-        console.log("likert Bitter " + likertBitterVal);
+    setLikertBitterVal = function(likertBitterValue) {
+        likertBitterVal = likertBitterValue;
+        
     },
-    setLikertSweetVal = function(likertSweetVal) {
-        this.likertSweetVal = likertSweetVal;
-        console.log("likert Sweet " + likertSweetVal);
+    setLikertSweetVal = function(likertSweetValue) {
+        likertSweetVal = likertSweetValue;
+       
     },
-    setLikertSourVal = function(likertSourVal) {
-        this.likertSourVal = likertSourVal;
-        console.log("likert Sour " + likertSourVal);
+    setLikertSourVal = function(likertSourValue) {
+        likertSourVal = likertSourValue;
+        
     },
-    setLikertFruityVal = function(likertFruityVal) {
-        this.likertFruityVal = likertFruityVal;
-        console.log("likert Fruity " + likertFruityVal);
+    setLikertFruityVal = function(likertFruityValue) {
+        likertFruityVal = likertFruityValue;
+        
     },
-    setLikertStrongVal = function(likertStrongVal) {
-        this.likertStrongVal = likertStrongVal;
-        console.log("likert Strong " + likertStrongVal);
+    setLikertStrongVal = function(likertStrongValue) {
+        likertStrongVal = likertStrongValue;
+        
     },
     //getter and setter for rest of questionnaire
     getGenderVal = function() {
         return gender;
+    },
+    setGenderVal = function(genderVal) {
+        gender = genderVal;
+    },
+    //getter und setter for checked checkboxes
+    getActiveCheckboxes = function() {
+        
+        return checkedCheckboxes;
+    },
+    setActiveCheckboxes = function(checkboxId) {
+        checkedCheckboxes.push(checkboxId);
+        console.log(checkboxId);
+
     };
-    setGenderVal = function(gender) {
-        this.gender = gender;
-        console.log("gender " + gender);
-    };
+
+
 
     that.init = init;
     that.getResUrl = getResUrl;
@@ -192,6 +205,8 @@ Boris.MainModel = function() {
     that.setLikertStrongVal = setLikertStrongVal;
     that.getGenderVal = getGenderVal;
     that.setGenderVal = setGenderVal;
+    that.getActiveCheckboxes = getActiveCheckboxes;
+    that.setActiveCheckboxes = setActiveCheckboxes;
 
     return that;
 };

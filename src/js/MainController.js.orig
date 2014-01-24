@@ -52,7 +52,11 @@ Boris.MainController = function () {
         if (communicationHandler != null) communicationHandler.init();
 
         $signInButton = $("#sign-in-button");
+<<<<<<< HEAD
+        $signInButton.on("click", signIn);
+=======
         $signInButton.on("click", onSignIn);   
+>>>>>>> 3224eff195b82c4e48fb515bbc1c9fd19a3f224f
 
         //init radio groups for filtering       
         $radioTasteGroup = $(".taste");
@@ -86,19 +90,34 @@ Boris.MainController = function () {
         setRadioGender();
     },
 
-    onSignIn = function(event) {
+<<<<<<< HEAD
+    signIn = function (event) {
 
         if (mainModel.getCorrectPassword() == signView.getInputValuePassword()) {
             if (mainModel.getUsernameForDrinkList() == signView.getInputValueUsername()) {
                 $.cookie('tablet', 'true', { expires: 2, path: '/' });
-                var myWindow = window.open("drink_list.php","_self"); 
+                var myWindow = window.open("drink_list_02.php", "_self");
             }
             else if (mainModel.getUsernameForSettings() == signView.getInputValueUsername()) {
                 //var myWindow = window.open("drink_list.html","_self"); 
                 //hier eig settings seite
                 //zum testen erst mal cocktail rating
+                var myWindow = window.open("cocktail_rating.php", "_self");
+=======
+    onSignIn = function(event) {
+        
+        if(mainModel.getCorrectPassword() == signView.getInputValuePassword()) {
+            if (mainModel.getUsernameForDrinkList() == signView.getInputValueUsername()) {
+                $.cookie('tablet', 'true', { expires: 2, path: '/' });
+                var myWindow = window.open("drink_list.php","_self"); 
+            } 
+            else if(mainModel.getUsernameForSettings() == signView.getInputValueUsername()) {
+                //var myWindow = window.open("drink_list.html","_self"); 
+                //hier eig settings seite
+                //zum testen erst mal cocktail rating
                 $.cookie('service', 'true', { expires: 2, path: '/' });
                 var myWindow = window.open("service_menu.html","_self"); 
+>>>>>>> 3224eff195b82c4e48fb515bbc1c9fd19a3f224f
             }
             else {
                 alert("wrong username");
@@ -124,7 +143,12 @@ Boris.MainController = function () {
     setRadioListenerBitterLikert = function () {
 
         $radioBitterLikert.change(function () {
+
+<<<<<<< HEAD
+=======
+        $radioBitterLikert.change(function() {           
            
+>>>>>>> 3224eff195b82c4e48fb515bbc1c9fd19a3f224f
             mainModel.setLikertBitterVal(event.target.value);
 
         });
@@ -164,6 +188,26 @@ Boris.MainController = function () {
         });
     },
 
+<<<<<<< HEAD
+	onSearch = function (event, query) {
+	    var result = {};
+	    result.numCocktails = mainModel.getNumCocktails();
+	    $.get(mainModel.getResUrl("search") + '?name=' + query, function (data) {
+	        if (data.data.length != 0) {
+	            result.name = data;
+	        }
+
+	        if (mainModel.checkIfIngredient(query)) {
+	            $.get(mainModel.getResUrl("search") + '?data={"ingredients":["' + query + '"]}', function (data) {
+	                //console.log("ingredient", data);
+	                result.ingredient = data;
+	                searchView.onSearchResult(result);
+	            });
+	        } else {
+	            searchView.onSearchResult(result);
+	        }
+	    });
+=======
     handleCheckboxes = function() {
         $checkbox.each(function(i, obj) {
         
@@ -236,25 +280,26 @@ Boris.MainController = function () {
           //Example.show("Hello world callback");      
         });
     },
-
-	onSearch = function (event, query) {
-	    var result = {};
-	    result.numCocktails = mainModel.getNumCocktails();
-	    $.get(mainModel.getResUrl("search") + '?name=' + query, function (data) {
-	        if (data.data.length != 0) {
-	            result.name = data;
-	        }
-
-	        if (mainModel.checkIfIngredient(query)) {
-	            $.get(mainModel.getResUrl("search") + '?data={"ingredients":["' + query + '"]}', function (data) {
-	                //console.log("ingredient", data);
-	                result.ingredient = data;
-	                searchView.onSearchResult(result);
-	            });
-	        } else {
-	            searchView.onSearchResult(result);
-	        }
-	    });
+	
+	onSearch = function(event, query) {		
+		var result = {};
+		result.numCocktails = mainModel.getNumCocktails();
+		$.get(mainModel.getResUrl("search") + '?name=' + query, function(data) {
+			if(data.data.length != 0) {
+				result.name = data;
+			}
+			
+			if(mainModel.checkIfIngredient(query)) {
+				$.get(mainModel.getResUrl("search") + '?data={"ingredients":["' + query + '"]}', function(data) {
+					//console.log("ingredient", data);
+					result.ingredient = data;
+					searchView.onSearchResult(result);
+				});
+			} else {
+				searchView.onSearchResult(result);
+			}
+		});
+>>>>>>> 3224eff195b82c4e48fb515bbc1c9fd19a3f224f
 	};
 
     that.init = init;

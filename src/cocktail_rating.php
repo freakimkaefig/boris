@@ -77,15 +77,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Herb -->
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb1" value="1" type="radio"></label>
+                                <input class="likertHerb" name="radioGroup1" id="Herb1" value="1" type="radio"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb2" value="2" type="radio"></label>
+                                <input class="likertHerb" name="radioGroup1" id="Herb2" value="2" type="radio"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb3" value="3" type="radio"></label>
+                                <input class="likertHerb" name="radioGroup1" id="Herb3" value="3" type="radio"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb4" value="4" type="radio"></label>
+                                <input class="likertHerb" name="radioGroup1" id="Herb4" value="4" type="radio"></label>
                             <label class="radio-inline">
-                                <input name="radioGroup1" id="Herb5" value="5" type="radio"></label>
+                                <input class="likertHerb" name="radioGroup1" id="Herb5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -96,15 +96,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Süß -->
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß1" value="1" type="radio"></label>
+                            <input class="likertSüß" name="radioGroup2" id="Süß1" value="1" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß2" value="2" type="radio"></label>
+                            <input class="likertSüß" name="radioGroup2" id="Süß2" value="2" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß3" value="3" type="radio"></label>
+                            <input class="likertSüß" name="radioGroup2" id="Süß3" value="3" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß4" value="4" type="radio"></label>
+                            <input class="likertSüß" name="radioGroup2" id="Süß4" value="4" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup2" id="Süß5" value="5" type="radio"></label>
+                            <input class="likertSüß" name="radioGroup2" id="Süß5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8">
                     </div>
@@ -115,15 +115,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Sauer -->
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer1" value="1" type="radio"></label>
+                            <input class="likertSauer" name="radioGroup3" id="Sauer1" value="1" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer2" value="2" type="radio"></label>
+                            <input class="likertSauer" name="radioGroup3" id="Sauer2" value="2" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer3" value="3" type="radio"></label>
+                            <input class="likertSauer" name="radioGroup3" id="Sauer3" value="3" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer4" value="4" type="radio"></label>
+                            <input class="likertSauer" name="radioGroup3" id="Sauer4" value="4" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup3" id="Sauer5" value="5" type="radio"></label>
+                            <input class="likertSauer" name="radioGroup3" id="Sauer5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -134,15 +134,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Fruchtig -->
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig1" value="1" type="radio"></label>
+                            <input class="likertFruchtig" name="radioGroup4" id="Fruchtig1" value="1" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig2" value="2" type="radio"></label>
+                            <input class="likertFruchtig" name="radioGroup4" id="Fruchtig2" value="2" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig3" value="3" type="radio"></label>
+                            <input class="likertFruchtig" name="radioGroup4" id="Fruchtig3" value="3" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig4" value="4" type="radio"></label>
+                            <input class="likertFruchtig" name="radioGroup4" id="Fruchtig4" value="4" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup4" id="Fruchtig5" value="5" type="radio"></label>
+                            <input class="likertFruchtig" name="radioGroup4" id="Fruchtig5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -153,15 +153,15 @@
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Stark -->
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark1" value="1" type="radio"></label>
+                            <input class="likertStark" name="radioGroup5" id="Stark1" value="1" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark2" value="2" type="radio"></label>
+                            <input class="likertStark" name="radioGroup5" id="Stark2" value="2" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark3" value="3" type="radio"></label>
+                            <input class="likertStark" name="radioGroup5" id="Stark3" value="3" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark4" value="4" type="radio"></label>
+                            <input class="likertStark" name="radioGroup5" id="Stark4" value="4" type="radio"></label>
                         <label class="radio-inline">
-                            <input name="radioGroup5" id="Stark5" value="5" type="radio"></label>
+                            <input class="likertStark" name="radioGroup5" id="Stark5" value="5" type="radio"></label>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
@@ -173,33 +173,33 @@
                <div class="row">
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="amStrand">Am Strand</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="amStrand">Am Strand</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Firmenfeier">Firmenfeier</label>
+                                <input class="checkbox-input" type="checkbox" value="option2" id="Firmenfeier">Firmenfeier</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Junggesellenabschied">Junggesellenabschied</label>
+                                <input class="checkbox-input" type="checkbox" value="option3" id="Junggesellenabschied">Junggesellenabschied</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Hochzeit">Hochzeit</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Hochzeit">Hochzeit</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="In der Cocktailbar">In der Cocktailbar</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="In der Cocktailbar">In der Cocktailbar</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Nach dem Essen">Nach dem Essen</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Nach dem Essen">Nach dem Essen</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Daheim auf dem Sofa">Daheim auf dem Sofa</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Daheim auf dem Sofa">Daheim auf dem Sofa</label>
                     </div>
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Checkbox1">Zum Vorglühen</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Checkbox1">Zum Vorglühen</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Beim ersten Date">Beim ersten Date</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Beim ersten Date">Beim ersten Date</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="In der Disco">In der Disco</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="In der Disco">In der Disco</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="WG-Party">WG-Party</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="WG-Party">WG-Party</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Am Sommerabend">Am Sommerabend</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Am Sommerabend">Am Sommerabend</label>
                             <label class="checkbox">
-                            <input type="checkbox" value="option1" id="Kalter Winterabend">Kalter Winterabend</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Kalter Winterabend">Kalter Winterabend</label>
                     </div>
                </div>
                
@@ -211,7 +211,7 @@
                 <div class="col-xs-12 col-md-12">
 
                     <a href="#">
-                    <button id="Button1" type="button" class="btn btn-default pull-left" >
+                    <button id="send-rating" type="button" class="btn btn-default pull-left" >
                     <label style="font-size:20px; margin-top:5px;">Send Rating</label>
                     <span class="glyphicon glyphicon-chevron-right" style="font-size:20px;" ></span>
                     </button>
@@ -234,6 +234,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/libs/bootbox.min.js"></script>
+    
+    <script src="js/libs/jquery.cookie.js"></script>
 
     <!-- Custom Javascript -->
     <script src="js/App.js"></script>
@@ -242,29 +245,33 @@
     <script src="js/MainController.js"></script>
     <script src="js/MainModel.js"></script>
     <script src="js/SignView.js"></script>
+    
+  
     <script src="js/QuestionnaireView.js"></script>
     <script src="js/DetailView.js"></script>
 
     <script>
-    $(function() {
-        Boris.init();
+        $(function () {
+            Boris.init();
 
-        $('#search-button').click(function () {
-            setTimeout(function () { $('#search-input').focus(); }, 0);
-        });
+            $('#search-button').click(function () {
+                setTimeout(function () { $('#search-input').focus(); }, 0);
+            });
 
-        $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e)            { e.stopPropagation(); });
+            $('.dropdown-menu,.dropdown-header,.input-group,#search-input,input[name="groupTaste"],input[name="groupAlc"]').click(function (e) { e.stopPropagation(); });
 
-        $('#search-submit').click(function (e) {
-            $('#search-dropdown').dropdown("toggle");
-        });
-
-        $('#search-input').keypress(function (e) {
-            if (e.which == 13) {
+            $('#search-submit').click(function (e) {
                 $('#search-dropdown').dropdown("toggle");
-            }
+            });
+
+            $('#search-input').keypress(function (e) {
+                if (e.which == 13) {
+                    $('#search-dropdown').dropdown("toggle");
+                }
+            });
+
+
         });
-    });
     
     </script>
     
