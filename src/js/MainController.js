@@ -7,7 +7,6 @@ Boris.MainController = function () {
     signView = null,
     $signInButton = null,
 	$searchButton = null,
-
     $radioTasteGroup = null,
     $radioAlcGroup = null,
 
@@ -45,14 +44,21 @@ Boris.MainController = function () {
         signView = Boris.SignView();
         signView.init();
 
+        borisModel = Boris.BorisModel();
+        if (borisModel != null) borisModel.init();
+
+        drinkModel = Boris.DrinkModel();
+        if (drinkModel != null) drinkModel.init();
+
         detailView = Boris.DetailView();
-        detailView.init();
+        detailView.init(drinkModel);
 
         communicationHandler = Boris.CommunicationHandler();
-        if (communicationHandler != null) communicationHandler.init();
+        if (communicationHandler != null) communicationHandler.init(borisModel);
+        
 
         $signInButton = $("#sign-in-button");
-        $signInButton.on("click", onSignIn);   
+        $signInButton.on("click", onSignIn);
 
         //init radio groups for filtering       
         $radioTasteGroup = $(".taste");
@@ -72,7 +78,7 @@ Boris.MainController = function () {
         $ageInput = $("#age-questionnaire");
         $radioGenderGroup = $(".genderRadios");
 
-        $buttonSendRating = $("#send-rating"); 
+        $buttonSendRating = $("#send-rating");
         $buttonSendRating.on("click", onSendRating);
 
         $checkbox = $(".checkbox-input");
@@ -86,19 +92,19 @@ Boris.MainController = function () {
         setRadioGender();
     },
 
-    onSignIn = function(event) {
+    onSignIn = function (event) {
 
         if (mainModel.getCorrectPassword() == signView.getInputValuePassword()) {
             if (mainModel.getUsernameForDrinkList() == signView.getInputValueUsername()) {
                 $.cookie('tablet', 'true', { expires: 2, path: '/' });
-                var myWindow = window.open("drink_list.php","_self"); 
+                var myWindow = window.open("drink_list.php", "_self");
             }
             else if (mainModel.getUsernameForSettings() == signView.getInputValueUsername()) {
                 //var myWindow = window.open("drink_list.html","_self"); 
                 //hier eig settings seite
                 //zum testen erst mal cocktail rating
                 $.cookie('service', 'true', { expires: 2, path: '/' });
-                var myWindow = window.open("service_menu.html","_self"); 
+                var myWindow = window.open("service_menu.html", "_self");
             }
             else {
                 alert("wrong username");
@@ -124,7 +130,7 @@ Boris.MainController = function () {
     setRadioListenerBitterLikert = function () {
 
         $radioBitterLikert.change(function () {
-           
+
             mainModel.setLikertBitterVal(event.target.value);
 
         });
@@ -164,76 +170,76 @@ Boris.MainController = function () {
         });
     },
 
-    handleCheckboxes = function() {
-        $checkbox.each(function(i, obj) {
-        
-        if (obj.checked) {
-                mainModel.setActiveCheckboxes(obj.id);   
+    handleCheckboxes = function () {
+        $checkbox.each(function (i, obj) {
+
+            if (obj.checked) {
+                mainModel.setActiveCheckboxes(obj.id);
             }
-        }); 
+        });
     },
 
-    onSendRating = function(event) {
-        
+    onSendRating = function (event) {
+
         //mit dieser Methode kann der komplette fragebogen ausgelesen werden
-        
+
         //vorher wird geprüft ob werte fehlen oder ungültige werte eingetragen wurden
-        
+
         handleCheckboxes();
 
         //age input ausgefüllt?
         if ($ageInput.val() > 0 && $ageInput.val() < 120) {
             //gender angegeben?
-            if(mainModel.getGenderVal() != null) {
+            if (mainModel.getGenderVal() != null) {
                 //mindestens eine checkbox angekreuzt?
-                if(mainModel.getActiveCheckboxes().length != 0) {    
+                if (mainModel.getActiveCheckboxes().length != 0) {
                     //likertsakalen verwendet?
-                    if(mainModel.getLikertBitterVal() != null &&
+                    if (mainModel.getLikertBitterVal() != null &&
                         mainModel.getLikertSweetVal() != null &&
                         mainModel.getLikertSourVal() != null &&
                         mainModel.getLikertFruityVal() != null &&
                         mainModel.getLikertStrongVal() != null) {
 
-                            //ToDo: hier werden werte ausgelesen (über getter von model)
-                            // danach schicken an server über AJAX
-                            console.log($ageInput.val()); 
-                            
-                            //var age = $ageInput.val();
+                        //ToDo: hier werden werte ausgelesen (über getter von model)
+                        // danach schicken an server über AJAX
+                        console.log($ageInput.val());
 
-                            //mainModel.getActiveCheckboxes(); 
-                            
-                            //mainModel.getGender(); 
+                        //var age = $ageInput.val();
 
-                            //mainModel.getLikertBitterVal(); 
-                            //mainModel.getLikertSweetVal(); 
-                            //mainModel.getLikertSourVal(); 
-                            //mainModel.getLikertFruityVal(); 
-                            //mainModel.getLikertStrongVal(); 
+                        //mainModel.getActiveCheckboxes(); 
 
-                    } else {                       
+                        //mainModel.getGender(); 
+
+                        //mainModel.getLikertBitterVal(); 
+                        //mainModel.getLikertSweetVal(); 
+                        //mainModel.getLikertSourVal(); 
+                        //mainModel.getLikertFruityVal(); 
+                        //mainModel.getLikertStrongVal(); 
+
+                    } else {
                         //displayDialog("likertskala nicht komplett");  
-                        alert("likertskala nicht komplett");  
-                    } 
+                        alert("likertskala nicht komplett");
+                    }
                 } else {
                     //displayDialog("keine checkbox");   
-                    alert("keine checkbox");   
+                    alert("keine checkbox");
                 }
             } else {
                 //displayDialog("Bitte Geschlecht auswählen");    
-                alert("Bitte Geschlecht auswählen");    
-            }                   
+                alert("Bitte Geschlecht auswählen");
+            }
         } else {
             //displayDialog("Ungültiger Wert für Alter");
             alert("Ungültiger Wert für Alter");
         }
-        
- 
+
+
     },
 
-    displayDialog = function(text) {
+    displayDialog = function (text) {
         //bootbox is a library which makes it easier to display dialogs
-        bootbox.alert(text, function() {
-          //Example.show("Hello world callback");      
+        bootbox.alert(text, function () {
+            //Example.show("Hello world callback");      
         });
     },
 
@@ -255,9 +261,14 @@ Boris.MainController = function () {
 	            searchView.onSearchResult(result);
 	        }
 	    });
-	};
+	},
+
+    orderDrink = function (drink) {
+        communicationHandler.orderDrink(drink);
+    };
 
     that.init = init;
+    that.orderDrink = orderDrink;
 
     return that;
 };

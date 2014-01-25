@@ -1,32 +1,93 @@
 Boris.CommunicationHandler = function () {
     var that = {},
 		mainController,
+        commands,
+        postData,
+        borisModel,
 
-    init = function () {
-        console.log("detail view init");
-
+    init = function (pBorisModel) {
+        console.log("communication handler init");
         mainController = Boris.MainController();
+        borisModel = pBorisModel;
+
+        //!!ToDo: change to new commands
+        commands = { "order": "ORDER",
+            "refill": "REFILL",
+            "config": "CONFIG",
+            "setGlassVol": "SETGLASSVOL",
+            "getGlassVol": "GETGLASSVOL"
+        };
     },
-
-    /*---Event Handlers---*/
-
 
     /*---Methods---*/
 
-    orderDrink = function () {
+    orderDrink = function (drink) {
         console.log("order drink");
-        console.log("Cors: ", $.support.cors);
+        var command = commands["order"] + ":";
+        var orderData = "";
+        //Get glass centiliter
+        var glassVolumeCl = 200; //!!ToDo: Get glass volume
 
+        $.each(drink.recipe, function (key, ingredient) {
+            if (orderData != "") { orderData += ";" }
+            //Calculate ingredient centiliter
+            var ingredientVolumeCl = ingredient.amount * glassVolumeCl;
+            //Concatenate data
+            orderData += ingredient.name + "," + ingredientVolumeCl;
+        });
+        postData = command + orderData;
+
+        sendRequest(handleOrderResponse);
+    },
+
+    handleOrderResponse = function (response) {
+        console.log("Success!", response);
+    },
+
+    refill = function () {
+        sendRequest(handleRefillResponse);
+    },
+
+    handleRefillResponse = function (response) {
+        console.log("Success!", response);
+    },
+
+    config = function () {
+        sendRequest(handleConfigResponse);
+    },
+
+    handleConfigResponse = function (response) {
+        console.log("Success!", response);
+    },
+
+    setGlassVol = function () {
+        sendRequest(handleSetGlassVolResponse);
+    },
+
+    handleSetGlassVolResponse = function (response) {
+        console.log("Success!", response);
+    },
+
+    getGlassVol = function () {
+        //!!ToDo: send Request when command is available: sendRequest(handleGetGlassVolResponse);
+        handleGetGlassVolResponse();
+    },
+
+    handleGetGlassVolResponse = function (response) {
+        console.log("Success!", response);
+        //borisModel.setGlassVolume(response);
+        borisModel.setGlassVolume(200);
+    },
+
+    sendRequest = function (responseHandler) {
         $.ajax({
-
             // The 'type' property sets the HTTP method.
             // A value of 'PUT' or 'DELETE' will trigger a preflight request.
             type: 'POST',
-
             // The URL to make the request to.
-            url: 'localhost:8009/',
-
-            data: 'ORDER:wodka,80',
+            url: 'http://localhost:8009/',
+            //data: 'ORDER:wodka,80',
+            data: postData,
 
             // The 'contentType' property sets the 'Content-Type' header.
             // The JQuery default for this property is
@@ -35,7 +96,6 @@ Boris.CommunicationHandler = function () {
             // application/x-www-form-urlencoded, multipart/form-data, or text/plain,
             // you will trigger a preflight request.
             contentType: 'text/plain',
-
             xhrFields: {
                 // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
                 // This can be used to set the 'withCredentials' property.
@@ -44,18 +104,15 @@ Boris.CommunicationHandler = function () {
                 // 'Access-Control-Allow-Credentials: true'.
                 withCredentials: false
             },
-
             headers: {
                 // Set any custom headers here.
                 // If you set any non-simple headers, your server must include these
                 // headers in the 'Access-Control-Allow-Headers' response header.
             },
-
             success: function (response) {
                 // Here's where you handle a successful response.
-                console.log("Success!", response);
+                responseHandler(response);
             },
-
             error: function (xhr, ajaxOptions, thrownError) {
                 // Here's where you handle an error response.
                 // Note that if the error was due to a CORS issue,
@@ -66,9 +123,14 @@ Boris.CommunicationHandler = function () {
         });
     };
 
+
     /*---Public variables and methods---*/
     that.init = init;
     that.orderDrink = orderDrink;
+    that.refill = refill;
+    that.config = config;
+    that.setGlassVol = setGlassVol;
+    that.getGlassVol = getGlassVol;
 
     return that;
 };

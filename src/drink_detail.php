@@ -40,7 +40,7 @@
         $recipe = $cocktail -> recipe;
         
         //Get all cocktails
-        $getCocktailsUrl = $base_url . 'getCocktails.php?rating=0';
+        $getCocktailsUrl = $base_url . 'getCocktails.php?rating=0&recipe=1';
 	    $allResult = json_decode(file_get_contents($getCocktailsUrl));    
         
         $allCocktails = $allResult->data;
@@ -54,7 +54,7 @@
 
   <body style="">
   <div id="action-bar"><!-- Navigation -->
-	<div id="logo"><a href="drink_list_02.php"><img src="img/logo_boris.png"></a></div>
+	<div id="logo"><a href="drink_list.php"><img src="img/logo_boris.png"></a></div>
     <ul class="nav navbar-nav navbar-right">
             <li>
                 <!--<div id="mixingProgress" class="nav navbar-text progress" style="min-width: 150px;">
@@ -319,18 +319,25 @@
     <script src="js/SignView.js"></script>
     <script src="js/QuestionnaireView.js"></script>
     <script src="js/DetailView.js"></script>
+    <script src="js/DrinkModel.js"></script>
+    <script src="js/BorisModel.js"></script>
     
     <script type="text/javascript">
         $(function() {
-    	    Boris.init();           
-                   
-            //Read all drinks from db
-            var allCocktails = $(<?php echo json_encode($allCocktails) ?>)[0];       
-            //Set and render the similar drinks
-            detailView.setAllDrinks(allCocktails);    
+    	    Boris.init();                
             
-            var similars = recommend(1);
-            detailView.setSimilarDrinkIds(recommend(<?php echo $drinkId; ?>));            
+            //Read data
+            var drinkId = <?php echo $drinkId; ?>;       
+            var allCocktails = $(<?php echo json_encode($allCocktails) ?>)[0]; 
+            
+            //Set values
+            drinkModel.setAllDrinks(allCocktails);
+            drinkModel.setDrinkId(drinkId);     
+            //Calculate and set similar
+            drinkModel.setSimilarIds(recommend(drinkId));
+            communicationHandler.getGlassVol();
+            
+            //Display
             detailView.renderSimilarDrinks();
 	    });
 	</script>
