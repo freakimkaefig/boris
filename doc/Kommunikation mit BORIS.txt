@@ -16,7 +16,7 @@ Als JSON:
 	[
 		{
 		id: "7",
-		name: "Weißer Rum",
+		name: "White Rum"",
 		description: "",
 		unit: "cl",
 		alcohol: "40",

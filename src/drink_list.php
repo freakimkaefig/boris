@@ -139,6 +139,8 @@
 <script src="js/SignView.js"></script>
 <script src="js/QuestionnaireView.js"></script>
 <script src="js/DetailView.js"></script>
+<script src="js/DrinkModel.js"></script>
+<script src="js/BorisModel.js"></script>
 
 <script>
 	$(function() {

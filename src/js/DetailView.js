@@ -6,12 +6,14 @@ Boris.DetailView = function () {
         searchSubmit,
         similarDrinkIds,
         is_tablet = false,
+        alcPercentage
 
-    init = function (pDrinkModel) {
+    init = function (pDrinkModel, pBorisModel) {
         console.log("detail view init");
 
         mainController = Boris.MainController();
         drinkModel = pDrinkModel;
+        borisModel = pBorisModel;
 
         //Check if tablet
         if ($.cookie('tablet') == "true") {
@@ -58,16 +60,27 @@ Boris.DetailView = function () {
             $("#similar_drinks").append(
                 '<a href="drink_detail.php?id=' + similarDrinkId + '"><div class="col-xs-' + gridRatio + ' text-center">' +
                 '<img src="img/' + drinkImgSrc + '" alt="' + drinkName + '" class="img-responsive center-block" />' +
-                renderRating() + "<br />" +
+                renderRating(similarDrink.rating.taste.average) + "<br />" +
                 '<strong>' + drinkName + '</strong>' +
                 '</div></a>');
         };
     },
 
+    /*
+    calcAlcPercentage = function () {
+        var glassVolume = borisModel.getGlassVolume();        
+    },
+
+    displayAlcPercentage = function () {
+        var glassVolume = borisModel.getGlassVolume();
+        $("alcPercentageCell").html();
+    },
+    */
+
     /*---Event Handlers---*/
 
-    onRateDrinkClick = function (drinkId) {
-        goToQuestionnaire(drinkId);
+    onRateDrinkClick = function () {
+        goToQuestionnaire();
     },
 
     onConfirmOrderDrinkBtn = function (drinkId) {
@@ -76,9 +89,9 @@ Boris.DetailView = function () {
 
     /*---Methods---*/
 
-    renderRating = function (ratingCount) {
+    renderRating = function (rating) {
         //Round rating
-        ratingCount = Math.round(ratingCount);
+        roundedRating = Math.round(rating);
 
         var filledContent = '<div class="glyphicon glyphicon-star"></div>';
         var emptyContent = '<div class="glyphicon glyphicon-star-empty"></div>';
@@ -87,14 +100,14 @@ Boris.DetailView = function () {
 
         //Render
         for (var i = 1; i <= 5; i++) {
-            if (i <= ratingCount) { renderedResult += filledContent; }
+            if (i <= roundedRating) { renderedResult += filledContent; }
             else { renderedResult += emptyContent; }
         }
         return renderedResult;
     },
 
-    goToQuestionnaire = function (drinkId) {
-        window.location = 'cocktail_rating.php?id=' + drinkId;
+    goToQuestionnaire = function () {
+        window.location = 'cocktail_rating.php?id=' + drinkModel.getDrinkId();
     },
 
     calculatePostData = function (drinId) {

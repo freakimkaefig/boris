@@ -245,10 +245,7 @@
     <script src="js/MainController.js"></script>
     <script src="js/MainModel.js"></script>
     <script src="js/SignView.js"></script>
-    
-  
     <script src="js/QuestionnaireView.js"></script>
-    <script src="js/DetailView.js"></script>
 
     <script>
         $(function () {

@@ -11,7 +11,7 @@ Boris.CommunicationHandler = function () {
         borisModel = pBorisModel;
 
         //!!ToDo: change to new commands
-        commands = { "order": "ORDER",
+        commands = { "order": "order",
             "refill": "REFILL",
             "config": "CONFIG",
             "setGlassVol": "SETGLASSVOL",
@@ -23,25 +23,27 @@ Boris.CommunicationHandler = function () {
 
     orderDrink = function (drink) {
         console.log("order drink");
-        var command = commands["order"] + ":";
-        var orderData = "";
-        //Get glass centiliter
-        var glassVolumeCl = 200; //!!ToDo: Get glass volume
 
-        $.each(drink.recipe, function (key, ingredient) {
+        /*            
+            var orderData = "";
+            //Get glass centiliter
+            var glassVolumeCl = 200; //!!ToDo: Get glass volume
+       
+            $.each(drink.recipe, function (key, ingredient) {
             if (orderData != "") { orderData += ";" }
             //Calculate ingredient centiliter
             var ingredientVolumeCl = ingredient.amount * glassVolumeCl;
             //Concatenate data
             orderData += ingredient.name + "," + ingredientVolumeCl;
-        });
-        postData = command + orderData;
-
+            });
+            postData = command + orderData;
+        */
+        postData = '{"order":' + drink + '}';
         sendRequest(handleOrderResponse);
     },
 
     handleOrderResponse = function (response) {
-        console.log("Success!", response);
+        console.log("Success?", response);
     },
 
     refill = function () {
@@ -75,7 +77,7 @@ Boris.CommunicationHandler = function () {
 
     handleGetGlassVolResponse = function (response) {
         console.log("Success!", response);
-        //borisModel.setGlassVolume(response);
+        //!!ToDo
         borisModel.setGlassVolume(200);
     },
 
@@ -86,8 +88,9 @@ Boris.CommunicationHandler = function () {
             type: 'POST',
             // The URL to make the request to.
             url: 'http://localhost:8009/',
-            //data: 'ORDER:wodka,80',
+            //data: 'order:wodka,100',
             data: postData,
+            //data: '{"getStatus":"glassVol"}',
 
             // The 'contentType' property sets the 'Content-Type' header.
             // The JQuery default for this property is

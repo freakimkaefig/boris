@@ -3,10 +3,12 @@ Boris.BorisModel = function () {
 
 	mainController,
     glassVolume,
+    $borisModel,
 
     init = function () {
         console.log("boris model init");
         mainController = Boris.MainController();
+        $borisModel = $(Boris.BorisModel);
     },
 
     /*---Methods---*/
@@ -17,6 +19,7 @@ Boris.BorisModel = function () {
 
     setGlassVolume = function (pGlassVolume) {
         glassVolume = pGlassVolume;
+        $borisModel.trigger("setGlassVolume", glassVolume);
     };
 
     /*---Public variables and methods---*/

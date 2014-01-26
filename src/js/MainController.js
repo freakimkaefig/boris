@@ -30,32 +30,48 @@ Boris.MainController = function () {
     init = function () {
         console.log("controller init");
         //model initialisieren
-        mainModel = Boris.MainModel();
-        mainModel.init();
+        if (Boris.MainModel != null) {
+            mainModel = Boris.MainModel();
+            mainModel.init();
+        }
 
         //SearchView initialisieren
-        searchView = Boris.SearchView();
-        searchView.init();
-        $(searchView).on('search', onSearch);
+        if (Boris.SearchView != null) {
+            searchView = Boris.SearchView();
+            searchView.init();
+            $(searchView).on('search', onSearch);
+        }
 
-        filterView = Boris.FilterView();
-        filterView.init();
+        if (Boris.FilterView != null) {
+            filterView = Boris.FilterView();
+            filterView.init();
+        }
 
-        signView = Boris.SignView();
-        signView.init();
+        if (Boris.SignView != null) {
+            signView = Boris.SignView();
+            signView.init();
+        }
 
-        borisModel = Boris.BorisModel();
-        if (borisModel != null) borisModel.init();
+        if (Boris.BorisModel != null) {
+            borisModel = Boris.BorisModel();
+            borisModel.init();
+        }
 
-        drinkModel = Boris.DrinkModel();
-        if (drinkModel != null) drinkModel.init();
+        if (Boris.DrinkModel != null) {
+            drinkModel = Boris.DrinkModel();
+            drinkModel.init();
+        }
 
-        detailView = Boris.DetailView();
-        detailView.init(drinkModel);
+        if (Boris.DetailView != null) {
+            detailView = Boris.DetailView();
+            detailView.init(drinkModel, borisModel);
+        }
 
-        communicationHandler = Boris.CommunicationHandler();
-        if (communicationHandler != null) communicationHandler.init(borisModel);
-        
+        if (Boris.CommunicationHandler != null) {
+            communicationHandler = Boris.CommunicationHandler();
+            communicationHandler.init(borisModel);
+        }
+
 
         $signInButton = $("#sign-in-button");
         $signInButton.on("click", onSignIn);
