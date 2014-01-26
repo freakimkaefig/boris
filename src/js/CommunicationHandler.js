@@ -9,36 +9,15 @@ Boris.CommunicationHandler = function () {
         console.log("communication handler init");
         mainController = Boris.MainController();
         borisModel = pBorisModel;
-
-        //!!ToDo: change to new commands
-        commands = { "order": "order",
-            "refill": "REFILL",
-            "config": "CONFIG",
-            "setGlassVol": "SETGLASSVOL",
-            "getGlassVol": "GETGLASSVOL"
-        };
     },
 
     /*---Methods---*/
 
     orderDrink = function (drink) {
         console.log("order drink");
-
-        /*            
-            var orderData = "";
-            //Get glass centiliter
-            var glassVolumeCl = 200; //!!ToDo: Get glass volume
-       
-            $.each(drink.recipe, function (key, ingredient) {
-            if (orderData != "") { orderData += ";" }
-            //Calculate ingredient centiliter
-            var ingredientVolumeCl = ingredient.amount * glassVolumeCl;
-            //Concatenate data
-            orderData += ingredient.name + "," + ingredientVolumeCl;
-            });
-            postData = command + orderData;
-        */
-        postData = '{"order":' + drink + '}';
+        //postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",}";
+        postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":false}';
+        console.log(postData);
         sendRequest(handleOrderResponse);
     },
 
@@ -88,9 +67,8 @@ Boris.CommunicationHandler = function () {
             type: 'POST',
             // The URL to make the request to.
             url: 'http://localhost:8009/',
-            //data: 'order:wodka,100',
+            // Here is defined which data shall be sent. This is interpreted by BORIS.
             data: postData,
-            //data: '{"getStatus":"glassVol"}',
 
             // The 'contentType' property sets the 'Content-Type' header.
             // The JQuery default for this property is

@@ -144,7 +144,7 @@
                   </div>
                     <table class="table table-striped">
                         <tr>
-                            <td>Sour</td><td>
+                            <td class="col-xs-6">Sour</td><td class="col-xs-6">
                             <?php 
                                 if(array_key_exists('sour', $cocktail->rating)) {
                                     $rating = $cocktail->rating->sour;
@@ -222,7 +222,7 @@
                     <table class="table table-striped">
                         <?php 
                             foreach ($cocktail->recipe as $ingredient) {    
-                                print '<tr><td>' . $ingredient->name . '</td><td><span class="badge">' . ($ingredient->amount * 100) . ' %</span></td></tr>';
+                                print '<tr><td class="col-xs-6">' . $ingredient->name . '</td><td class="col-xs-6"><span class="badge">' . ($ingredient->amount * 100) . ' %</span></td></tr>';
                             }
                         ?>
                     </table>
@@ -257,7 +257,7 @@
                     </div>
                     <table class="table table-striped">
                     <tr>
-                        <td>Look</td><td><span class="badge">
+                        <td class="col-xs-6">Look</td><td class="col-xs-6"><span class="badge">
                         <?php 
                             print round($cocktail->rating->look->average, 0, PHP_ROUND_HALF_UP) . ' / 5';
                         ?></span></td>
@@ -306,6 +306,7 @@
     <script src="js/bootstrap/bootstrap.min.js"></script>
     
     <script src="js/libs/jquery.cookie.js"></script>
+    <script src="js/libs/json2.js"></script>
     
     <!-- Custom Javascript -->         
     <script src="js/App.js"></script>  
