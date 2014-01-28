@@ -5,9 +5,14 @@ Boris.QuestionnaireView = function() {
     init = function() {
         console.log("QuestionnaireView view init");
 
+    },
+
+    displayAlert = function(string) {
+    	alert(string);
     };
 
     that.init = init;
+    that.displayAlert = displayAlert;
 
     return that;
 };

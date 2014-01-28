@@ -5,7 +5,7 @@ Boris.MainController = function() {
     searchView = null,
 	filterView = null,
     signView = null,
-    signView = null,
+    questionnaireView = null,
     $signInButton = null,
 	$searchButton = null,
 
@@ -48,6 +48,9 @@ Boris.MainController = function() {
 
         detailView = Boris.DetailView();
         detailView.init();
+
+        questionnaireView = Boris.QuestionnaireView();
+        questionnaireView.init();
 
         $signInButton = $("#sign-in-button");
         $signInButton.on("click", onSignIn);   
@@ -182,7 +185,7 @@ Boris.MainController = function() {
         handleCheckboxes();
 
         //age input ausgefüllt?
-        if ($ageInput.val() > 0 && $ageInput.val() < 120) {
+        if($ageInput.val() > 0 && $ageInput.val() < 120) {
             //gender angegeben?
             if(mainModel.getGenderVal() != null) {
                 //mindestens eine checkbox angekreuzt?
@@ -212,19 +215,23 @@ Boris.MainController = function() {
 
                     } else {                       
                         //displayDialog("likertskala nicht komplett");  
-                        alert("likertskala nicht komplett");  
+                        questionnaireView.displayAlert("likertskala nicht komplett");
+                        //alert("likertskala nicht komplett");  
                     } 
                 } else {
                     //displayDialog("keine checkbox");   
-                    alert("keine checkbox");   
+                    questionnaireView.displayAlert("keine checkbox");
+                    //alert("keine checkbox");   
                 }
             } else {
                 //displayDialog("Bitte Geschlecht auswählen");    
-                alert("Bitte Geschlecht auswählen");    
+                questionnaireView.displayAlert("Bitte Geschlecht auswählen");
+                //alert("Bitte Geschlecht auswählen");    
             }                   
         } else {
             //displayDialog("Ungültiger Wert für Alter");
-            alert("Ungültiger Wert für Alter");
+            questionnaireView.displayAlert("Ungültiger Wert für Alter");
+            //alert("Ungültiger Wert für Alter");
         }
         
  
