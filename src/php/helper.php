@@ -16,4 +16,18 @@
             else { print($emptyContent); }
         }
     }
+    
+    function calcAlcPercentage($recipe) {
+        //amount * alcohol
+        $alcoholPercentage = 0.0;
+        
+        foreach($recipe as $ingredient)
+        {
+            //echo $ingredient->alcohol;
+            $alcoholPercentage += $ingredient->alcohol * $ingredient->amount;
+        }
+        
+        //$alcoholPercentage = 0.6 * 40 + 0.2 * 25;
+        echo $alcoholPercentage;
+    }
 ?>

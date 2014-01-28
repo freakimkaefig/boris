@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>BORIS - Cocktail Rating</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -245,10 +245,7 @@
     <script src="js/MainController.js"></script>
     <script src="js/MainModel.js"></script>
     <script src="js/SignView.js"></script>
-    
-  
     <script src="js/QuestionnaireView.js"></script>
-    <script src="js/DetailView.js"></script>
 
     <script>
         $(function () {

@@ -6,7 +6,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>BORIS - Cocktail details</title>
+    <title>BORIS - Drink Details</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -40,7 +40,7 @@
         $recipe = $cocktail -> recipe;
         
         //Get all cocktails
-        $getCocktailsUrl = $base_url . 'getCocktails.php?rating=0';
+        $getCocktailsUrl = $base_url . 'getCocktails.php?rating=0&recipe=1';
 	    $allResult = json_decode(file_get_contents($getCocktailsUrl));    
         
         $allCocktails = $allResult->data;
@@ -54,7 +54,7 @@
 
   <body style="">
   <div id="action-bar"><!-- Navigation -->
-	<div id="logo"><a href="drink_list_02.php"><img src="img/logo_boris.png"></a></div>
+	<div id="logo"><a href="drink_list.php"><img src="img/logo_boris.png"></a></div>
     <ul class="nav navbar-nav navbar-right">
             <li>
                 <!--<div id="mixingProgress" class="nav navbar-text progress" style="min-width: 150px;">
@@ -125,7 +125,7 @@
                 <img class="img-responsive pull-right" src="img/drink_example.jpg"  style="height: 100%"/>
             </div>
             <div class="col-xs-6">
-                <div class="pull-left">
+                <div class="pull-left" style="margin-top: 65px;">
                     <div class="h1"><?php print $cocktail->name; ?></div>
                     <?php 
                         $rating = round($cocktail->rating->taste->average, 0, PHP_ROUND_HALF_UP);
@@ -144,10 +144,7 @@
                   </div>
                     <table class="table table-striped">
                         <tr>
-                            <td>Most orders rank</td><td><span class="badge"><?php print $cocktail->orders; ?></span></td>
-                        </tr>
-                        <tr>
-                            <td>Sour</td><td>
+                            <td class="col-xs-6">Sour</td><td class="col-xs-6">
                             <?php 
                                 if(array_key_exists('sour', $cocktail->rating)) {
                                     $rating = $cocktail->rating->sour;
@@ -186,7 +183,12 @@
                             ?></td>
                         </tr>
                         <tr>
-                            <td>Alcohol percentage</td><td><span class="badge"><?php print $cocktail->orders; ?></span></td>
+                            <td>Alcohol percentage</td><td><span id="alcPercentageCell" class="badge">
+                                <?php 
+                                    echo calcAlcPercentage($cocktail->recipe) . " %";
+                                ?>
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Strength taste</td><td><span class="badge">
@@ -220,7 +222,7 @@
                     <table class="table table-striped">
                         <?php 
                             foreach ($cocktail->recipe as $ingredient) {    
-                                print '<tr><td>' . $ingredient->name . '</td><td><span class="badge">' . ($ingredient->amount * 100) . 'cl</span></td></tr>';
+                                print '<tr><td class="col-xs-6">' . $ingredient->name . '</td><td class="col-xs-6"><span class="badge">' . ($ingredient->amount * 100) . ' %</span></td></tr>';
                             }
                         ?>
                     </table>
@@ -244,11 +246,9 @@
                     <h2 class="panel-title"><strong>Recipe</strong></h2>
                   </div>
                   <div class="panel-body">
-                    <ol>
-                        <li>Shake gin, juice of lemon, and powdered sugar</li>
-                        <li>Strain into a highball glass over two ice cubes. </li>
-                        <li>Fill with carbonated water, stir, and serve. </li>
-                    </ol>
+                    <?php 
+                        echo $cocktail->recipedescription;
+                    ?>                    
                   </div>
                 </div>                
                 <div class="panel panel-default">
@@ -257,7 +257,7 @@
                     </div>
                     <table class="table table-striped">
                     <tr>
-                        <td>Look</td><td><span class="badge">
+                        <td class="col-xs-6">Look</td><td class="col-xs-6"><span class="badge">
                         <?php 
                             print round($cocktail->rating->look->average, 0, PHP_ROUND_HALF_UP) . ' / 5';
                         ?></span></td>
@@ -269,7 +269,10 @@
                             if((int) $orders > 0) { print $orders; } 
                             else { print 0; }
                         ?></td></span>
-                    </tr>
+                    </tr>                    
+                    <!-- <tr>
+                        <td>Most orders rank</td><td><span class="badge"><?php //print $cocktail->orders; ?></span></td>
+                    </tr> -->
                     </table>
                 </div>                
             </div>
@@ -279,13 +282,9 @@
                     <h3 class="panel-title"><strong>Description</strong></h3>
                   </div>
                   <div class="panel-body">
-                    A Gin Fizz is the best-known cocktail in the Fizz family. The first printed reference to a fizz (spelled "fiz") is in the 1887 
-                    edition of Jerry Thomas' Bartender's Guide, which contains six fizz recipes. 
-                    The Fizz became widely popular in America between 1900 and the 1940s. Known 
-                    as a hometown specialty of New Orleans, the Gin Fizz was so popular that bars 
-                    would employ scrums of bartenders working in teams that would take turns shaking 
-                    the fizzes. Demand for fizzes went international as evidenced by the inclusion of 
-                    the cocktail in the French cookbook L'Art Culinaire Francais published in 1950.
+                    <?php 
+                        echo $cocktail->description;
+                    ?>
                   </div>
                 </div>
             </div>
@@ -307,10 +306,12 @@
     <script src="js/bootstrap/bootstrap.min.js"></script>
     
     <script src="js/libs/jquery.cookie.js"></script>
+    <script src="js/libs/json2.js"></script>
     
-    <!-- Custom Javascript -->        
-    <script src="js/Recommender.js" type="text/javascript"></script>
-    <script src="js/App.js"></script>
+    <!-- Custom Javascript -->         
+    <script src="js/App.js"></script>  
+    <script src="js/Recommender.js" type="text/javascript"></script>    
+    <script src="js/CommunicationHandler.js" type="text/javascript"></script>
     <script src="js/SearchView.js"></script>
     <script src="js/FilterView.js"></script>
     <script src="js/MainController.js"></script>
@@ -318,19 +319,30 @@
     <script src="js/SignView.js"></script>
     <script src="js/QuestionnaireView.js"></script>
     <script src="js/DetailView.js"></script>
+    <script src="js/DrinkModel.js"></script>
+    <script src="js/BorisModel.js"></script>
     
     <script type="text/javascript">
         $(function() {
-    	    Boris.init();           
-                   
-            //Read all drinks from db
-            var allCocktails = $(<?php echo json_encode($allCocktails) ?>)[0];       
-            //Set and render the similar drinks
-            detailView.setAllDrinks(allCocktails);     
-            var similars = recommend(1);
-            detailView.setSimilarDrinkIds(recommend(<?php echo $drinkId; ?>));            
+    	    Boris.init();                
+            
+            //Read data
+            var drinkId = <?php echo $drinkId; ?>;       
+            var allCocktails = $(<?php echo json_encode($allCocktails) ?>)[0]; 
+            
+            //Set values
+            drinkModel.setAllDrinks(allCocktails);
+            drinkModel.setDrinkId(drinkId);   
+            
+            //Calculate and set similar
+            drinkModel.setSimilarIds(recommend(drinkId));
+            communicationHandler.getGlassVol();
+            //detailView.calcAlcPercentage();
+            
+            //Display
             detailView.renderSimilarDrinks();
-
+            //detailView.displayAlcPercentage();
+            
 	    });
 	</script>
 

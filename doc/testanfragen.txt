@@ -1,0 +1,5 @@
+String orderJson = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"false\"}";
+		String refillJson = "{\"refill\": {\"id\": \"1\",\"fillingLevel\": \"500\" }}";
+		String configJson = "{\"config\": {\"id\": \"1\",\"fillingLevel\": \"500\",\"name\": \"gin\",\"containerSize\": \"500\", }}";
+		String statusJson = "{\"getStatus\":\"glassVol\"}";
+		String glassJson = "{\"setGlassVol\":{\"volume\":\"300\"}}";

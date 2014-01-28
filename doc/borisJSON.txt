@@ -1,0 +1,46 @@
+Nachfüllen:
+{"refill": 
+{
+"id": "1",
+"fillingLevel": "500" 
+}
+}
+Antwort:
+{"success": true/false}
+
+Config:
+{"config": 
+{
+"id":1, 
+"fillingLevel": 100, 
+"name": "gin", 
+"containerSize": 500 
+}
+}
+Antwort:
+{"success": true/false}
+
+Glasvolumen:
+{"setGlassVol": 
+{
+"volume":200
+}
+}
+Antwort:
+{"success": true/false}
+
+Statusabfrage:
+{"getStatus": "glassVol" }
+Antwort:
+{"volume": 100} 
+
+Statusabfrage:
+{"getStatus": "config" }
+Antwort:
+[{
+"id":1, 
+"fillingLevel": 100, 
+"name": "gin", 
+"containerSize": 500 
+},...] (falls noch keine Daten vorhanden sind, dann ist das Array leer [])
+
