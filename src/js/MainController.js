@@ -75,6 +75,11 @@ Boris.MainController = function () {
 
         $signInButton = $("#sign-in-button");
         $signInButton.on("click", onSignIn);
+        $('#sing-in-form').keypress(function (e) {
+            if (e.which == 13) {
+                $signInButton.click();
+            }
+        });
 
         //init radio groups for filtering       
         $radioTasteGroup = $(".taste");
@@ -112,14 +117,14 @@ Boris.MainController = function () {
 
         if (mainModel.getCorrectPassword() == signView.getInputValuePassword()) {
             if (mainModel.getUsernameForDrinkList() == signView.getInputValueUsername()) {
-                $.cookie('tablet', 'true', { expires: 2, path: '/' });
+                $.cookie('tablet', 'true', { expires: 1, path: '/' });
                 var myWindow = window.open("drink_list.php", "_self");
             }
             else if (mainModel.getUsernameForSettings() == signView.getInputValueUsername()) {
                 //var myWindow = window.open("drink_list.html","_self"); 
                 //hier eig settings seite
                 //zum testen erst mal cocktail rating
-                $.cookie('service', 'true', { expires: 2, path: '/' });
+                $.cookie('service', 'true', { expires: 1, path: '/' });
                 var myWindow = window.open("service_menu.html", "_self");
             }
             else {
