@@ -74,9 +74,10 @@ Boris.MainController = function () {
             communicationHandler.init(borisModel);
         }
 
-
-        questionnaireView = Boris.QuestionnaireView();
-        questionnaireView.init();
+        if (Boris.DetailView != null) {
+            questionnaireView = Boris.QuestionnaireView();
+            questionnaireView.init();
+        }
 
         $signInButton = $("#sign-in-button");
         $signInButton.on("click", onSignIn);
@@ -214,7 +215,7 @@ Boris.MainController = function () {
         handleCheckboxes();
 
         //age input ausgefüllt?
-        if($ageInput.val() > 0 && $ageInput.val() < 120) {
+        if ($ageInput.val() > 0 && $ageInput.val() < 120) {
             //gender angegeben?
             if (mainModel.getGenderVal() != null) {
                 //mindestens eine checkbox angekreuzt?
