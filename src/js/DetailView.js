@@ -20,6 +20,10 @@ Boris.DetailView = function () {
             is_tablet = true;
             $('#rateDrink').hide(); //Hide "Rate" Button
             $('#orderDrink').show();    //Show "Order" Button
+        } else {
+            is_tablet = false;
+            $('#rateDrink').show(); //Hide "Rate" Button
+            $('#orderDrink').hide();    //Show "Order" Button
         }
 
         $rateDrinkBtn = $("#rateDrink");
@@ -68,12 +72,12 @@ Boris.DetailView = function () {
 
     /*
     calcAlcPercentage = function () {
-        var glassVolume = borisModel.getGlassVolume();        
+    var glassVolume = borisModel.getGlassVolume();        
     },
 
     displayAlcPercentage = function () {
-        var glassVolume = borisModel.getGlassVolume();
-        $("alcPercentageCell").html();
+    var glassVolume = borisModel.getGlassVolume();
+    $("alcPercentageCell").html();
     },
     */
 

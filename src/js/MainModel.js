@@ -1,7 +1,7 @@
 Boris.MainModel = function() {
     var that = {},
-    normalUsername = "normaluser",
-    settingsUsername = "settingsuser",
+    normalUsername = "tablet",
+    settingsUsername = "servicemenu",
     correctPW = "0000",
     taste = null,
     alcStrength = null,
