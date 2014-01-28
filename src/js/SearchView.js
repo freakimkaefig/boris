@@ -145,6 +145,7 @@ Boris.SearchView = function () {
 
     that.init = init;
     that.onSearchResult = onSearchResult;
+    that.hideCocktailsById = hideCocktailsById;
 
 
     return that;

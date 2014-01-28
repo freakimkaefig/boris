@@ -46,7 +46,7 @@ Boris.MainController = function () {
 
         if (Boris.FilterView != null) {
             filterView = Boris.FilterView();
-            filterView.init();
+            filterView.init(searchView);
         }
 
         if (Boris.SignView != null) {
