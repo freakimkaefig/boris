@@ -71,19 +71,7 @@
                 <button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
                     Rate
                     <span class="glyphicon glyphicon-star-empty"></span>
-                </button>
-                <!--<a href="drink_rate.html">  
-                    <button id="btn_rate" type="button" class="btn btn-actionbar">   
-                             
-                        <span class="glyphicon glyphicon-star-empty"></span> 
-                        Rate
-                    </button>
-                    </a> -->
-                <!-- <a href="cocktail_rating.php" class="btn btn-default navbar-btn navbar-right">     
-                    <span class="glyphicon glyphicon-star-empty"></span> 
-                    Rate
-                </a> -->
-                
+                </button>               
                 
                 <!--<button id="stopMixing" type="button" class="btn btn-default navbar-btn navbar-right hidden" data-toggle="modal" data-target="#modal_confirmOrder">
                     Stop
@@ -147,10 +135,12 @@
                             <td class="col-xs-6">Sour</td><td class="col-xs-6">
                             <?php 
                                 if(array_key_exists('sour', $cocktail->rating)) {
-                                    $rating = $cocktail->rating->sour;
+                                    $rating = $cocktail->rating->sour->average;
                                     if($rating != null) {
-                                        echo renderRating($rating -> average,5,
-                                            $ratingFilledRendering,$ratingEmptyRendering);
+                                        $myRatingFilledRendering    = "<img src='img/sour0.png' class='attribute-rating'/>";
+                                        $myRatingEmptyRendering     = "<img src='img/sour2.png' class='attribute-rating'/>";                                    
+                                        echo renderRating($rating,5,
+                                            $myRatingFilledRendering, $myRatingEmptyRendering);
                                     }
                                 }
                                 else {
@@ -162,24 +152,45 @@
                             <td>Sweet</td><td>
                             <?php 
                                 $rating = $cocktail->rating->sweet->average;
-                                echo renderRating($rating,5,
-                                    $ratingFilledRendering,$ratingEmptyRendering);
+                                if($rating != null) {
+                                    $myRatingFilledRendering    = "<img src='img/sweet0.png' class='attribute-rating'/>";
+                                    $myRatingEmptyRendering     = "<img src='img/sweet2.png' class='attribute-rating'/>";                                    
+                                    echo renderRating($rating,5,
+                                        $myRatingFilledRendering,$myRatingEmptyRendering);
+                                }
+                                else {
+                                    print ('<span class="badge">No ratings</span>');
+                                }
                             ?></td>
                         </tr>
                         <tr>
                             <td>Bitter</td><td>
                             <?php 
                                 $rating = $cocktail->rating->bitter->average;
-                                echo renderRating($rating,5,
-                                    $ratingFilledRendering,$ratingEmptyRendering);
+                                if($rating != null) {
+                                    $myRatingFilledRendering    = "<img src='img/bitter0.png' class='attribute-rating'/>";
+                                    $myRatingEmptyRendering     = "<img src='img/bitter2.png' class='attribute-rating'/>";                                    
+                                    echo renderRating($rating,5,
+                                        $myRatingFilledRendering,$myRatingEmptyRendering);
+                                }
+                                else {
+                                    print ('<span class="badge">No ratings</span>');
+                                }
                             ?></td>
                         </tr>
                         <tr>
                             <td>Fruity</td><td>
                             <?php 
-                                $rating = $cocktail->rating->sweet->average;
-                                echo renderRating($rating,5,
-                                    $ratingFilledRendering,$ratingEmptyRendering);
+                                $rating = $cocktail->rating->fruity->average;
+                                if($rating != null) {
+                                    $myRatingFilledRendering    = "<img src='img/fruity0.png' class='attribute-rating'/>";
+                                    $myRatingEmptyRendering     = "<img src='img/fruity2.png' class='attribute-rating'/>";                                    
+                                    echo renderRating($rating,5,
+                                        $myRatingFilledRendering,$myRatingEmptyRendering);
+                                }
+                                else {
+                                    print ('<span class="badge">No ratings</span>');
+                                }
                             ?></td>
                         </tr>
                         <tr>
@@ -191,12 +202,24 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Strength taste</td><td><span class="badge">
+                            <td>Strength taste</td><td>
                                 <?php 
-                                    $strengthRounded = round($cocktail->rating->strong->average, 1, PHP_ROUND_HALF_UP);
-                                    print $strengthRounded . " / 5";                                
+                                    //$strengthRounded = round($cocktail->rating->strong->average, 1, PHP_ROUND_HALF_UP);
+                                    //print $strengthRounded . " / 5";                                
                                 ?>
-                            </span></td>
+                                <?php 
+                                    $rating = $cocktail->rating->strong->average;
+                                    if($rating != null) {
+                                        $myRatingFilledRendering    = "<img src='img/alcohol0.png' class='attribute-rating'/>";
+                                        $myRatingEmptyRendering     = "<img src='img/alcohol2.png' class='attribute-rating'/>";                                    
+                                        echo renderRating($rating,5,
+                                            $myRatingFilledRendering,$myRatingEmptyRendering);
+                                    }
+                                    else {
+                                        print ('<span class="badge">No ratings</span>');
+                                    }
+                                ?>
+                            </td>
                         </tr>
                         <tr>
                             <td>Events</td><td>
