@@ -45,17 +45,17 @@
             <div class="col-xs-6 col-md-3">
                 <div class="input-group">
                     <h4>
-                        Alter</h4>
+                        Age</h4>
                     <input id="age-questionnaire" type="text" class="form-control">
                 </div>
             </div>
             <div class="col-xs-6 col-md-3">
                 <h4>
-                    Geschlecht</h4>
+                    Sex</h4>
                 <label class="radio-inline">
                     <input name="radioGroup" id="männlich" value="m" type="radio" class="genderRadios">m</label>
                 <label class="radio-inline">
-                    <input name="radioGroup" id="weiblich" value="w" type="radio" class="genderRadios">w</label>
+                    <input name="radioGroup" id="weiblich" value="w" type="radio" class="genderRadios">f</label>
             </div>
         </div><!-- end first row -->
         <hr />
@@ -65,15 +65,15 @@
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
                     <div class="col-xs-7 col-sm-7 col-md-7">
-                        <p class="alignleft">&#60;Trifft nicht zu</p>
-                        <p class="alignright">Trifft zu&#62;</p>
+                        <p class="alignleft">&#60;disagree</p>
+                        <p class="alignright">agree&#62;</p>
                     </div>
                     <div class="col-xs-3 col-sm-3 col-md-3">
                     </div>
                 </div>  
                 <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-2">
-                        <h4>Herb</h4>
+                        <h4>Bitter</h4>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Herb -->
                             <label class="radio-inline">
@@ -92,7 +92,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-2">
-                        <h4>Süß</h4>
+                        <h4>Sweet</h4>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Süß -->
                         <label class="radio-inline">
@@ -111,7 +111,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-2">
-                        <h4>Sauer</h4>
+                        <h4>Sour</h4>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Sauer -->
                         <label class="radio-inline">
@@ -130,7 +130,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-2">
-                        <h4>Fruchtig</h4>
+                        <h4>Fruity</h4>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Fruchtig -->
                         <label class="radio-inline">
@@ -149,7 +149,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-2">
-                        <h4>Stark</h4>
+                        <h4>Strong</h4>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Stark -->
                         <label class="radio-inline">
@@ -166,46 +166,88 @@
                     <div class="col-xs-2 col-sm-2 col-md-2">
                     </div>
                 </div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <h4>tastes bad</h4>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Geschmack -->
+                        <label class="radio-inline">
+                            <input class="likertTaste" name="radioGroup6" id="Taste1" value="1" type="radio"></label>
+                        <label class="radio-inline">
+                            <input class="likertTaste" name="radioGroup6" id="Taste2" value="2" type="radio"></label>
+                        <label class="radio-inline">
+                            <input class="likertTaste" name="radioGroup6" id="Taste3" value="3" type="radio"></label>
+                        <label class="radio-inline">
+                            <input class="likertTaste" name="radioGroup6" id="Taste4" value="4" type="radio"></label>
+                        <label class="radio-inline">
+                            <input class="likertTaste" name="radioGroup6" id="Taste5" value="5" type="radio"></label>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <h4>tastes good</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <h4>looks bad</h4>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8" align="center"> <!-- Look -->
+                        <label class="radio-inline">
+                            <input class="likertLook" name="radioGroup7" id="Look6" value="1" type="radio"></label>
+                        <label class="radio-inline">
+                            <input class="likertLook" name="radioGroup7" id="Look7" value="2" type="radio"></label>
+                        <label class="radio-inline">
+                            <input class="likertLook" name="radioGroup7" id="Look8" value="3" type="radio"></label>
+                        <label class="radio-inline">
+                            <input class="likertLook" name="radioGroup7" id="Look9" value="4" type="radio"></label>
+                        <label class="radio-inline">
+                            <input class="likertLook" name="radioGroup7" id="Look10" value="5" type="radio"></label>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                    <h4>looks good</h4>
+                    </div>
+                </div>
+                <hr /> <!-- liitle spacing-->
             </div> <!-- end Geschmack -->
             
             <div class="col-xs-12 col-sm-6 col-md-6"> <!-- Assoziation -->
-               <h5>Mit welchen dieser Ereignisse assoziieren Sie diesen Cocktail am meisten?</h5> 
+               <h5>Which of these events do you associate this cocktail the most?</h5> 
                <div class="row">
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="amStrand">Am Strand</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="amStrand">At the beach</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option2" id="Firmenfeier">Firmenfeier</label>
+                                <input class="checkbox-input" type="checkbox" value="option2" id="Firmenfeier">Company party</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option3" id="Junggesellenabschied">Junggesellenabschied</label>
+                                <input class="checkbox-input" type="checkbox" value="option3" id="Junggesellenabschied">Bachelor</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Hochzeit">Hochzeit</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Hochzeit">Wedding</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="In der Cocktailbar">In der Cocktailbar</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="In der Cocktailbar">Cocktail bar</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Nach dem Essen">Nach dem Essen</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Nach dem Essen">After meals</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Daheim auf dem Sofa">Daheim auf dem Sofa</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Daheim auf dem Sofa">At home on the sofa</label>
                     </div>
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Checkbox1">Zum Vorglühen</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Checkbox1">Predrinking</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Beim ersten Date">Beim ersten Date</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Beim ersten Date">First date</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="In der Disco">In der Disco</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="In der Disco">In the club</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="WG-Party">WG-Party</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="WG-Party">House party</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Am Sommerabend">Am Sommerabend</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Am Sommerabend">Summer evening</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Kalter Winterabend">Kalter Winterabend</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="Kalter Winterabend">Cold winter evening</label>
                     </div>
                </div>
                
             </div> <!-- end Assoziation -->
             </div>
-            <hr /> <!-- liitle spacing-->
+            <br /> <!-- liitle spacing-->
 
             <div class="row"> <!-- Send Questionnaire -->
                 <div class="col-xs-12 col-md-12">
