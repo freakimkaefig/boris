@@ -4,6 +4,10 @@ Boris.FilterView = function () {
     var filterdElementsAll = [];
     var that = {},
     searchView,
+    $searchOutput,
+    $searchOutputText,
+    searchOutputValue = "",
+    $searchOutputClose,
 
 
     init = function (searchViewValue) {
@@ -18,24 +22,47 @@ Boris.FilterView = function () {
                     filterdElementsTaste = [];
                     filter(this.value);
 
+                    searchOutputValue += this.value + " ";
                 }
                 else {
                     filterdElementsAlc = [];
                     filterAlc(this.value);
+
+                    searchOutputValue += this.value;
                 }
 
                 searchView = searchViewValue;
                 refresh();
 
+                onFilter();
+
             });
         });
 
+        //Statuszeile
+        $searchOutput = $('#search-output');
+        $searchOutputText = $('#search-output .output-line #output');
+        $searchOutputClose = $('#search-output .output-line #close');
+        $searchOutputClose.on('click', onSearchOutputClose);
+
+    },
+
+    onSearchOutputClose = function () {
+        $searchOutput.fadeOut(300);
+        $searchOutputText.text("");
+        searchView.reshowAllCocktails();
+        clearFilter();
+        searchOutputValue = "";
+    },
+
+    onFilter = function () {
+        $searchOutputText.text(searchOutputValue);
+        $searchOutput.fadeIn(300);
     };
 
     that.init = init;
 
     function refresh() {
-
 
         if (filterdElementsTaste[0] == undefined) { // schaun ob nur Alc gewählt wurde
 
@@ -62,7 +89,7 @@ Boris.FilterView = function () {
             searchView.hideCocktailsById(filterdElementsAll);
 
         }
-       // console.log("all: + " + filterdElementsAll);
+        // console.log("all: + " + filterdElementsAll);
     };
 
     function filter(flavor) { // bitter / sweet / fruity / sour
@@ -172,7 +199,7 @@ Boris.FilterView = function () {
     function checkFree(list, aktuell) { // hier muss noch alkoholfreie coktails abgerufen werden
 
         if (parseFloat(list.data[aktuell].rating.strong.average) <= 2.0000) { // anzahl der ergebnisse beschränken
-           // console.log("ALK: + " + alcoholPercantage);
+            // console.log("ALK: + " + alcoholPercantage);
 
             filterdElementsAlc.push(parseFloat(aktuell)); // weise wert von cocktail ergebnis array zu
         };
@@ -237,6 +264,7 @@ Boris.FilterView = function () {
 
     function clearFilter() {
         filterdElementsAll = [];
+        $('.input-group input').prop('checked', false);
     }
 
     function compare(a, b) {
