@@ -1,5 +1,7 @@
 Boris.FilterView = function () {
-    var filterdElements = [];
+    var filterdElementsTaste = [];
+    var filterdElementsAlc = [];
+    var filterdElementsAll = [];
     var that = {},
     searchView,
 
@@ -8,13 +10,23 @@ Boris.FilterView = function () {
         console.log("filter view init");
         $(document).ready(function () {
             $('input[type=radio]').click(function () {
-                searchView = searchViewValue;
 
-                clearFilter();
-                filter(this.value);
-                filterdElements = getResult(filterdElements); // in filterdElements stehen alle zuversteckende Coktailnumern
-                searchView.hideCocktailsById(filterdElements);
-                // console.log(filterdElements);
+                filterdElementsAll = [];
+
+                if (this.name == "groupTaste") {
+
+                    filterdElementsTaste = [];
+                    filter(this.value);
+
+                }
+                else {
+                    filterdElementsAlc = [];
+                    filterAlc(this.value);
+                }
+
+                searchView = searchViewValue;
+                refresh();
+
             });
         });
 
@@ -22,13 +34,40 @@ Boris.FilterView = function () {
 
     that.init = init;
 
+    function refresh() {
+
+
+        if (filterdElementsTaste[0] == undefined) { // schaun ob nur Alc gewählt wurde
+
+            filterdElementsAll = getResult(filterdElementsAlc); // in filterdElements stehen alle zuversteckende Coktailnumern
+            searchView.hideCocktailsById(filterdElementsAll);
+
+        }
+        else if (filterdElementsAlc[0] == undefined) { // schaun ob nur Taste gewählt wurde
+
+            filterdElementsAll = getResult(filterdElementsTaste); // in filterdElements stehen alle zuversteckende Coktailnumern
+            searchView.hideCocktailsById(filterdElementsAll);
+
+        }
+        else {
+
+            for (var i = 0; i < filterdElementsAlc.length; i++) { // iteriere durch alle Cocktails
+
+                if ($.inArray(filterdElementsAlc[i], filterdElementsTaste) !== -1) {
+                    filterdElementsAll.push(filterdElementsAlc[i]);
+                }
+            }
+
+            filterdElementsAll = getResult(filterdElementsAll); // in filterdElements stehen alle zuversteckende Coktailnumern
+            searchView.hideCocktailsById(filterdElementsAll);
+
+        }
+       // console.log("all: + " + filterdElementsAll);
+    };
+
     function filter(flavor) { // bitter / sweet / fruity / sour
 
         var list = getdata(); // hole die alle Rezepte + Zutaten
-
-        //   console.log("Bisherige ergebnisse " + typeof (filterdElements[0]));
-
-
 
         for (var i = 1; i <= Object.keys(list.data).length; i++) { // iteriere durch alle Cocktails
 
@@ -50,26 +89,7 @@ Boris.FilterView = function () {
                     break;
             }
         };
-
-        //  console.log(typeof (list.data[i].rating.flavor));
-        //   console.log("bitter: " + parseFloat(list.data[i].rating.bitter.average));
-
-
-        // console.log(recipe.data[1].recipe[1].id);
-
-        console.log("Wert: " + typeof (filterdElements[0]));
-
-
-        //filterdElements.sort(compare);
-        return filterdElements;
-
-
-        //console.log(" Menge 1 Zutat 5 :" + parseFloat(list.data[aktuell].recipe[2].id));
-
-        //console.log(Object.keys(list.data[1].recipe.id).length);
-        //console.log(Object.keys(list.data[4].recipe).length); // Anzahl der Zutaten für jeweiligen Cocktail
-        // console.log("Rezepte Länge: " + Object.keys(list.data).length); // Anzahl Vorhandene Rezepte
-
+        return filterdElementsTaste;
 
     };
 
@@ -78,18 +98,9 @@ Boris.FilterView = function () {
 
         if (parseFloat(list.data[aktuell].rating.bitter.average) >= 3) { // anzahl der ergebnisse beschränken
 
-            var wert = parseFloat(list.data[aktuell].rating.bitter.value) / parseFloat(list.data[aktuell].rating.bitter.average); // warscheinlichkeit dass über 3 / durchschnitt
+            // var wert = parseFloat(list.data[aktuell].rating.bitter.value) / parseFloat(list.data[aktuell].rating.bitter.average); // warscheinlichkeit dass über 3 / durchschnitt
 
-            /*   for (var i = 0; i < filterdElements.length; i++) {// gehe die vorher gefilterten elemente durch
-            if (parseFloat(filterdElements[i].name) == aktuell) {
-
-            wert += parseFloat(filterdElements[i].wert.valueOf()); // addiere den vorherigen wert zu dem aktuellen
-            filterdElements[i].wert = wert;
-            return;
-            }
-            } */
-
-            filterdElements.push({ name: parseFloat(aktuell), wert: wert }); // weise wert von cocktail ergebnis array zu
+            filterdElementsTaste.push(parseFloat(aktuell)); // weise wert von cocktail ergebnis array zu
         };
 
     }
@@ -98,20 +109,9 @@ Boris.FilterView = function () {
 
         if (parseFloat(list.data[aktuell].rating.sweet.average) >= 3) { // anzahl der ergebnisse beschränken
 
-            var wert = parseFloat(list.data[aktuell].rating.sweet.value) / parseFloat(list.data[aktuell].rating.sweet.average); // warscheinlichkeit dass über 3 / durchschnitt
+            //var wert = parseFloat(list.data[aktuell].rating.sweet.value) / parseFloat(list.data[aktuell].rating.sweet.average); // warscheinlichkeit dass über 3 / durchschnitt
 
-
-            /*   for (var i = 0; i < filterdElements.length; i++) {// gehe die vorher gefilterten elemente durch
-
-            if (parseFloat(filterdElements[i].name) == aktuell) {
-
-            wert += parseFloat(filterdElements[i].wert.valueOf()); // addiere den vorherigen wert zu dem aktuellen
-            filterdElements[i].wert = wert;
-            return;
-            }
-            } */
-
-            filterdElements.push({ name: parseFloat(aktuell), wert: wert }); // weise wert von cocktail ergebnis array zu
+            filterdElementsTaste.push(parseFloat(aktuell)); // weise wert von cocktail ergebnis array zu
         };
 
     }
@@ -120,22 +120,9 @@ Boris.FilterView = function () {
 
         if (parseFloat(list.data[aktuell].rating.fruity.average) >= 3) { // anzahl der ergebnisse beschränken
 
-            var wert = parseFloat(list.data[aktuell].rating.fruity.value) / parseFloat(list.data[aktuell].rating.fruity.average); // warscheinlichkeit dass über 3 / durchschnitt
+            //var wert = parseFloat(list.data[aktuell].rating.fruity.value) / parseFloat(list.data[aktuell].rating.fruity.average); // warscheinlichkeit dass über 3 / durchschnitt
 
-
-            /*   for (var i = 0; i < filterdElements.length; i++) {// gehe die vorher gefilterten elemente durch
-
-            if (parseFloat(filterdElements[i].name) == aktuell) {
-
-            wert += parseFloat(filterdElements[i].wert.valueOf()); // addiere den vorherigen wert zu dem aktuellen
-            filterdElements[i].wert = wert;
-            return;
-            }
-            } */
-
-            filterdElements.push({ name: parseFloat(aktuell), wert: wert }); // weise wert von cocktail ergebnis array zu
-
-
+            filterdElementsTaste.push(parseFloat(aktuell)); // weise wert von cocktail ergebnis array zu
         };
 
     }
@@ -147,23 +134,87 @@ Boris.FilterView = function () {
         }
         if (parseFloat(list.data[aktuell].rating.bitter.average) >= 3) { // anzahl der ergebnisse beschränken
 
-            var wert = parseFloat(list.data[aktuell].rating.sour.value) / parseFloat(list.data[aktuell].rating.sour.average); // warscheinlichkeit dass über 3 / durchschnitt
+            //var wert = parseFloat(list.data[aktuell].rating.sour.value) / parseFloat(list.data[aktuell].rating.sour.average); // warscheinlichkeit dass über 3 / durchschnitt
 
-            /*      for (var i = 0; i < filterdElements.length; i++) {// gehe die vorher gefilterten elemente durch
-            if (parseFloat(filterdElements[i].name) == aktuell) {
-
-            wert += parseFloat(filterdElements[i].wert.valueOf()); // addiere den vorherigen wert zu dem aktuellen
-            filterdElements[i].wert = wert;
-            return;
-            }
-            } */
-
-            filterdElements.push({ name: parseFloat(aktuell), wert: wert }); // weise wert von cocktail ergebnis array zu
+            filterdElementsTaste.push(parseFloat(aktuell)); // weise wert von cocktail ergebnis array zu
         };
 
     }
 
-    function getResult(filterdElements) {
+    function filterAlc(alc) { // bitter / sweet / fruity / sour
+
+        var list = getdata(); // hole die alle Rezepte + Zutaten
+
+        for (var i = 1; i <= Object.keys(list.data).length; i++) { // iteriere durch alle Cocktails
+
+            switch (alc) {
+                case "Alc-Free":
+                    checkFree(list, i);
+                    break;
+                case "Weak":
+                    checkWeak(list, i);
+                    break;
+                case "Middle":
+                    checkMiddle(list, i);
+                    break;
+                case "Strong":
+                    checkStrong(list, i);
+                    break;
+                default:
+
+                    break;
+            }
+        };
+
+        return filterdElementsAlc;
+    };
+
+    function checkFree(list, aktuell) { // hier muss noch alkoholfreie coktails abgerufen werden
+
+        if (parseFloat(list.data[aktuell].rating.strong.average) <= 2.0000) { // anzahl der ergebnisse beschränken
+           // console.log("ALK: + " + alcoholPercantage);
+
+            filterdElementsAlc.push(parseFloat(aktuell)); // weise wert von cocktail ergebnis array zu
+        };
+
+    }
+
+    function checkWeak(list, aktuell) {
+
+        if (parseFloat(list.data[aktuell].rating.strong.average) <= 2.0000) { // anzahl der ergebnisse beschränken
+
+            //var wert = parseFloat(list.data[aktuell].rating.strong.value) / parseFloat(list.data[aktuell].rating.strong.average); // warscheinlichkeit dass über 3 / durchschnitt
+
+            filterdElementsAlc.push(parseFloat(aktuell)); // weise wert von cocktail ergebnis array zu
+        };
+
+    }
+
+    function checkMiddle(list, aktuell) {
+
+        if (parseFloat(list.data[aktuell].rating.strong.average) > 2.0000 && parseFloat(list.data[aktuell].rating.strong.average) <= 3.5000) { // anzahl der ergebnisse beschränken
+
+            //console.log(" aktuell middel: " + aktuell);
+            // var wert = parseFloat(list.data[aktuell].rating.strong.value) / parseFloat(list.data[aktuell].rating.strong.average); // warscheinlichkeit dass über 3 / durchschnitt
+
+            filterdElementsAlc.push(parseFloat(aktuell)); // weise wert von cocktail ergebnis array zu
+        };
+
+    }
+
+    function checkStrong(list, aktuell) {
+
+        if (parseFloat(list.data[aktuell].rating.strong.average) > 3.5000) { // anzahl der ergebnisse beschränken
+
+            //var wert = parseFloat(list.data[aktuell].rating.strong.value) / parseFloat(list.data[aktuell].rating.strong.average); // warscheinlichkeit dass über 3 / durchschnitt
+
+            filterdElementsAlc.push(parseFloat(aktuell)); // weise wert von cocktail ergebnis array zu
+        };
+
+    }
+
+
+    function getResult(filterdElement) {
         var ergebnis = [];
         var zuverstecken = getdata();
         var tempArr = [];
@@ -173,27 +224,19 @@ Boris.FilterView = function () {
         }
         zuverstecken = new Array();
 
-
-        filterdElements.sort(compare);
-        // console.log(filterdElements);
-        for (var i = 0; i < filterdElements.length; i++) { //bekomme nur die gefiltertern cocktail nummern
-
-            ergebnis.push(parseFloat(filterdElements[i].name));
-        };
+        ergebnis = filterdElement;
 
         for (var i = 1; i <= tempArr.length; i++) {  // bekomme all zuversteckendend cocktail nummern
             if (ergebnis.indexOf(i) == -1) {
-                //console.log("hide", i);
                 zuverstecken.push(i);
             }
         }
-        //console.log(ergebnis);
         return zuverstecken;
     }
 
 
     function clearFilter() {
-        filterdElements = [];
+        filterdElementsAll = [];
     }
 
     function compare(a, b) {
@@ -243,7 +286,7 @@ Boris.FilterView = function () {
                         "amount": "0.2",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "4.3750",
@@ -313,7 +356,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "2": {
                     "name": "Emerald Dreams",
@@ -346,7 +389,7 @@ Boris.FilterView = function () {
                         "amount": "0.6",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "1.8182",
@@ -416,7 +459,7 @@ Boris.FilterView = function () {
                         "tag": "after dinner",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "3": {
                     "name": "Green Devil",
@@ -449,7 +492,7 @@ Boris.FilterView = function () {
                         "amount": "0.4",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "3.6667",
@@ -519,7 +562,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "4": {
                     "name": "Captain Chaos",
@@ -568,7 +611,7 @@ Boris.FilterView = function () {
                         "amount": "0.2",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "3.6667",
@@ -638,7 +681,7 @@ Boris.FilterView = function () {
                         "tag": "in a disco",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "5": {
                     "name": "Men in blue",
@@ -671,7 +714,7 @@ Boris.FilterView = function () {
                         "amount": "0.4",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "3.7778",
@@ -741,7 +784,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "6": {
                     "name": "Santo Domingo",
@@ -782,7 +825,7 @@ Boris.FilterView = function () {
                         "amount": "0.2",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "2.0000",
@@ -852,7 +895,7 @@ Boris.FilterView = function () {
                         "tag": "after dinner",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "7": {
                     "name": "Swamp Water",
@@ -893,7 +936,7 @@ Boris.FilterView = function () {
                         "amount": "0.2",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "2.7778",
@@ -963,7 +1006,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "8": {
                     "name": "The Waikiki",
@@ -988,7 +1031,7 @@ Boris.FilterView = function () {
                         "amount": "0.8",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "1.6250",
@@ -1058,7 +1101,7 @@ Boris.FilterView = function () {
                         "tag": "in a disco",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "9": {
                     "name": "Yellow G-Point",
@@ -1099,7 +1142,7 @@ Boris.FilterView = function () {
                         "amount": "0.4",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "2.5714",
@@ -1169,7 +1212,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "10": {
                     "name": "Soft Poison",
@@ -1194,7 +1237,7 @@ Boris.FilterView = function () {
                         "amount": "0.8",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "1.7778",
@@ -1264,7 +1307,7 @@ Boris.FilterView = function () {
                         "tag": "in a disco",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "11": {
                     "name": "Baltic",
@@ -1305,7 +1348,7 @@ Boris.FilterView = function () {
                         "amount": "0.15",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "1.5000",
@@ -1375,7 +1418,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "12": {
                     "name": "Gin and Juice",
@@ -1400,7 +1443,7 @@ Boris.FilterView = function () {
                         "amount": "0.6",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "3.8000",
@@ -1470,7 +1513,7 @@ Boris.FilterView = function () {
                         "tag": "after dinner",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "13": {
                     "name": "Green Eyes",
@@ -1503,7 +1546,7 @@ Boris.FilterView = function () {
                         "amount": "0.6",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "2.7778",
@@ -1573,7 +1616,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "14": {
                     "name": "The Dodo",
@@ -1614,7 +1657,7 @@ Boris.FilterView = function () {
                         "amount": "0.3",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "1.6000",
@@ -1684,7 +1727,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "15": {
                     "name": "Hurricane",
@@ -1725,7 +1768,7 @@ Boris.FilterView = function () {
                         "amount": "0.2",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "2.8462",
@@ -1795,7 +1838,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "16": {
                     "name": "Monkey Wrench",
@@ -1820,7 +1863,7 @@ Boris.FilterView = function () {
                         "amount": "0.6",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "2.8333",
@@ -1890,7 +1933,7 @@ Boris.FilterView = function () {
                         "tag": "in a disco",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "17": {
                     "name": "Rum Orange",
@@ -1915,7 +1958,7 @@ Boris.FilterView = function () {
                         "amount": "0.6",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "3.3333",
@@ -1985,7 +2028,7 @@ Boris.FilterView = function () {
                         "tag": "on the first date",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "18": {
                     "name": "Safari",
@@ -2010,7 +2053,7 @@ Boris.FilterView = function () {
                         "amount": "0.4",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "2.8750",
@@ -2080,7 +2123,7 @@ Boris.FilterView = function () {
                         "tag": "after dinner",
                         "value": "0.0000"
                     }
-			]
+            ]
                 },
                 "19": {
                     "name": "Screwdriver",
@@ -2105,7 +2148,7 @@ Boris.FilterView = function () {
                         "amount": "0.6",
                         "order": "0"
                     }
-			],
+            ],
                     "rating": {
                         "bitter": {
                             "average": "3.1429",
@@ -2175,7 +2218,7 @@ Boris.FilterView = function () {
                         "tag": "after dinner",
                         "value": "0.0000"
                     }
-			]
+            ]
                 }
             }
         }
