@@ -14,14 +14,15 @@ Boris.CommunicationHandler = function () {
     /*---Methods---*/
 
     checkDrink = function (drink) {
-        postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":true}';
+        postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"true\"}";
+        //postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":true}';
         console.log(postData);
         sendRequest(handleOrderResponse);
     },
 
     orderDrink = function (drink) {
-        //postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"false\"}";
-        postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":false}';
+        postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"false\"}";
+        //postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":false}';
         console.log(postData);
         sendRequest(handleOrderResponse);
     },

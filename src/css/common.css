@@ -61,6 +61,7 @@ a.no-btn:hover, a.no-btn:active { color: black; }
 .drink-list-container .cocktail-title { float:left; padding:0; }
 .drink-list-container .cocktail-title h3 { margin:0; }
 .drink-list-container .cocktail-rating .stars-line { margin-top:8px; text-align:right; padding:0; }
+.drink-list-container .panel-body hr { margin: 0; padding: 0; }
 
 #search-output { margin-top:-5px; padding: 12px 12px 6px 12px; display:none; }
 #search-output .output-line #output { font-style: italic; }

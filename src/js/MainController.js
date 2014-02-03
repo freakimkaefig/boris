@@ -296,6 +296,7 @@ Boris.MainController = function () {
 
     orderDrink = function (drink) {
         communicationHandler.orderDrink(drink);
+        //communicationHandler.checkDrink(drink);
     };
 
     that.init = init;

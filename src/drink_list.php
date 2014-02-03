@@ -107,6 +107,10 @@
         <div class="panel-body" style="clear:both;">
             <div class="col-xs-6"> <img src="img/drink_example.jpg" class="img img-responsive" alt="Responsive image" /> </div>
             <div class="col-xs-6">
+            <?php
+                $result = renderStrongTastes($cocktail);
+                if($result != null) echo "<hr />";
+            ?>
     	    <?php foreach($cocktail->recipe as $ingredient_index => $ingredient): ?>
     		    <div><?php print $ingredient->name; ?></div>
 		    <?php endforeach; ?>

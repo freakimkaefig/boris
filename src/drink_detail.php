@@ -139,7 +139,7 @@
                                     if($rating != null) {
                                         $myRatingFilledRendering    = "<img src='img/sour0.png' class='attribute-rating'/>";
                                         $myRatingEmptyRendering     = "<img src='img/sour2.png' class='attribute-rating'/>";                                    
-                                        echo renderRating($rating,5,
+                                        print renderRating($rating,5,
                                             $myRatingFilledRendering, $myRatingEmptyRendering);
                                     }
                                 }
@@ -203,10 +203,6 @@
                         </tr>
                         <tr>
                             <td>Strength taste</td><td>
-                                <?php 
-                                    //$strengthRounded = round($cocktail->rating->strong->average, 1, PHP_ROUND_HALF_UP);
-                                    //print $strengthRounded . " / 5";                                
-                                ?>
                                 <?php 
                                     $rating = $cocktail->rating->strong->average;
                                     if($rating != null) {
