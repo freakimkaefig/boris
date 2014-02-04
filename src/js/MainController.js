@@ -14,6 +14,9 @@ Boris.MainController = function () {
 
     //-----------Questionnaire--------------
     //Likert Scales
+    $radioTaste = null,
+    $radoiLooking = null,
+
     $radioBitterLikert = null,
     $radioSweetLikert = null,
     $radioSourLikert = null,
@@ -74,7 +77,7 @@ Boris.MainController = function () {
             communicationHandler.init(borisModel);
         }
 
-        if (Boris.DetailView != null) {
+        if (Boris.QuestionnaireView != null) {
             questionnaireView = Boris.QuestionnaireView();
             questionnaireView.init();
         }
@@ -95,6 +98,9 @@ Boris.MainController = function () {
         setRadioListenerTaste();
         setRadioListenerAlc();
 
+        $radioTaste = $(".likertTaste");
+        $radioLooking = $(".likertLook");
+
         $radioBitterLikert = $(".likertHerb");
         $radioSweetLikert = $(".likertSüß");
         $radioSourLikert = $(".likertSauer");
@@ -109,6 +115,9 @@ Boris.MainController = function () {
         $buttonSendRating.on("click", onSendRating);
 
         $checkbox = $(".checkbox-input");
+
+        setTasteLikert();
+        setLookingLikert();
 
         setRadioListenerBitterLikert();
         setRadioListenerSweetLikert();
@@ -153,7 +162,23 @@ Boris.MainController = function () {
         });
     },
 
-    //------------------QuestionnaireListener-----------------
+    setTasteLikert = function() {
+        $radioTaste.change(function () {
+
+            mainModel.setLikertTasteVal(event.target.value);
+
+        });
+    },
+
+    setLookingLikert = function() {
+        $radioLooking.change(function () {
+
+            mainModel.setLikertLookVal(event.target.value);
+
+        });
+    },
+
+
     setRadioListenerBitterLikert = function () {
 
         $radioBitterLikert.change(function () {
@@ -225,11 +250,18 @@ Boris.MainController = function () {
                         mainModel.getLikertSweetVal() != null &&
                         mainModel.getLikertSourVal() != null &&
                         mainModel.getLikertFruityVal() != null &&
-                        mainModel.getLikertStrongVal() != null) {
+                        mainModel.getLikertStrongVal() != null &&
+                        mainModel.getLikertTasteVal() != null &&
+                        mainModel.getLikertLookVal()) {
 
                         //ToDo: hier werden werte ausgelesen (über getter von model)
                         // danach schicken an server über AJAX
                         console.log($ageInput.val());
+
+                        //rate.php?userid=123&age=22&sex=w&cocktail=11&bitter=1&sweet=4&fruity=4&strong=2&taste=4&look=3&beach&summernight&cocktailbar
+                        //rate.php?userid=123&age=22&sex=getGenderVal()&cocktail=11&bitter=getLikertBitterVal()&sweet=getLikertSweetVal()
+                        //&fruity=getLikertFruityVal()&strong=getLikertStrongVal()&taste=getLikertTasteVal()&look=getLikertLookVal()&beach&summernight&cocktailbar
+                        
 
                         //var age = $ageInput.val();
 

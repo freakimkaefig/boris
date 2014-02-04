@@ -9,7 +9,10 @@ Boris.MainModel = function() {
 	numCocktailsTotal = 0,
 	ingredientsList = null,
 
-	likertBitterVal = null,
+	likertTasteVal = null,
+    likertLookVal = null,
+
+    likertBitterVal = null,
     likertSweetVal = null,
     likertSourVal = null,
     likertFruityVal = null,
@@ -127,6 +130,14 @@ Boris.MainModel = function() {
         console.log(alcStrength);
     },
     //getter and setter for likert scale in questionnaire
+    getLikertTasteVal = function() {
+        return likertTasteVal;
+    },
+
+    getLikertLookVal = function() {
+        return likertLookVal;
+    },
+
     getLikertBitterVal = function() {
         return likertBitterVal;
     },    
@@ -142,6 +153,15 @@ Boris.MainModel = function() {
     getLikertStrongVal = function() {
         return likertStrongVal;
     },
+
+    setLikertTasteVal = function(likertTasteValue) {
+        likertTasteVal = likertTasteValue;
+    },
+
+    setLikertLookVal = function(likertLookValue) {
+        likertLookVal = likertLookValue;
+    },
+
     setLikertBitterVal = function(likertBitterValue) {
         likertBitterVal = likertBitterValue;
         
@@ -193,11 +213,15 @@ Boris.MainModel = function() {
     that.getSelectedAlcStrength = getSelectedAlcStrength;
     that.setSelectedTaste = setSelectedTaste;
     that.setSelectedAlcStrength = setSelectedAlcStrength;
+    that.getLikertTasteVal = getLikertTasteVal;
+    that.getLikertLookVal = getLikertLookVal;
     that.getLikertBitterVal = getLikertBitterVal;
     that.getLikertSweetVal = getLikertSweetVal;
     that.getLikertSourVal = getLikertSourVal;
     that.getLikertFruityVal = getLikertFruityVal;
     that.getLikertStrongVal = getLikertStrongVal;
+    that.setLikertTasteVal = setLikertTasteVal;
+    that.setLikertLookVal = setLikertLookVal;
     that.setLikertBitterVal = setLikertBitterVal;
     that.setLikertSweetVal = setLikertSweetVal;
     that.setLikertSourVal = setLikertSourVal;
