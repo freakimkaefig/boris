@@ -21,14 +21,21 @@ Boris.CommunicationHandler = function () {
     },
 
     orderDrink = function (drink) {
-        postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"false\"}";
+        postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"true\"}";
         //postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":false}';
         console.log(postData);
         sendRequest(handleOrderResponse);
     },
 
-    handleOrderResponse = function (response) {
-        console.log("Success?", response);
+    handleOrderResponse = function (pResponse) {
+        var response = $.parseJSON(pResponse);
+        console.log("Success?" + response.success);
+        if (response.success == "true") {
+            borisModel.setMixStatus("Success");
+        }
+        else {
+            borisModel.setMixStatus("Failed");
+        }
     },
 
     refill = function () {
@@ -36,7 +43,7 @@ Boris.CommunicationHandler = function () {
     },
 
     handleRefillResponse = function (response) {
-        console.log("Success!", response);
+        console.log("Success", response);
     },
 
     config = function () {

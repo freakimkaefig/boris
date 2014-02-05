@@ -4,6 +4,7 @@ Boris.BorisModel = function () {
 	mainController,
     glassVolume,
     $borisModel,
+    mixStatus,
 
     init = function () {
         console.log("boris model init");
@@ -20,12 +21,23 @@ Boris.BorisModel = function () {
     setGlassVolume = function (pGlassVolume) {
         glassVolume = pGlassVolume;
         $borisModel.trigger("setGlassVolume", glassVolume);
+    },
+
+    setMixStatus = function (pMixStatus) {
+        mixStatus = pMixStatus;
+        $borisModel.trigger("setMixStatus");
+    },
+
+    getMixStatus = function (pGlassVolume) {
+        return mixStatus;
     };
 
     /*---Public variables and methods---*/
     that.init = init;
     that.getGlassVolume = getGlassVolume;
     that.setGlassVolume = setGlassVolume;
+    that.setMixStatus = setMixStatus;
+    that.getMixStatus = getMixStatus;
 
     return that;
 };

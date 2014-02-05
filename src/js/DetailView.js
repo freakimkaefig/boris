@@ -6,7 +6,8 @@ Boris.DetailView = function () {
         searchSubmit,
         similarDrinkIds,
         is_tablet = false,
-        alcPercentage
+        alcPercentage,
+        borisModel,
 
     init = function (pDrinkModel, pBorisModel) {
         console.log("detail view init");
@@ -14,6 +15,8 @@ Boris.DetailView = function () {
         mainController = Boris.MainController();
         drinkModel = pDrinkModel;
         borisModel = pBorisModel;
+
+        $borisModel = $(Boris.BorisModel);
 
         //Check if tablet
         if ($.cookie('tablet') == "true") {
@@ -33,6 +36,8 @@ Boris.DetailView = function () {
         $confirmOrderDrinkBtn.on('click', onConfirmOrderDrinkBtn);
 
         $('#modal_confirmOrder').modal('hide');
+
+        $borisModel.on("setMixStatus", onSetMixStatus);
     },
 
     setDrink = function (drink) {
@@ -70,17 +75,6 @@ Boris.DetailView = function () {
         };
     },
 
-    /*
-    calcAlcPercentage = function () {
-    var glassVolume = borisModel.getGlassVolume();        
-    },
-
-    displayAlcPercentage = function () {
-    var glassVolume = borisModel.getGlassVolume();
-    $("alcPercentageCell").html();
-    },
-    */
-
     /*---Event Handlers---*/
 
     onRateDrinkClick = function () {
@@ -89,6 +83,12 @@ Boris.DetailView = function () {
 
     onConfirmOrderDrinkBtn = function (drinkId) {
         confirmOrderDrink();
+    },
+
+    onSetMixStatus = function (event, text) {
+        console.log("onSetMixStatus{0}{1}", event, event);
+        updateStatusVisibility(true);
+        updateStatusContent();
     },
 
     /*---Methods---*/
@@ -120,6 +120,19 @@ Boris.DetailView = function () {
 
     confirmOrderDrink = function () {
         mainController.orderDrink(drinkModel.getDrink());
+    },
+
+    updateStatusVisibility = function (isVisible) {
+        var box = $("#mixStatusBox");
+
+        if (isVisible == true) $("#mixStatusBox").show();
+        else $("#mixStatusBox").hide();
+    },
+
+    updateStatusContent = function () {
+        var box = $("#mixStatusValue");
+        console.log("DetailView: getMixStatus", borisModel.getMixStatus());
+        box.html(borisModel.getMixStatus());
     };
 
     /*---Public variables and methods---*/

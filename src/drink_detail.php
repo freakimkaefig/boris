@@ -62,8 +62,17 @@
                         <span class="sr-only">60% Complete</span>
                     </div>
                 </div>-->
+               <!--  <div id="mixStatusBox">
+                    Status:<span id="mixStatusValue"></span>                    
+                </div>  -->
+                
+    
+                <!-- <div id=""class="well">
+                    <div class="output-line"><span>Results for: </span><span id="output"></span><span id="close" class="glyphicon glyphicon-remove-circle"></span></div>
+                </div> -->
             </li>
             <li>
+                
                 <button id="orderDrink" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#modal_confirmOrder">
                     Order
                     <span class="glyphicon glyphicon-glass"></span>
