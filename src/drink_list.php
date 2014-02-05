@@ -122,7 +122,6 @@
   <?php endforeach; ?>
 </div>
 <footer>
-	<p>© Company 2013</p>
 </footer>
 <!-- /container --> 
 
@@ -138,8 +137,8 @@
 <script src="js/App.js"></script>
 <script src="js/SearchView.js"></script>
 <script src="js/FilterView.js"></script>
-<script src="js/MainController.js"></script>
 <script src="js/MainModel.js"></script>
+<script src="js/MainController.js"></script>
 <script src="js/SignView.js"></script>
 <script src="js/QuestionnaireView.js"></script>
 <script src="js/DetailView.js"></script>
