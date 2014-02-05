@@ -25,8 +25,8 @@ body.drink-list { padding-top:0px; }
 
 .attention {border-radius:5px; border-width:3px; border-color:red;}
 
-#rateDrink {margin-right: 25px; display:none; }
-#orderDrink {margin-right: 25px; display:none; }
+#rateDrink {margin-right: 40px; margin-top:12px; display:none; float:right; }
+#orderDrink {margin-right: 40px; margin-top:12px; display:none; float:right; }
 
 .drink-list-container { margin-top: 60px; }
 
@@ -75,7 +75,10 @@ a.no-btn:hover, a.no-btn:active { color: black; }
     height: 30px;
 }
 
-
+#mixStatusBox
+{
+    color: #fff;    
+}
 
 
 /*-- SERVICE MENU --*/
