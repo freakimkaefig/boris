@@ -1,4 +1,5 @@
-Boris.MainModel = function() {
+Boris.MainModel = function () {
+
     var that = {},
     normalUsername = "tablet",
     settingsUsername = "servicemenu",
@@ -21,171 +22,172 @@ Boris.MainModel = function() {
 
     //PHP data is rate.php
 
-    init = function() {
-        //console.log("model init");
+    init = function () {
+        console.log("model init");
         initPhpRepo();
     },
-	
-	initPhpRepo = function() {
-		phpRepo = {};
-		baseUrl = document.baseURI.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, '') + "/";
-		//var baseUrl = "http://localhost/boris/src/php/
-		phpRepo.search = "php/search.php";
-		phpRepo.getIngredients = "php/getIngredients.php";
-		phpRepo.getCocktails = "php/getCocktails.php";
-		//to be continued...
-		
-		updateDatabaseCache();
+
+	initPhpRepo = function () {
+	    phpRepo = {};
+	    baseUrl = document.baseURI.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, '') + "/";
+	    //var baseUrl = "http://localhost/boris/src/php/
+	    phpRepo.search = "php/search.php";
+	    phpRepo.getIngredients = "php/getIngredients.php";
+	    phpRepo.getCocktails = "php/getCocktails.php";
+	    //to be continued...
+
+	    updateDatabaseCache();
 	},
-	
-	updateDatabaseCache = function() {
-		initIngredientsList();
-		initNumCocktails();
+
+
+
+    updateDatabaseCache = function () {
+        initIngredientsList();
+        initNumCocktails();
+    },
+
+	getResUrl = function (which) {
+	    switch (which) {
+	        case "search":
+	            return phpRepo.search;
+	            break;
+	        case "getIngredients":
+	            return phpRepo.getIngredients;
+	            break;
+	        case "getCocktails":
+	            return phpRepo.getCocktails;
+	        default:
+	            return false;
+	            break;
+	    }
 	},
-	
-	getResUrl = function(which) {
-		switch(which) {
-			case "search":
-				return phpRepo.search;
-				break;
-			case "getIngredients":
-				return phpRepo.getIngredients;
-				break;
-			case "getCocktails":
-				return phpRepo.getCocktails;
-			default:
-				return false;
-				break;	
-		}
+
+	initIngredientsList = function () {
+	    ingredientsList = new Array();
+	    $.get(getResUrl("getIngredients"), function (data) {
+	        var tempArr = $.map(data.data, function (value, index) {
+	            return [value];
+	        });
+	        for (var i = 0; i < tempArr.length; i++) {
+	            //console.log("arr", tempArr[i].name);
+	            ingredientsList.push(tempArr[i].name.toLowerCase());
+	        }
+	    });
 	},
-	
-	initIngredientsList = function() {
-		ingredientsList = new Array();
-		$.get(getResUrl("getIngredients"), function(data) {
-			var tempArr = $.map(data.data, function(value, index) {
-				return [value];
-			});
-			for (var i=0; i<tempArr.length; i++) {
-				//console.log("arr", tempArr[i].name);
-				ingredientsList.push(tempArr[i].name.toLowerCase());
-			}
-		});
+
+	initNumCocktails = function () {
+	    $.get(getResUrl("getCocktails"), function (data) {
+	        //console.log("initNumCocktails", data);
+	        var tempArr = $.map(data.data, function (value, index) {
+	            return [value];
+	        });
+
+	        //numCocktailsTotal = tempArr.length;
+
+	        numCocktailsTotal = new Array();
+	        for (var i = 1; i <= tempArr.length; i++) {
+	            numCocktailsTotal.push(i);
+	        }
+
+	    });
 	},
-	
-	initNumCocktails = function() {
-		$.get(getResUrl("getCocktails"), function(data) {
-			//console.log("initNumCocktails", data);
-			var tempArr = $.map(data.data, function(value, index) {
-				return [value];
-			});
-			
-			//numCocktailsTotal = tempArr.length;
-			
-			numCocktailsTotal = new Array();
-			for (var i=1; i<=tempArr.length; i++) {
-				numCocktailsTotal.push(i);	
-			}
-			
-		});
+
+	checkIfIngredient = function (query) {
+	    for (var j = 0; j < ingredientsList.length; j++) {
+	        if (ingredientsList[j].match(query)) return j;
+	    }
+	    return false;
 	},
-	
-	checkIfIngredient = function(query) {
-		for (var j=0; j<ingredientsList.length; j++) {
-        	if (ingredientsList[j].match(query)) return j;
-    	}
-    	return false;
-	},
-	
-	getNumCocktails = function() {
-		return numCocktailsTotal;
+
+	getNumCocktails = function () {
+	    return numCocktailsTotal;
 	},
 
     //sign in stuff
-    getUsernameForDrinkList = function() {
+    getUsernameForDrinkList = function () {
         return normalUsername;
     },
-    getUsernameForSettings = function() {
+    getUsernameForSettings = function () {
         return settingsUsername;
     },
-    getCorrectPassword = function() {
+    getCorrectPassword = function () {
         return correctPW;
     },
 
     //getter and setter for filtering alcStrength and Taste
-    getSelectedTaste = function() {
+    getSelectedTaste = function () {
         return taste;
-    },    
-    getSelectedAlcStrength = function() {
+    },
+    getSelectedAlcStrength = function () {
         return alcStrength;
     },
-    setSelectedTaste = function(flavour) {
+    setSelectedTaste = function (flavour) {
         taste = flavour;
         console.log(taste);
     },
-    setSelectedAlcStrength = function(alc) {
+    setSelectedAlcStrength = function (alc) {
         alcStrength = alc;
         console.log(alcStrength);
     },
     //getter and setter for likert scale in questionnaire
-    getLikertBitterVal = function() {
+    getLikertBitterVal = function () {
         return likertBitterVal;
-    },    
-    getLikertSweetVal = function() {
+    },
+    getLikertSweetVal = function () {
         return likertSweetVal;
     },
-    getLikertSourVal = function() {
+    getLikertSourVal = function () {
         return likertSourVal;
     },
-    getLikertFruityVal = function() {
+    getLikertFruityVal = function () {
         return likertFruityVal;
     },
-    getLikertStrongVal = function() {
+    getLikertStrongVal = function () {
         return likertStrongVal;
     },
-    setLikertBitterVal = function(likertBitterValue) {
+    setLikertBitterVal = function (likertBitterValue) {
         likertBitterVal = likertBitterValue;
-        
+
     },
-    setLikertSweetVal = function(likertSweetValue) {
+    setLikertSweetVal = function (likertSweetValue) {
         likertSweetVal = likertSweetValue;
-       
+
     },
-    setLikertSourVal = function(likertSourValue) {
+    setLikertSourVal = function (likertSourValue) {
         likertSourVal = likertSourValue;
-        
+
     },
-    setLikertFruityVal = function(likertFruityValue) {
+    setLikertFruityVal = function (likertFruityValue) {
         likertFruityVal = likertFruityValue;
-        
+
     },
-    setLikertStrongVal = function(likertStrongValue) {
+    setLikertStrongVal = function (likertStrongValue) {
         likertStrongVal = likertStrongValue;
-        
+
     },
     //getter and setter for rest of questionnaire
-    getGenderVal = function() {
+    getGenderVal = function () {
         return gender;
     },
-    setGenderVal = function(genderVal) {
+    setGenderVal = function (genderVal) {
         gender = genderVal;
     },
     //getter und setter for checked checkboxes
-    getActiveCheckboxes = function() {
-        
+    getActiveCheckboxes = function () {
+
         return checkedCheckboxes;
     },
-    setActiveCheckboxes = function(checkboxId) {
+    setActiveCheckboxes = function (checkboxId) {
         checkedCheckboxes.push(checkboxId);
         console.log(checkboxId);
 
     };
 
 
-
     that.init = init;
     that.getResUrl = getResUrl;
     that.checkIfIngredient = checkIfIngredient;
-	that.getNumCocktails = getNumCocktails;
+    that.getNumCocktails = getNumCocktails;
     that.getUsernameForDrinkList = getUsernameForDrinkList;
     that.getUsernameForSettings = getUsernameForSettings;
     that.getCorrectPassword = getCorrectPassword;

@@ -343,7 +343,7 @@
     
     <script type="text/javascript">
         $(function() {
-    	    Boris.init();                
+    	    Boris.init();
             
             //Read data
             var drinkId = <?php echo $drinkId; ?>;       
@@ -354,12 +354,13 @@
             drinkModel.setDrinkId(drinkId);   
             
             //Calculate and set similar
-            drinkModel.setSimilarIds(recommend(drinkId));
+            drinkModel.setSimilarIds(recommend(drinkId, allCocktails));
+            detailView.renderSimilarDrinks();
             communicationHandler.getGlassVol();
             //detailView.calcAlcPercentage();
             
             //Display
-            detailView.renderSimilarDrinks();
+            
             //detailView.displayAlcPercentage();
             
 	    });

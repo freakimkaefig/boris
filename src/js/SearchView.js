@@ -125,7 +125,7 @@ Boris.SearchView = function () {
     },
 
     hideCocktailsById = function (arrayIds) {
-        console.log("hide", arrayIds);
+        //console.log("hide", arrayIds);
 
         reshowAllCocktails();
 
