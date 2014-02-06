@@ -138,7 +138,7 @@
                                     $rating = $cocktail->rating->sour->average;
                                     if($rating != null) {
                                         $myRatingFilledRendering    = "<img src='img/sour0.png' class='attribute-rating'/>";
-                                        $myRatingEmptyRendering     = "<img src='img/sour2.png' class='attribute-rating'/>";                                    
+                                        $myRatingEmptyRendering     = "<img src='img/sour2.png' class='attribute-rating attribute-halfrated'/>";                                    
                                         print renderRating($rating,5,
                                             $myRatingFilledRendering, $myRatingEmptyRendering);
                                     }
@@ -154,7 +154,7 @@
                                 $rating = $cocktail->rating->sweet->average;
                                 if($rating != null) {
                                     $myRatingFilledRendering    = "<img src='img/sweet0.png' class='attribute-rating'/>";
-                                    $myRatingEmptyRendering     = "<img src='img/sweet2.png' class='attribute-rating'/>";                                    
+                                    $myRatingEmptyRendering     = "<img src='img/sweet2.png' class='attribute-rating attribute-halfrated'/>";                                    
                                     echo renderRating($rating,5,
                                         $myRatingFilledRendering,$myRatingEmptyRendering);
                                 }
@@ -169,7 +169,7 @@
                                 $rating = $cocktail->rating->bitter->average;
                                 if($rating != null) {
                                     $myRatingFilledRendering    = "<img src='img/bitter0.png' class='attribute-rating'/>";
-                                    $myRatingEmptyRendering     = "<img src='img/bitter2.png' class='attribute-rating'/>";                                    
+                                    $myRatingEmptyRendering     = "<img src='img/bitter2.png' class='attribute-rating attribute-halfrated'/>";                                    
                                     echo renderRating($rating,5,
                                         $myRatingFilledRendering,$myRatingEmptyRendering);
                                 }
@@ -184,7 +184,7 @@
                                 $rating = $cocktail->rating->fruity->average;
                                 if($rating != null) {
                                     $myRatingFilledRendering    = "<img src='img/fruity0.png' class='attribute-rating'/>";
-                                    $myRatingEmptyRendering     = "<img src='img/fruity2.png' class='attribute-rating'/>";                                    
+                                    $myRatingEmptyRendering     = "<img src='img/fruity2.png' class='attribute-rating attribute-halfrated'/>";                                    
                                     echo renderRating($rating,5,
                                         $myRatingFilledRendering,$myRatingEmptyRendering);
                                 }
@@ -207,7 +207,7 @@
                                     $rating = $cocktail->rating->strong->average;
                                     if($rating != null) {
                                         $myRatingFilledRendering    = "<img src='img/alcohol0.png' class='attribute-rating'/>";
-                                        $myRatingEmptyRendering     = "<img src='img/alcohol2.png' class='attribute-rating'/>";                                    
+                                        $myRatingEmptyRendering     = "<img src='img/alcohol2.png' class='attribute-rating attribute-halfrated'/>";                                    
                                         echo renderRating($rating,5,
                                             $myRatingFilledRendering,$myRatingEmptyRendering);
                                     }
