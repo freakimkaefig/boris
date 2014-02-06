@@ -148,6 +148,9 @@
 <script>
 	$(function() {
         Boris.init();
+        
+        var allCocktails = $(<?php echo json_encode($cocktails) ?>)[0];
+        drinkModel.setAllDrinks(allCocktails);
 
         $('#search-button').click(function () {
             setTimeout(function () { $('#search-input').focus(); }, 0);

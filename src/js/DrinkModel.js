@@ -6,6 +6,7 @@ Boris.DrinkModel = function () {
     $drink,
     drinkId,
     similarIds,
+    unavailableIds,
 
     init = function () {
         console.log("drink modle init");

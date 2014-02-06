@@ -14,6 +14,9 @@ Boris.SearchView = function () {
         mainController = Boris.MainController();
         $(mainController).on('searchresult', onSearchResult);
 
+        mainModel = Boris.MainModel();
+        drinkModel = Boris.DrinkModel();
+
         $drinklist = $('.drink-list-container');
 
         $searchInput = $("#search-input");
@@ -71,6 +74,8 @@ Boris.SearchView = function () {
             console.log("Name & Zutat");
             hideCocktailsById(combinedSearch(result.numCocktails, result.name.data, result.ingredient.data));
         }
+
+
     },
 
     getCocktailsWithoutSearchedName = function (allIds, resultObject) {
@@ -125,7 +130,7 @@ Boris.SearchView = function () {
     },
 
     hideCocktailsById = function (arrayIds) {
-        //console.log("hide", arrayIds);
+        console.log("hide", arrayIds);
 
         reshowAllCocktails();
 
@@ -139,9 +144,25 @@ Boris.SearchView = function () {
     };
 
     reshowAllCocktails = function () {
-        $('.drink-list-container .row').parent().fadeIn(300);
-    };
+        /*var rows = $('.drink-list-container .row').not('.row-1');*/
+        $('.drink-list-container .row').not('.row-1').parent().fadeIn(300);
+    },
 
+    checkAvailability = function () {
+        mainController.checkAvailability();
+        /*
+        console.log("reshow");
+        var inavailableDrinks = new Array();
+        inavailableDrinks.push(1);
+        inavailableDrinks.push(2);
+        inavailableDrinks.push(3);
+
+        var cocktails = drinkModel.getAllDrinks();
+        console.log("SearhcView: cocktails: ", cocktails);
+
+        hideCocktailsById(inavailableDrinks);
+        */
+    };
 
     that.init = init;
     that.onSearchResult = onSearchResult;

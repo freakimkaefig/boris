@@ -82,92 +82,96 @@ a.no-btn:hover, a.no-btn:active { color: black; }
 
 
 /*-- SERVICE MENU --*/
-.slotName
-{
+.slotName{
   color: #727272 ;
   font-size: 18px;
   margin-bottom: 5px;
 }
 
-.slotPercentage
-{
+.slotPercentage{
   color: #81c85b ;
   font-size: 13px;
 }
 
 .slotMilliliter{
+  color: #81c85b ;
+  font-size: 13px;
+}
+
+.empty{ 
   color: #DE0052;
   font-size: 13px;
 }
 
-.slotContent
-{
+.slotContent{
   color: #727272;
-  font-size: 15px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
-.contentColor
-{
+.contentColor{
 	color: #FF9640;
 }
 
-.well
-{
+.well{
 	margin-top: 20px;
 }
 
-#refillContainer
-{
+#refillContainer{
 	margin-top: 20px;
 }
 
-#btnRefill
-{
+#btnRefill{
 	margin-top: 20px;
 }
 
-.fillingLabel
-{
+.fillingLabel{
   color: #727272;
   font-size: 13px;
 }
 
-#inputRefill
-{
-    margin-top: 10px;
+#inputRefill{
+ margin-top: 10px;
 }
 
-#slotSize
-{
+#slotSize{
   max-width: 200px;
   min-width: 200px;
 }
 
 
-#slotContent
-{
+#slotContent{
   max-width: 200px;
   min-width: 200px;
 }
 
-.inputDescription
-{
+.inputDescription{
   color: #727272 ;
   font-size: 15px;
 }
 
-#btnEdit
-{
+#input{
   margin-top: 15px;
 }
 
-#inputEdit
-{
+#btnEdit{
+  margin-top: 15px;
+}
+
+#inputEdit{
   min-width: 200px;
 }
 
-#input
-{
-  margin-top: 15px;
+#commonContainer{
+  margin-top: 20px;
+}
+
+.textLabel{
+  color: #727272 ;
+  font-size: 18px;
+}
+
+#btnGlassChange{
+  margin-top: 10px;
 }

@@ -17,17 +17,29 @@ Boris.CommunicationHandler = function () {
         postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"true\"}";
         //postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":true}';
         console.log(postData);
-        sendRequest(handleOrderResponse);
+        //sendRequest(handleOrderResponse, postData.order.id);
+        sendRequest(handleOrderResponse, 1);
     },
 
     orderDrink = function (drink) {
-        postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"true\"}";
+        postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"false\"}";
         //postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":false}';
         console.log(postData);
         sendRequest(handleOrderResponse);
     },
 
-    handleOrderResponse = function (pResponse) {
+    handleCheckResponse = function (pResponse) {
+        var response = $.parseJSON(pResponse);
+        console.log("Success?" + response.success);
+        if (response.success == "true") {
+            drinkModel
+        }
+        else {
+            borisModel.setMixStatus("Failed");
+        }
+    },
+
+    handleOrderResponse = function (pResponse, params) {
         var response = $.parseJSON(pResponse);
         console.log("Success?" + response.success);
         if (response.success == "true") {
