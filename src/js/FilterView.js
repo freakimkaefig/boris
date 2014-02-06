@@ -294,4 +294,4 @@ Boris.FilterView = function () {
     };
 
     return that;
-};
+}; 
