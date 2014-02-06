@@ -75,6 +75,10 @@ a.no-btn:hover, a.no-btn:active { color: black; }
     height: 30px;
 }
 
+.attribute-halfrated{
+	opacity: .25
+}
+
 #mixStatusBox
 {
     color: #fff;    
