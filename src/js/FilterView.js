@@ -163,7 +163,7 @@ Boris.FilterView = function () {
 
     function checkBitter(list, aktuell) {
 
-        if (parseFloat(list.data[aktuell].rating.bitter.average) >= 3) { // anzahl der ergebnisse beschränken
+        if (parseFloat(list.data[aktuell].rating.bitter.value) >= 0.5) { // anzahl der ergebnisse beschränken
 
             // var wert = parseFloat(list.data[aktuell].rating.bitter.value) / parseFloat(list.data[aktuell].rating.bitter.average); // warscheinlichkeit dass über 3 / durchschnitt
 
@@ -174,7 +174,7 @@ Boris.FilterView = function () {
 
     function checkSweet(list, aktuell) {
 
-        if (parseFloat(list.data[aktuell].rating.sweet.average) >= 3) { // anzahl der ergebnisse beschränken
+        if (parseFloat(list.data[aktuell].rating.sweet.value) >= 0.5) { // anzahl der ergebnisse beschränken
 
             //var wert = parseFloat(list.data[aktuell].rating.sweet.value) / parseFloat(list.data[aktuell].rating.sweet.average); // warscheinlichkeit dass über 3 / durchschnitt
 
@@ -185,7 +185,7 @@ Boris.FilterView = function () {
 
     function checkFruity(list, aktuell) {
 
-        if (parseFloat(list.data[aktuell].rating.fruity.average) >= 3) { // anzahl der ergebnisse beschränken
+        if (parseFloat(list.data[aktuell].rating.fruity.value) >= 0.5) { // anzahl der ergebnisse beschränken
 
             //var wert = parseFloat(list.data[aktuell].rating.fruity.value) / parseFloat(list.data[aktuell].rating.fruity.average); // warscheinlichkeit dass über 3 / durchschnitt
 
@@ -199,7 +199,7 @@ Boris.FilterView = function () {
         if (list.data[aktuell].rating.sour == undefined) {
             return;
         }
-        if (parseFloat(list.data[aktuell].rating.bitter.average) >= 3) { // anzahl der ergebnisse beschränken
+        if (parseFloat(list.data[aktuell].rating.sour.value) >= 0.5) { // anzahl der ergebnisse beschränken
 
             //var wert = parseFloat(list.data[aktuell].rating.sour.value) / parseFloat(list.data[aktuell].rating.sour.average); // warscheinlichkeit dass über 3 / durchschnitt
 
@@ -220,7 +220,7 @@ Boris.FilterView = function () {
 
     function checkWeak(list, aktuell) {
 
-        if (parseFloat(list.data[aktuell].rating.strong.average) <= 2.0000) { // anzahl der ergebnisse beschränken
+        if (parseFloat(list.data[aktuell].rating.strong.value) <= 0.3) { // anzahl der ergebnisse beschränken
 
             //var wert = parseFloat(list.data[aktuell].rating.strong.value) / parseFloat(list.data[aktuell].rating.strong.average); // warscheinlichkeit dass über 3 / durchschnitt
 
@@ -231,7 +231,7 @@ Boris.FilterView = function () {
 
     function checkMiddle(list, aktuell) {
 
-        if (parseFloat(list.data[aktuell].rating.strong.average) > 2.0000 && parseFloat(list.data[aktuell].rating.strong.average) <= 3.5000) { // anzahl der ergebnisse beschränken
+        if (parseFloat(list.data[aktuell].rating.strong.value) > 0.3 && parseFloat(list.data[aktuell].rating.strong.value) <= 0.6) { // anzahl der ergebnisse beschränken
 
             //console.log(" aktuell middel: " + aktuell);
             // var wert = parseFloat(list.data[aktuell].rating.strong.value) / parseFloat(list.data[aktuell].rating.strong.average); // warscheinlichkeit dass über 3 / durchschnitt
@@ -243,7 +243,7 @@ Boris.FilterView = function () {
 
     function checkStrong(list, aktuell) {
 
-        if (parseFloat(list.data[aktuell].rating.strong.average) > 3.5000) { // anzahl der ergebnisse beschränken
+        if (parseFloat(list.data[aktuell].rating.strong.value) > 0.6) { // anzahl der ergebnisse beschränken
 
             //var wert = parseFloat(list.data[aktuell].rating.strong.value) / parseFloat(list.data[aktuell].rating.strong.average); // warscheinlichkeit dass über 3 / durchschnitt
 
