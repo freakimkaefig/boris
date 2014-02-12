@@ -28,7 +28,7 @@
 <body class="drink-list">
 
 <div id="action-bar"><!-- Navigation -->
-	<div id="logo"><a href="drink_list_02.php"><img src="img/logo_boris.png"></a></div>
+	<div id="logo"><a href="drink_list.php"><img src="img/logo_boris.png"></a></div>
     <div id="filter">
     	<a href="#" class="dropdown-toggle" id="filter-dropdown" data-toggle="dropdown"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-filter"></span></button></a>
         <ul class="dropdown-menu">
@@ -94,15 +94,16 @@
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 inline-block row row-<?php print $cocktail_id; ?><?php if($cocktail_id==1) print " first"?><?php if($cocktail==end($cocktails)) print " last" ?>">
       <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="cocktail-title col-xs-6"><h3><?php print $cocktail->name; ?></h3></div>
-            <div class="cocktail-rating col-xs-6">
+            <div class="cocktail-title col-xs-8"><h3><?php print $cocktail->name; ?></h3></div>
+            <div class="cocktail-rating col-xs-4">
                 <div class="stars-line">
                 <?php 
                     $rating = round($cocktail->rating->taste->average, 0, PHP_ROUND_HALF_UP);
                     echo renderRating($rating,5, $ratingFilledRendering,$ratingEmptyRendering);
                 ?>
                 </div>
-            </div>
+            </div>            
+            <!-- <div class="cocktail-title col-xs-12" style="text-align:right;">Not available</div> -->
         </div>
         <div class="panel-body" style="clear:both;">
             <div class="col-xs-6"> <img src="img/drink_example.jpg" class="img img-responsive" alt="Responsive image" /> </div>

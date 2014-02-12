@@ -213,8 +213,8 @@
         };
 
         function handleConfigResponse (response) {
-            response = JSON.parse(response);
             console.log("Success!", response.success);
+            response = JSON.parse(response);
             if(response.success=="true"){
               $("#bottleContainer").show();
               $("#setupContainer").hide();

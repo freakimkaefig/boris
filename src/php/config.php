@@ -1,7 +1,8 @@
 <?php
 	// DB INFO
-	$sqllocation = "localhost";
+	$sqllocation = "127.0.0.1";
 	$sqluser = "root";
+	//$sqlpwd = "boris_db";
 	$sqlpwd = "";
 	$sqldb = "cocktails";
 	

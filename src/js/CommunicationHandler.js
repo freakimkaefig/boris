@@ -22,8 +22,9 @@ Boris.CommunicationHandler = function () {
     },
 
     orderDrink = function (drink) {
-        postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"false\"}";
-        //postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":false}';
+        //postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"false\"}";
+        postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":"false"}';
+        
         console.log(postData);
         sendRequest(handleOrderResponse);
     },
@@ -91,7 +92,10 @@ Boris.CommunicationHandler = function () {
             // A value of 'PUT' or 'DELETE' will trigger a preflight request.
             type: 'POST',
             // The URL to make the request to.
-            url: 'http://localhost:8009/',
+            //url: 'http://localhost:8009/',
+            url: 'http://192.168.0.100:8009/', // URL for server laptop with 
+            // TP-LINK network
+
             // Here is defined which data shall be sent. This is interpreted by BORIS.
             data: postData,
 

@@ -136,11 +136,8 @@ Boris.MainController = function () {
                 var myWindow = window.open("drink_list.php", "_self");
             }
             else if (mainModel.getUsernameForSettings() == signView.getInputValueUsername()) {
-                //var myWindow = window.open("drink_list.html","_self"); 
-                //hier eig settings seite
-                //zum testen erst mal cocktail rating
                 $.cookie('service', 'true', { expires: 1, path: '/' });
-                var myWindow = window.open("service_menu.html", "_self");
+                var myWindow = window.open("service_menu.php", "_self");
             }
             else {
                 alert("wrong username");

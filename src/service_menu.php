@@ -231,7 +231,7 @@
             var ingredientNames = [];
             ingredientNames.push("NOTHING");
             $.each(ingredients, function(key, value) {
-                ingredientNames.push(value.name.toLowerCase());
+                ingredientNames.push(value.name/*.toLowerCase()*/)
             });
             console.log("ingredientNames: ", ingredientNames);
             setIngredients(ingredientNames);
