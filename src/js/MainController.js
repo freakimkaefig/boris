@@ -221,7 +221,6 @@ Boris.MainController = function () {
 
     handleCheckboxes = function () {
         $checkbox.each(function (i, obj) {
-
             if (obj.checked) {
                 mainModel.setActiveCheckboxes(obj.id);
             }
@@ -229,6 +228,8 @@ Boris.MainController = function () {
     },
 
     onSendRating = function (event) {
+
+        console.log("MainController.js::onSendRating");
 
         //mit dieser Methode kann der komplette fragebogen ausgelesen werden
 
@@ -251,26 +252,38 @@ Boris.MainController = function () {
                         mainModel.getLikertTasteVal() != null &&
                         mainModel.getLikertLookVal()) {
 
-                        //ToDo: hier werden werte ausgelesen (über getter von model)
-                        // danach schicken an server über AJAX
-                        console.log($ageInput.val());
+                        //get userid (-1 if not set)
+                        var userid = $.cookie("uid");
+                        if(userid == null || userid == undefined || userid.length == 0){
+                            userid = -1;
+                        }
 
-                        //rate.php?userid=123&age=22&sex=w&cocktail=11&bitter=1&sweet=4&fruity=4&strong=2&taste=4&look=3&beach&summernight&cocktailbar
-                        //rate.php?userid=123&age=22&sex=getGenderVal()&cocktail=11&bitter=getLikertBitterVal()&sweet=getLikertSweetVal()
-                        //&fruity=getLikertFruityVal()&strong=getLikertStrongVal()&taste=getLikertTasteVal()&look=getLikertLookVal()&beach&summernight&cocktailbar
-                        
+                        // create url and add parameters
+                        var url = "php/rate.php?"
+                        + "userid="+userid
+                        + "&age="+$ageInput.val()
+                        + "&sex="+mainModel.getGenderVal()
+                        + "&cocktail="+cocktailid
+                        + "&bitter="+mainModel.getLikertBitterVal()
+                        + "&sweet="+mainModel.getLikertSweetVal()
+                        + "&fruity="+mainModel.getLikertFruityVal()
+                        + "&strong="+mainModel.getLikertStrongVal()
+                        + "&taste="+mainModel.getLikertTasteVal()
+                        + "&look="+mainModel.getLikertLookVal();
 
-                        //var age = $ageInput.val();
+                        // add tags
+                        var tags = mainModel.getActiveCheckboxes();
+                        for(var i=0; i<tags.length; i++){
+                            url += "&"+tags[i];
+                        }
 
-                        //mainModel.getActiveCheckboxes(); 
-
-                        //mainModel.getGender(); 
-
-                        //mainModel.getLikertBitterVal(); 
-                        //mainModel.getLikertSweetVal(); 
-                        //mainModel.getLikertSourVal(); 
-                        //mainModel.getLikertFruityVal(); 
-                        //mainModel.getLikertStrongVal(); 
+                        $.get(url,function(result){
+                            // save my userid to use it later when rating other cocktails
+                            if(result["userid"]){
+                                $.cookie("uid",result["userid"]);
+                            }
+                            window.location = "drink_list.php";
+                        });
 
                     } else {
                         //displayDialog("likertskala nicht komplett");  

@@ -197,7 +197,7 @@ if($userid == -1){
 	$query = "SELECT MAX(USER) FROM `rating` WHERE 1";
 	$result = mysql_query($query, $link) or die(mysql_error());
 	if($row = mysql_fetch_array($result)){
-		$userid=$row[0];
+		$userid=$row[0]+1;
 	}else{
 		$userid = 0;
 	}
