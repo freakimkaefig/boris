@@ -14,29 +14,29 @@ Boris.CommunicationHandler = function () {
     /*---Methods---*/
 
     checkDrink = function (drink) {
-        postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"true\"}";
-        //postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":true}';
+        //postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"true\"}";
+        postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":"true"}';
         console.log(postData);
         //sendRequest(handleOrderResponse, postData.order.id);
-        sendRequest(handleOrderResponse, 1);
+        sendRequest(handleCheckResponse, drink);
     },
 
     orderDrink = function (drink) {
         //postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"false\"}";
         postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":"false"}';
-        
+
         console.log(postData);
         sendRequest(handleOrderResponse);
     },
 
-    handleCheckResponse = function (pResponse) {
+    handleCheckResponse = function (pResponse, drink) {
         var response = $.parseJSON(pResponse);
         console.log("Success?" + response.success);
         if (response.success == "true") {
-            drinkModel
+            drinkModel.setDrinkStatus(drink, 1);
         }
         else {
-            borisModel.setMixStatus("Failed");
+            drinkModel.setDrinkStatus(drink, 0);
         }
     },
 
@@ -44,10 +44,10 @@ Boris.CommunicationHandler = function () {
         var response = $.parseJSON(pResponse);
         console.log("Success?" + response.success);
         if (response.success == "true") {
-            borisModel.setMixStatus("Success");
+            borisModel.setMixStatus("Success", params);
         }
         else {
-            borisModel.setMixStatus("Failed");
+            borisModel.setMixStatus("Failed", params);
         }
     },
 
@@ -86,14 +86,15 @@ Boris.CommunicationHandler = function () {
         borisModel.setGlassVolume(200);
     },
 
-    sendRequest = function (responseHandler) {
+    sendRequest = function (responseHandler, params) {
         $.ajax({
             // The 'type' property sets the HTTP method.
             // A value of 'PUT' or 'DELETE' will trigger a preflight request.
             type: 'POST',
             // The URL to make the request to.
-            //url: 'http://localhost:8009/',
-            url: 'http://192.168.0.100:8009/', // URL for server laptop with 
+            url: 'http://localhost:8009/',
+            //url: 'http://192.168.178.51:8009/',
+            //url: 'http://192.168.0.100:8009/', // URL for server laptop with 
             // TP-LINK network
 
             // Here is defined which data shall be sent. This is interpreted by BORIS.
@@ -121,7 +122,7 @@ Boris.CommunicationHandler = function () {
             },
             success: function (response) {
                 // Here's where you handle a successful response.
-                responseHandler(response);
+                responseHandler(response, params);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 // Here's where you handle an error response.
@@ -137,6 +138,7 @@ Boris.CommunicationHandler = function () {
     /*---Public variables and methods---*/
     that.init = init;
     that.orderDrink = orderDrink;
+    that.checkDrink = checkDrink;
     that.refill = refill;
     that.config = config;
     that.setGlassVol = setGlassVol;

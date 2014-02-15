@@ -32,12 +32,24 @@ Boris.MainController = function () {
     //-----------Questionnaire_end--------------
 
 
+
+
     init = function () {
         console.log("controller init");
         //model initialisieren
         if (Boris.MainModel != null) {
             mainModel = Boris.MainModel();
             mainModel.init();
+        }
+
+        if (Boris.BorisModel != null) {
+            borisModel = Boris.BorisModel();
+            borisModel.init();
+        }
+
+        if (Boris.CommunicationHandler != null) {
+            communicationHandler = Boris.CommunicationHandler();
+            communicationHandler.init(borisModel);
         }
 
         //SearchView initialisieren
@@ -57,11 +69,6 @@ Boris.MainController = function () {
             signView.init();
         }
 
-        if (Boris.BorisModel != null) {
-            borisModel = Boris.BorisModel();
-            borisModel.init();
-        }
-
         if (Boris.DrinkModel != null) {
             drinkModel = Boris.DrinkModel();
             drinkModel.init();
@@ -70,11 +77,6 @@ Boris.MainController = function () {
         if (Boris.DetailView != null) {
             detailView = Boris.DetailView();
             detailView.init(drinkModel, borisModel);
-        }
-
-        if (Boris.CommunicationHandler != null) {
-            communicationHandler = Boris.CommunicationHandler();
-            communicationHandler.init(borisModel);
         }
 
         if (Boris.QuestionnaireView != null) {
@@ -159,7 +161,7 @@ Boris.MainController = function () {
         });
     },
 
-    setTasteLikert = function() {
+    setTasteLikert = function () {
         $radioTaste.change(function () {
 
             mainModel.setLikertTasteVal(event.target.value);
@@ -167,7 +169,7 @@ Boris.MainController = function () {
         });
     },
 
-    setLookingLikert = function() {
+    setLookingLikert = function () {
         $radioLooking.change(function () {
 
             mainModel.setLikertLookVal(event.target.value);
@@ -258,7 +260,7 @@ Boris.MainController = function () {
                         //rate.php?userid=123&age=22&sex=w&cocktail=11&bitter=1&sweet=4&fruity=4&strong=2&taste=4&look=3&beach&summernight&cocktailbar
                         //rate.php?userid=123&age=22&sex=getGenderVal()&cocktail=11&bitter=getLikertBitterVal()&sweet=getLikertSweetVal()
                         //&fruity=getLikertFruityVal()&strong=getLikertStrongVal()&taste=getLikertTasteVal()&look=getLikertLookVal()&beach&summernight&cocktailbar
-                        
+
 
                         //var age = $ageInput.val();
 
@@ -325,15 +327,15 @@ Boris.MainController = function () {
 
     orderDrink = function (drink) {
         communicationHandler.orderDrink(drink);
-    }, 
-    
-    checkAvailability = function () {
+    },
+
+    checkAvailability = function (drink) {
         communicationHandler.checkDrink(drink);
     };
 
-
     that.init = init;
     that.orderDrink = orderDrink;
+    that.checkAvailability = checkAvailability;
 
     return that;
 };

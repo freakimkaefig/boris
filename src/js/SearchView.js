@@ -150,8 +150,9 @@ Boris.SearchView = function () {
 
     checkAvailability = function () {
         mainController.checkAvailability();
-        /*
+        
         console.log("reshow");
+        /*
         var inavailableDrinks = new Array();
         inavailableDrinks.push(1);
         inavailableDrinks.push(2);

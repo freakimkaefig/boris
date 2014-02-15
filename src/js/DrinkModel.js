@@ -4,13 +4,16 @@ Boris.DrinkModel = function () {
 	mainController,
     $allDrinks,
     $drink,
+    $drinkModel,
     drinkId,
     similarIds,
     unavailableIds,
+    drinkStatuses,
 
     init = function () {
         console.log("drink modle init");
         mainController = Boris.MainController();
+        $drinkModel = $(Boris.DrinkModel);
     },
 
     /*---Methods---*/
@@ -33,6 +36,7 @@ Boris.DrinkModel = function () {
     },
 
     setAllDrinks = function (pAllDrinks) {
+        console.log(pAllDrinks);
         $allDrinks = pAllDrinks;
     },
 
@@ -46,6 +50,12 @@ Boris.DrinkModel = function () {
 
     getSimilarIds = function () {
         return similarIds;
+    },
+
+    setDrinkStatus = function (drink, status) {
+        //$drinkStatuses[0]
+        console.log("drink: " + drink + ", status: " + status);
+        $drinkModel.trigger("setDrinkStatus", status);
     };
 
     /*---Public variables and methods---*/
@@ -58,6 +68,7 @@ Boris.DrinkModel = function () {
     that.getIngredients = getIngredients;
     that.setSimilarIds = setSimilarIds;
     that.getSimilarIds = getSimilarIds;
+    that.setDrinkStatus = setDrinkStatus;
 
     return that;
 };

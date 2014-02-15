@@ -22,7 +22,7 @@ Boris.DetailView = function () {
         if ($.cookie('tablet') == "true") {
             is_tablet = true;
             $('#rateDrink').hide(); //Hide "Rate" Button
-            $('#orderDrink').show();    //Show "Order" Button
+            //$('#orderDrink').show();    //Show "Order" Button
         } else {
             is_tablet = false;
             $('#rateDrink').show(); //Hide "Rate" Button
@@ -32,12 +32,15 @@ Boris.DetailView = function () {
         $rateDrinkBtn = $("#rateDrink");
         $rateDrinkBtn.on('click', onRateDrinkClick);
 
+        $orderDrinkBtn = $("#orderDrink");
+
         $confirmOrderDrinkBtn = $("#confirmOrderDrink");
         $confirmOrderDrinkBtn.on('click', onConfirmOrderDrinkBtn);
 
         $('#modal_confirmOrder').modal('hide');
 
         $borisModel.on("setMixStatus", onSetMixStatus);
+        $borisModel.on("setDrinkStatus", onCheckedAvailability);
     },
 
     setDrink = function (drink) {
@@ -83,6 +86,7 @@ Boris.DetailView = function () {
 
     onConfirmOrderDrinkBtn = function (drinkId) {
         confirmOrderDrink();
+        $('#modal_confirmOrder').modal('hide');
     },
 
     onSetMixStatus = function (event, text) {
@@ -91,7 +95,23 @@ Boris.DetailView = function () {
         updateStatusContent();
     },
 
+    onCheckedAvailability = function (drink, status) {
+        console.log("onCheckedAvailability, status: ", status);
+        if (status == 0) {
+            $orderDrinkBtn.show();
+            $orderDrinkBtn.prop('disabled', true);
+            $("#orderHint").text("Insufficient ingredients");
+        }
+        else {
+            $orderDrinkBtn.show();
+        }
+    },
+
     /*---Methods---*/
+
+    checkAvailability = function () {
+        mainController.checkAvailability(drinkModel.getDrink());
+    },
 
     renderRating = function (rating) {
         //Round rating
@@ -138,6 +158,7 @@ Boris.DetailView = function () {
     /*---Public variables and methods---*/
     that.init = init;
     that.renderSimilarDrinks = renderSimilarDrinks;
+    that.checkAvailability = checkAvailability;
 
     return that;
 };

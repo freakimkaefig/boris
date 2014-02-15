@@ -71,24 +71,31 @@
                     <div class="output-line"><span>Results for: </span><span id="output"></span><span id="close" class="glyphicon glyphicon-remove-circle"></span></div>
                 </div> -->
             </li>
-            <li>
-                
-                <button id="orderDrink" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#modal_confirmOrder">
-                    Order
-                    <span class="glyphicon glyphicon-glass"></span>
-                </button>
-                <button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
-                    Rate
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                </button>               
-                
+            <li id="button-list">
+                <ul class="list-inline">
+                    <li style="height: 58px;vertical-align:middle">
+                        <span style="vertical-align:middle" id="orderHint"></span>
+                    </li>
+                    <li>
+                        <button id="orderDrink" type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="#modal_confirmOrder">
+                            Order
+                            <span class="glyphicon glyphicon-glass"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
+                            Rate
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </button>    
+                    </li>
+                </ul>
                 <!--<button id="stopMixing" type="button" class="btn btn-default navbar-btn navbar-right hidden" data-toggle="modal" data-target="#modal_confirmOrder">
                     Stop
                     <span class="glyphicon glyphicon-stop"></span>
                 </button>-->
             </li>
-    	
-</div> <!-- Ende Navigation -->
+    	</ul>
+    </div> <!-- Ende Navigation -->
 
 
     
@@ -119,7 +126,7 @@
       <!-- Example row of columns -->
         <div class="row" style="height: 200px;">
             <div class="col-xs-6">
-                <img class="img-responsive pull-right" src="img/drink_example.jpg"  style="height: 100%"/>
+                <img class="img-responsive pull-right" src="img/drink_example.jpg"  style="height: 100%;"/>
             </div>
             <div class="col-xs-6">
                 <div class="pull-left" style="margin-top: 65px;">
@@ -318,11 +325,11 @@
             </div>
         </div>
 
-        <hr />
+        <!-- <hr />
 
         <footer class="text-center">
             <a href="#">Impressum</a>            
-        </footer>
+        </footer> -->
         <br />
     </div>
 
@@ -360,13 +367,16 @@
             
             //Set values
             drinkModel.setAllDrinks(allCocktails);
-            drinkModel.setDrinkId(drinkId);   
+            drinkModel.setDrinkId(drinkId); 
+            var myDrink = drinkModel.getDrink();
             
             //Calculate and set similar
             drinkModel.setSimilarIds(recommend(drinkId, allCocktails));
             detailView.renderSimilarDrinks();
+            
             communicationHandler.getGlassVol();
-            //detailView.calcAlcPercentage();
+            
+            detailView.checkAvailability();
             
             //Display
             
