@@ -2,7 +2,7 @@
 
 /*
 *	PARAMETERS:
-*		USERID		unique id to identify each user
+*		USERID		unique id to identify each user (-1 if you dont have a userid yet)
 *		AGE			age of the user
 *		SEX			gender of the user
 *		COCKTAIL	id of the cocktail rated
@@ -192,6 +192,17 @@ $link = mysql_connect($sqllocation , $sqluser , $sqlpwd ) or die('Couldnt connec
 mysql_select_db($sqldb, $link) or die('Couldnt select database: ' . mysql_error());
 mysql_query("SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'", $link);
 
+if($userid == -1){
+	// get new user id
+	$query = "SELECT MAX(USER) FROM `rating` WHERE 1";
+	$result = mysql_query($query, $link) or die(mysql_error());
+	if($row = mysql_fetch_array($result)){
+		$userid=$row[0]+1;
+	}else{
+		$userid = 0;
+	}
+}
+
 // INSERT OR UPDATE IF RATING OF THAT COCKTAIL FROM THAT USER ALREADY EXISTS
 $query = "INSERT INTO `rating` (
 `USER`,
@@ -258,6 +269,7 @@ ON DUPLICATE KEY UPDATE
 
 mysql_query($query, $link) or die(mysql_error());
 
+$json["userid"]=$userid;
 $json["success"]=$CODE_SUCCESS;
 echo json_encode($json);
 	

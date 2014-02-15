@@ -215,33 +215,33 @@
                <div class="row">
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="amStrand">At the beach</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="beach">At the beach</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option2" id="Firmenfeier">Company party</label>
+                                <input class="checkbox-input" type="checkbox" value="option2" id="businessparty">Company party</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option3" id="Junggesellenabschied">Bachelor</label>
+                                <input class="checkbox-input" type="checkbox" value="option3" id="statnight">Bachelor</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Hochzeit">Wedding</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="wedding">Wedding</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="In der Cocktailbar">Cocktail bar</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="cocktailbar">Cocktail bar</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Nach dem Essen">After meals</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="dinner">After meals</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Daheim auf dem Sofa">At home on the sofa</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="couch">At home on the sofa</label>
                     </div>
                     <div class="col-xs-6 col-md-6">
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Checkbox1">Predrinking</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="preparty">Predrinking</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Beim ersten Date">First date</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="date">First date</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="In der Disco">In the club</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="disco">In the club</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="WG-Party">House party</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="party">House party</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Am Sommerabend">Summer evening</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="summernight">Summer evening</label>
                             <label class="checkbox">
-                                <input class="checkbox-input" type="checkbox" value="option1" id="Kalter Winterabend">Cold winter evening</label>
+                                <input class="checkbox-input" type="checkbox" value="option1" id="winternight">Cold winter evening</label>
                     </div>
                </div>
                
@@ -290,6 +290,11 @@
     <script src="js/QuestionnaireView.js"></script>
 
     <script>
+        <?php
+            if(isset($_GET["id"])){
+                echo "cocktailid=".$_GET["id"].";";
+            }
+        ?>
         $(function () {
             Boris.init();
 
@@ -308,7 +313,6 @@
                     $('#search-dropdown').dropdown("toggle");
                 }
             });
-
 
         });
     
