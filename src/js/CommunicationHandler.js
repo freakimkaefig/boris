@@ -4,6 +4,7 @@ Boris.CommunicationHandler = function () {
         commands,
         postData,
         borisModel,
+        myHostIP,
 
     init = function (pBorisModel) {
         console.log("communication handler init");
@@ -13,36 +14,42 @@ Boris.CommunicationHandler = function () {
 
     /*---Methods---*/
 
-    checkDrink = function (drink) {
+    // remove vowels that can lead to problems at communication
+    replaceVowels = function (str) {
+        return str.replace("ä", "ae").replace("ö", "oe").replace("ü", "ue");
+    },
+
+    checkDrink = function (drink, drinkId) {
         //postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"true\"}";
-        postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":"true"}';
-        console.log(postData);
+        var adjustedRecipe = replaceVowels(JSON.stringify(drink.recipe));
+        postData = '{"order":' + adjustedRecipe + ',"test":"true"}';
+        //console.log(postData);
         //sendRequest(handleOrderResponse, postData.order.id);
-        sendRequest(handleCheckResponse, drink);
+        sendRequest(handleCheckResponse, drinkId);
     },
 
     orderDrink = function (drink) {
         //postData = "{ \"order\" : [{\"id\": \"7\",\"name\": \"wodka\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.6\",\"order\": \"0\",},{\"id\": \"8\",\"name\": \"cola\",\"description\": \"\",\"unit\": \"cl\",\"alcohol\": \"40\",\"amount\": \"0.5\",\"order\": \"0\",}],\"test\":\"false\"}";
-        postData = '{"order":' + JSON.stringify(drink.recipe) + ',"test":"false"}';
-
-        console.log(postData);
-        sendRequest(handleOrderResponse);
+        var adjustedRecipe = replaceVowels(JSON.stringify(drink.recipe));
+        postData = '{"order":' + adjustedRecipe + ',"test":"false"}';
+        //console.log(postData);
+        sendRequest(handleOrderResponse, null);
     },
 
-    handleCheckResponse = function (pResponse, drink) {
+    handleCheckResponse = function (pResponse, drinkId) {
         var response = $.parseJSON(pResponse);
-        console.log("Success?" + response.success);
+        console.log("Check Drink Success? " + response.success);
         if (response.success == "true") {
-            drinkModel.setDrinkStatus(drink, 1);
+            drinkModel.setDrinkStatus(drinkId, 1);
         }
         else {
-            drinkModel.setDrinkStatus(drink, 0);
+            drinkModel.setDrinkStatus(drinkId, 0);
         }
     },
 
     handleOrderResponse = function (pResponse, params) {
         var response = $.parseJSON(pResponse);
-        console.log("Success?" + response.success);
+        console.log("Order Success? " + response.success);
         if (response.success == "true") {
             borisModel.setMixStatus("Success", params);
         }
@@ -93,6 +100,8 @@ Boris.CommunicationHandler = function () {
             type: 'POST',
             // The URL to make the request to.
             url: 'http://localhost:8009/',
+            //url: Boris.hostIP,
+
             //url: 'http://192.168.178.51:8009/',
             //url: 'http://192.168.0.100:8009/', // URL for server laptop with 
             // TP-LINK network

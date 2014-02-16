@@ -10,10 +10,11 @@ Boris.DrinkModel = function () {
     unavailableIds,
     drinkStatuses,
 
-    init = function () {
+    init = function (pDrinkModel) {
         console.log("drink modle init");
         mainController = Boris.MainController();
-        $drinkModel = $(Boris.DrinkModel);
+
+        $drinkModel = $(pDrinkModel);
     },
 
     /*---Methods---*/
@@ -36,7 +37,6 @@ Boris.DrinkModel = function () {
     },
 
     setAllDrinks = function (pAllDrinks) {
-        console.log(pAllDrinks);
         $allDrinks = pAllDrinks;
     },
 
@@ -53,9 +53,7 @@ Boris.DrinkModel = function () {
     },
 
     setDrinkStatus = function (drink, status) {
-        //$drinkStatuses[0]
-        console.log("drink: " + drink + ", status: " + status);
-        $drinkModel.trigger("setDrinkStatus", status);
+        $drinkModel.trigger("drinkStatusSet", { "drink": drink, "status": status });
     };
 
     /*---Public variables and methods---*/

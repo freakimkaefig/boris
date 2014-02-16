@@ -324,13 +324,13 @@
                 </div>
             </div>
         </div>
+<br />
+        <hr />
 
-        <!-- <hr />
-
-        <footer class="text-center">
-            <a href="#">Impressum</a>            
-        </footer> -->
-        <br />
+    <footer class="text-center">
+        <a href="logout.html">Logout</a>            
+    </footer>
+    <br />
     </div>
 
 
@@ -347,12 +347,8 @@
     <script src="js/App.js"></script>  
     <script src="js/Recommender.js" type="text/javascript"></script>    
     <script src="js/CommunicationHandler.js" type="text/javascript"></script>
-    <script src="js/SearchView.js"></script>
-    <script src="js/FilterView.js"></script>
     <script src="js/MainController.js"></script>
     <script src="js/MainModel.js"></script>
-    <script src="js/SignView.js"></script>
-    <script src="js/QuestionnaireView.js"></script>
     <script src="js/DetailView.js"></script>
     <script src="js/DrinkModel.js"></script>
     <script src="js/BorisModel.js"></script>
@@ -377,10 +373,6 @@
             communicationHandler.getGlassVol();
             
             detailView.checkAvailability();
-            
-            //Display
-            
-            //detailView.displayAlcPercentage();
             
 	    });
 	</script>

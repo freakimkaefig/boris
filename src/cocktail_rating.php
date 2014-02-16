@@ -22,7 +22,7 @@
 </head>
 <body style="">
 <div id="action-bar"><!-- Navigation -->
-	<div id="logo"><a href="#"><img src="img/logo_boris.png"></a></div>
+	<div id="logo"><a href="drink_list.php"><img src="img/logo_boris.png"></a></div>
     <div id="logout">
     	<a href="drink_list.php"><button id="rateDrink" type="button" class="btn btn-default navbar-btn navbar-right">
                     <span class="glyphicon glyphicon-off"></span>
@@ -261,7 +261,13 @@
 
                 </div>
             </div>
+            <br />
+            <hr />
 
+            <footer class="text-center">
+                <a href="logout.html">Logout</a>            
+            </footer>
+            <br />
         </div> <!-- Ende Container -->
 
 
@@ -286,6 +292,8 @@
     <script src="js/FilterView.js"></script>
     <script src="js/MainController.js"></script>
     <script src="js/MainModel.js"></script>
+    <script src="js/BorisModel.js"></script>
+    <script src="js/DrinkModel.js"></script>
     <script src="js/SignView.js"></script>
     <script src="js/QuestionnaireView.js"></script>
 

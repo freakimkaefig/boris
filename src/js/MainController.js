@@ -47,15 +47,20 @@ Boris.MainController = function () {
             borisModel.init();
         }
 
+        if (Boris.DrinkModel != null) {
+            drinkModel = Boris.DrinkModel();
+            drinkModel.init(drinkModel);
+        }
+
         if (Boris.CommunicationHandler != null) {
             communicationHandler = Boris.CommunicationHandler();
-            communicationHandler.init(borisModel);
+            communicationHandler.init(borisModel, drinkModel);
         }
 
         //SearchView initialisieren
         if (Boris.SearchView != null) {
             searchView = Boris.SearchView();
-            searchView.init();
+            searchView.init(drinkModel);
             $(searchView).on('search', onSearch);
         }
 
@@ -67,11 +72,6 @@ Boris.MainController = function () {
         if (Boris.SignView != null) {
             signView = Boris.SignView();
             signView.init();
-        }
-
-        if (Boris.DrinkModel != null) {
-            drinkModel = Boris.DrinkModel();
-            drinkModel.init();
         }
 
         if (Boris.DetailView != null) {
@@ -342,8 +342,8 @@ Boris.MainController = function () {
         communicationHandler.orderDrink(drink);
     },
 
-    checkAvailability = function (drink) {
-        communicationHandler.checkDrink(drink);
+    checkAvailability = function (drink, drinkId) {
+        communicationHandler.checkDrink(drink, drinkId);
     };
 
     that.init = init;

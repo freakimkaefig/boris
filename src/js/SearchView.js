@@ -7,15 +7,18 @@ Boris.SearchView = function () {
         $searchOutput,
         $searchOutputText,
         $searchOutputClose,
+        drinkModel,
 
-    init = function () {
+    init = function (pDrinkModel) {
         console.log("search view init");
 
         mainController = Boris.MainController();
         $(mainController).on('searchresult', onSearchResult);
 
         mainModel = Boris.MainModel();
-        drinkModel = Boris.DrinkModel();
+        //drinkModel = Boris.DrinkModel();
+
+        drinkModel = pDrinkModel;
 
         $drinklist = $('.drink-list-container');
 
@@ -33,6 +36,8 @@ Boris.SearchView = function () {
         $searchOutputText = $('#search-output .output-line #output');
         $searchOutputClose = $('#search-output .output-line #close');
         $searchOutputClose.on('click', onSearchOutputClose);
+
+        $(drinkModel).on("drinkStatusSet", showInavailableHint);
     },
 
 	getSearchInput = function () {
@@ -65,7 +70,7 @@ Boris.SearchView = function () {
             console.log("!Name & Zutat");
             hideCocktailsById(getCocktailsWithoutSearchedIngredient(result.numCocktails, result.ingredient.data));
         } else if (!result.name && !result.ingredient) {
-            //	!Name & !Zutat
+            //	!Name & !Zutatva
             console.log("!Name & !Zutat");
             hideAllCocktails();
             $drinklist.append("<div class='no-results'>Sorry, no results for <i>'" + getSearchInput() + "'</i></div>");
@@ -145,31 +150,34 @@ Boris.SearchView = function () {
 
     reshowAllCocktails = function () {
         /*var rows = $('.drink-list-container .row').not('.row-1');*/
-        $('.drink-list-container .row').not('.row-1').parent().fadeIn(300);
+        //$('.drink-list-container .row').not('.row-1').parent().fadeIn(300);
+        $('.drink-list-container .row').parent().fadeIn(300);
     },
 
-    checkAvailability = function () {
-        mainController.checkAvailability();
-        
-        console.log("reshow");
-        /*
-        var inavailableDrinks = new Array();
-        inavailableDrinks.push(1);
-        inavailableDrinks.push(2);
-        inavailableDrinks.push(3);
+    checkAvailabilities = function () {
 
-        var cocktails = drinkModel.getAllDrinks();
-        console.log("SearhcView: cocktails: ", cocktails);
+        var drinks = drinkModel.getAllDrinks();
+        $.each(drinks, function (index, value) {
+            checkAvailability(value, index);
+        });
+    },
 
-        hideCocktailsById(inavailableDrinks);
-        */
+    checkAvailability = function (drink, drinkId) {
+        mainController.checkAvailability(drink, drinkId);
+    },
+
+    showInavailableHint = function (event, params) {
+        if (params["status"] == 0) {
+            $('#availability-' + params["drink"]).show();
+        }
     };
 
     that.init = init;
     that.onSearchResult = onSearchResult;
     that.hideCocktailsById = hideCocktailsById;
     that.reshowAllCocktails = reshowAllCocktails;
-
+    that.checkAvailabilities = checkAvailabilities;
+    that.showInavailableHint = showInavailableHint;
 
     return that;
 };

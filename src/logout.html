@@ -26,8 +26,11 @@
         </div>
         
         <h2 align="center" style="color:#fff; margin-top:120px;">Successfully Logged Out!</h2>
-        
 
+        <div class="row text-center">
+                <button id="GoToSignIn" class="btn btn-lg btn-primary" 
+                    type="button" style="width: 180px;">Go To Sign In</button>
+        </div>
         </div>
         </div> <!-- /container -->
    
@@ -42,6 +45,10 @@
             $(document).ready(function () {
                 $.removeCookie('tablet', { path: '/' });
                 $.removeCookie('service', { path: '/' });
+
+                $("#GoToSignIn").on('click', function () {
+                    window.location = "sign_in.html"
+                });
             });
         </script>
     </body>

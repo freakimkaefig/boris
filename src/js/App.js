@@ -1,5 +1,12 @@
 var Boris = {
-	init: function() {
-		Boris.MainController().init();
-	}
+
+    //hostIP : "http://localhost:8009/",
+
+    init: function () {
+        Boris.MainController().init();
+    },
+
+    getHostIP: function () {
+        return hostIP;
+    }
 };

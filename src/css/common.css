@@ -27,8 +27,8 @@ body.drink-list { padding-top:0px; }
 
 .attention {border-radius:5px; border-width:3px; border-color:red;}
 
-#rateDrink {margin-right: 40px; margin-top:12px; display:none; float:right; }
-#orderDrink {margin-right: 40px; margin-top:12px; display:none; float:right; }
+#rateDrink {margin-right: 60px; margin-top:12px; display:none; float:right; }
+#orderDrink {margin-right: 60px; margin-top:12px; display:none; float:right; }
 
 .drink-list-container { margin-top: 60px; }
 
@@ -69,6 +69,7 @@ a.no-btn:hover, a.no-btn:active { color: black; }
 #search-output .output-line #output { font-style: italic; }
 #search-output .output-line #close { float:right; cursor:pointer; }
 .drink-list-container .no-results { font-size:30px; text-align:center; margin-bottom:35px; }
+.availability-hint { text-align: center; color: Orange; display: none; }
 
 /*-- DRINK DETAILS --*/
 .attribute-rating 

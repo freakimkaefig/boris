@@ -94,8 +94,8 @@
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 inline-block row row-<?php print $cocktail_id; ?><?php if($cocktail_id==1) print " first"?><?php if($cocktail==end($cocktails)) print " last" ?>">
       <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="cocktail-title col-xs-8"><h3><?php print $cocktail->name; ?></h3></div>
-            <div class="cocktail-rating col-xs-4">
+            <div class="cocktail-title col-xs-7"><h3><?php print $cocktail->name; ?></h3></div>
+            <div class="cocktail-rating col-xs-5">
                 <div class="stars-line">
                 <?php 
                     $rating = round($cocktail->rating->taste->average, 0, PHP_ROUND_HALF_UP);
@@ -103,7 +103,7 @@
                 ?>
                 </div>
             </div>            
-            <!-- <div class="cocktail-title col-xs-12" style="text-align:right;">Not available</div> -->
+            <div id="availability-<?php echo $cocktail_id?>" class="availability-hint col-xs-12">Not available</div>
         </div>
         <div class="panel-body" style="clear:both;">
             <div class="col-xs-6"> <img src="img/drink_example.jpg" class="img img-responsive" alt="Responsive image" /> </div>
@@ -121,7 +121,15 @@
   </div>
   </a>
   <?php endforeach; ?>
+
 </div>
+  <br />
+  <hr />
+
+    <footer class="text-center">
+        <a href="logout.html">Logout</a>            
+    </footer>
+    <br />
 <footer>
 </footer>
 <!-- /container --> 
@@ -141,7 +149,7 @@
 <script src="js/MainModel.js"></script>
 <script src="js/MainController.js"></script>
 <script src="js/SignView.js"></script>
-<script src="js/QuestionnaireView.js"></script>
+<script src="js/CommunicationHandler.js"></script>
 <script src="js/DrinkModel.js"></script>
 <script src="js/BorisModel.js"></script>
 
@@ -151,6 +159,8 @@
         
         var allCocktails = $(<?php echo json_encode($cocktails) ?>)[0];
         drinkModel.setAllDrinks(allCocktails);
+        
+        checkAvailabilities();
 
         $('#search-button').click(function () {
             setTimeout(function () { $('#search-input').focus(); }, 0);

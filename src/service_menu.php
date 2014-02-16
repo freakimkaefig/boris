@@ -213,7 +213,15 @@
         </div>
 
        
-      </div>
+        </div>
+        
+        <br />
+        <hr />
+
+    <footer class="text-center">
+        <a href="logout.html">Logout</a>            
+    </footer>
+    <br />
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
