@@ -9,6 +9,8 @@ Boris.FilterView = function () {
     $searchOutput,
     $searchOutputText,
     searchOutputValue = "",
+    searchOutputValueTaste = "",
+    searchOutputValueAlc = "",
     $searchOutputClose,
 
     database,
@@ -27,15 +29,17 @@ Boris.FilterView = function () {
                     filterdElementsTaste = [];
                     filter(this.value);
 
-                    searchOutputValue += this.value + " ";
+                    searchOutputValueTaste = this.value;
+
                 }
                 else {
                     filterdElementsAlc = [];
                     filterAlc(this.value);
 
-                    searchOutputValue += this.value;
+                    searchOutputValueAlc = this.value;
                 }
-
+                searchOutputValue = "";
+                searchOutputValue += searchOutputValueTaste + " " + searchOutputValueAlc;
                 searchView = searchViewValue;
                 refresh();
 
@@ -276,6 +280,9 @@ Boris.FilterView = function () {
 
     function clearFilter() {
         filterdElementsAll = [];
+        filterdElementsTaste = [];
+        filterdElementsAlc = [];
+        //searchOutputValue = "";
         $('.input-group input').prop('checked', false);
     }
 
@@ -294,4 +301,4 @@ Boris.FilterView = function () {
     };
 
     return that;
-}; 
+};
