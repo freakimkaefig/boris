@@ -7,7 +7,7 @@ function createDescription($cocktail, $maleRating, $femaleRating){
 	if($sex == "everyone"){
 		$sex = "";
 	}else{
-		$sex = ", popular by ".$sex.",";
+		$sex = ", popular among ".$sex.",";
 	}
 	$special = getSpecial($cocktail);
 	$ingredients = getIngredients($cocktail);
