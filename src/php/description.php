@@ -20,4 +20,15 @@ function createDescription($cocktail, $maleRating, $femaleRating){
 	return $result;
 }
 
+function createRecipeDescription($cocktail){
+	$result = "To create 0.4l of ".$cocktail["name"]." follow those steps:<ul>";
+	foreach($cocktail["recipe"] as $key=>$value){
+		$name = $value["name"];
+		$amount = floor(40*$value["amount"]).$value["unit"];
+		$result .= "<li>Add $amount $name</li>";
+	}
+	$result .= "</ul>";
+	return $result;
+}
+
 ?>

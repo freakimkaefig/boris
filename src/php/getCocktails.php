@@ -295,6 +295,9 @@ if(isset($rec)){
 if(isset($id)&&isset($rate)&&(!isset($cocktails[$id]["description"]) || strlen($cocktails[$id]["description"])==0)){
 	$cocktails[$id]["description"] = createDescription($cocktails[$id], $maleRating, $femaleRating);
 }
+if(isset($id)&&isset($rec)&&(!isset($cocktails[$id]["recipedescription"]) || strlen($cocktails[$id]["recipedescription"])==0)){
+	$cocktails[$id]["recipedescription"] = createRecipeDescription($cocktails[$id]);
+}
 
 $finalresult["success"] = $CODE_SUCCESS;
 $finalresult["data"] = $cocktails;
