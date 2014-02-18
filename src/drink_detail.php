@@ -33,14 +33,14 @@
 	    $base_url = 'http://localhost/boris/src/php/';
         
         //Get selected cocktail
-	    $getCocktailUrl = $base_url . 'getCocktails.php?id=' . $drinkId . '&rating=0&recipe=1';
+	    $getCocktailUrl = $base_url . 'getCocktails.php?id=' . $drinkId . '&rating=3&recipe';
 	    $result = json_decode(file_get_contents($getCocktailUrl));           
 	    $cocktailArray = $result->data;
         $cocktail = reset($cocktailArray);        
         $recipe = $cocktail -> recipe;
         
         //Get all cocktails
-        $getCocktailsUrl = $base_url . 'getCocktails.php?rating=0&recipe=1';
+        $getCocktailsUrl = $base_url . 'getCocktails.php?rating=3&recipe';
 	    $allResult = json_decode(file_get_contents($getCocktailsUrl));    
         
         $allCocktails = $allResult->data;

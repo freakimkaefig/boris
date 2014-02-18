@@ -31,8 +31,10 @@
 
 	
 // HEADER
+error_reporting(0);
 header('Content-Type: application/json; charset=utf-8');
 include("config.php");
+include("description.php");
 $link = mysql_connect($sqllocation , $sqluser , $sqlpwd ) or die('Couldnt connect to database');
 mysql_select_db($sqldb, $link) or die(mysql_error());
 mysql_query("SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'", $link);
@@ -81,6 +83,35 @@ if(isset($rate)){
 			return 0;
 		}
 		return ($a["value"] > $b["value"]) ? -1 : 1;
+	}
+
+
+	if(isset($id)){
+		// GET DIFFERENT RATING FOR MALE AND FEMALE
+		$query = "SELECT
+			COCKTAIL,
+			SUM(IF(TASTE>$rate,1,0))/COUNT(TASTE) AS TASTE,
+			AVG(TASTE) AS ATASTE
+			FROM  `rating`
+			WHERE COCKTAIL=$id
+			AND SEX = 'm'
+			GROUP BY COCKTAIL";
+		$result = mysql_query($query, $link) or die(mysql_error());
+		if($row = mysql_fetch_array($result)){
+			$maleRating = $row;
+		}
+		$query = "SELECT
+			COCKTAIL,
+			SUM(IF(TASTE>$rate,1,0))/COUNT(TASTE) AS TASTE,
+			AVG(TASTE) AS ATASTE
+			FROM  `rating`
+			WHERE COCKTAIL=$id
+			AND SEX = 'w'
+			GROUP BY COCKTAIL";
+		$result = mysql_query($query, $link) or die(mysql_error());
+		if($row = mysql_fetch_array($result)){
+			$femaleRating = $row;
+		}
 	}
 
 	// QUERY ALL RATINGS
@@ -155,7 +186,7 @@ if(isset($rate)){
 		$events = array();
 		// ON THE BEACH
 		$beach = array();
-		$beach["tag"]="on the beach";
+		$beach["tag"]="at the beach";
 		$beach["value"]=$row["beach"];
 		$events[count($events)]=$beach;
 		// BUSINESSPARTY
@@ -259,6 +290,10 @@ if(isset($rec)){
 		$cocktails[$row["cocktailid"]]["recipe"]
 		[count($cocktails[$row["cocktailid"]]["recipe"])]=$ingredient;
 	}
+}
+
+if(isset($id)&&isset($rate)&&(!isset($cocktails[$id]["description"]) || strlen($cocktails[$id]["description"])==0)){
+	$cocktails[$id]["description"] = createDescription($cocktails[$id], $maleRating, $femaleRating);
 }
 
 $finalresult["success"] = $CODE_SUCCESS;
