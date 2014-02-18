@@ -69,12 +69,14 @@ function createOldDescription($cocktail){
 		$result .= "Most users find ".$cocktail["name"]."<br/>";
 	}
 	foreach($cocktail["rating"] as $key=>$value){
-		if($key == "taste"){
-			$result .= "tasty and ";
-		}else if($key == "look"){
-			$result .= "good looking and ";
-		}else if($value["value"]>.5){
-			$result .= $key." and ";
+		if($value["value"]>.5){
+			if($key == "taste"){
+				$result .= "tasty and ";
+			}else if($key == "look"){
+				$result .= "good looking and ";
+			}else{
+				$result .= $key." and ";
+			}
 		}
 	}
 	$result .= "<br/>like to drink it ".$cocktail["events"][0]["tag"];
