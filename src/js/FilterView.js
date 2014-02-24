@@ -226,6 +226,9 @@ Boris.FilterView = function () {
         if (IsWithout == true) {
             filterdElementsAlc.push(parseFloat(aktuell));
         }
+        else{
+        	filterdElementsAlc.push(-1);
+        }
 
     }
 
