@@ -24,6 +24,7 @@
 	
 // HEADER
 header('Content-Type: application/json; charset=utf-8');
+error_reporting(0);
 include("config.php");
 $link = mysql_connect($sqllocation , $sqluser , $sqlpwd ) or die('Couldnt connect to database');
 mysql_select_db($sqldb, $link) or die(mysql_error());

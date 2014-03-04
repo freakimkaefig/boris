@@ -1,5 +1,6 @@
 <?php
 	
+error_reporting(0);
 echo '{ "success" : '.$CODE_PERMISSION_DENIED.'}';
 exit();
 	

@@ -31,7 +31,7 @@
 
 	
 // HEADER
-//error_reporting(0);
+error_reporting(0);
 header('Content-Type: application/json; charset=utf-8');
 include("config.php");
 include("description.php");
