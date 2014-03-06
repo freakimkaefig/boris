@@ -37,7 +37,7 @@ Boris.DetailView = function () {
 
         $('#modal_confirmOrder').modal('hide');
 
-        //$(borisModel).on("setMixStatus", onSetMixStatus);
+        $(borisModel).on("setMixStatus", onSetMixStatus);
         $(drinkModel).on("drinkStatusSet", onCheckedAvailability);
     },
 
@@ -85,7 +85,7 @@ Boris.DetailView = function () {
     },
 
     onSetMixStatus = function (event, text) {
-        //console.log("onSetMixStatus{0}{1}", event, event);
+        console.log("onSetMixStatus{0}{1}", event);
         //updateStatusVisibility(true);
         //updateStatusContent();
     },

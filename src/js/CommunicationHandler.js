@@ -99,9 +99,8 @@ Boris.CommunicationHandler = function () {
             // A value of 'PUT' or 'DELETE' will trigger a preflight request.
             type: 'POST',
             // The URL to make the request to.
-            url: 'http://localhost:8009/',
-            //url: Boris.hostIP,
-
+            url: 'http://10.10.0.32:8009',
+            //url: 'http://localhost:8009/',
             //url: 'http://192.168.178.51:8009/',
             //url: 'http://192.168.0.100:8009/', // URL for server laptop with 
             // TP-LINK network

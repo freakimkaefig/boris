@@ -44,7 +44,7 @@ Boris.MainController = function () {
 
         if (Boris.BorisModel != null) {
             borisModel = Boris.BorisModel();
-            borisModel.init();
+            borisModel.init(borisModel);
         }
 
         if (Boris.DrinkModel != null) {

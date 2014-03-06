@@ -6,10 +6,10 @@ Boris.BorisModel = function () {
     $borisModel,
     mixStatus,
 
-    init = function () {
+    init = function (pBorisModel) {
         console.log("boris model init");
         mainController = Boris.MainController();
-        $borisModel = $(Boris.BorisModel);
+        $borisModel = $(pBorisModel);
     },
 
     /*---Methods---*/
