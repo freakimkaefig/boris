@@ -88,6 +88,8 @@ Boris.DetailView = function () {
         console.log("onSetMixStatus{0}{1}", event);
         //updateStatusVisibility(true);
         //updateStatusContent();
+        var url = "php/order.php?id="+drinkModel.getDrinkId();
+        $.get(url);
     },
 
     onCheckedAvailability = function (event, params) {
