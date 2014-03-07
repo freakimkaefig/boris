@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 23. Jan 2014 um 17:01
--- Server Version: 5.5.27
--- PHP-Version: 5.4.7
+-- Erstellungszeit: 07. Mrz 2014 um 20:38
+-- Server Version: 5.5.34
+-- PHP-Version: 5.4.22
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -43,24 +43,24 @@ CREATE TABLE IF NOT EXISTS `cocktail` (
 
 INSERT INTO `cocktail` (`id`, `name`, `description`, `recipedescription`, `image`, `orders`, `offers`) VALUES
 (1, 'Barbados', '', 'Stir ingredients in a cocktail shaker with ice. Strain into a cocktail glass.', '', 0, 0),
-(2, 'Emerald Dreams', NULL, 'Mix and shake the ingredients.', NULL, NULL, NULL),
-(3, 'Green Devil', NULL, 'Shake all ingredients with ice and strain into an old-fashioned glass over a few ice cubes.', NULL, NULL, NULL),
-(4, 'Captain Chaos', '', 'Shake all ingredients with ice and strain into a long drink glass over a few ice cubes.', NULL, NULL, NULL),
-(5, 'Men in blue', NULL, '', NULL, NULL, NULL),
-(6, 'Santo Domingo', NULL, '', NULL, NULL, NULL),
-(7, 'Swamp Water', NULL, 'Add ice to a 12oz cup, add vodka and brandy. Add equal parts of sweet & sour and 7-UP.', NULL, NULL, NULL),
-(8, 'The Waikiki', NULL, '', NULL, NULL, NULL),
-(9, 'Yellow G-Point', NULL, '', NULL, NULL, NULL),
-(10, 'Soft Poison', NULL, '', NULL, NULL, NULL),
-(11, 'Baltic', NULL, '', NULL, NULL, NULL),
-(12, 'Gin and Juice', NULL, '', NULL, NULL, NULL),
-(13, 'Green Eyes', NULL, '1. Place ice cubes in a highball glass<br/>\n2. Combine ingredients directly On the rocks', NULL, NULL, NULL),
-(14, 'The Dodo', NULL, '', NULL, NULL, NULL),
-(15, 'Hurricane', 'A rum drink.', 'Shake well with ice and strain into a hurricane glass filled with crushed ice.', NULL, NULL, NULL),
-(16, 'Monkey Wrench', NULL, '', NULL, NULL, NULL),
-(17, 'Rum Orange', NULL, 'Shake the ingredients.', NULL, NULL, NULL),
-(18, 'Safari', NULL, '', NULL, NULL, NULL),
-(19, 'Screwdriver', 'One of the most basic mixed alcoholic drinks, varieties exist changing the type of juice used, with grapefruit being a popular choice. Mixing vodka (or gin) with powdered juice (such as Tang) without the intermediary step of reconstituting the juice with water is an occasional fad in "coed gatherings" and not recommended.<br/><br/>\nSome bars use an actual screwdriver (the tool) as a stirrer/garnish.<br/><br/>\nOne variation adds a shot of Red Bull to make a "sonic screwdriver".', '1. Half fill the glass with ice and add the vodka.<br/>\n2. Top off with the orange juice.<br/>\n3. Garnish with slice of orange.', NULL, NULL, NULL);
+(2, 'Emerald Dreams', NULL, 'Mix and shake the ingredients.', NULL, 0, 0),
+(3, 'Green Devil', NULL, 'Shake all ingredients with ice and strain into an old-fashioned glass over a few ice cubes.', NULL, 0, 0),
+(4, 'Captain Chaos', '', 'Shake all ingredients with ice and strain into a long drink glass over a few ice cubes.', NULL, 0, 0),
+(5, 'Men in blue', NULL, '', NULL, 0, 0),
+(6, 'Santo Domingo', NULL, '', NULL, 0, 0),
+(7, 'Swamp Water', NULL, 'Add ice to a 12oz cup, add vodka and brandy. Add equal parts of sweet & sour and 7-UP.', NULL, 0, 0),
+(8, 'The Waikiki', NULL, '', NULL, 0, 0),
+(9, 'Yellow G-Point', NULL, '', NULL, 0, 0),
+(10, 'Soft Poison', NULL, '', NULL, 0, 0),
+(11, 'Baltic', NULL, '', NULL, 0, 0),
+(12, 'Gin and Juice', NULL, '', NULL, 0, 0),
+(13, 'Green Eyes', NULL, '1. Place ice cubes in a highball glass<br/>\n2. Combine ingredients directly On the rocks', NULL, 0, 0),
+(14, 'The Dodo', NULL, '', NULL, 0, 0),
+(15, 'Hurricane', 'A rum drink.', 'Shake well with ice and strain into a hurricane glass filled with crushed ice.', NULL, 0, 0),
+(16, 'Monkey Wrench', NULL, '', NULL, 0, 0),
+(17, 'Rum Orange', NULL, 'Shake the ingredients.', NULL, 0, 0),
+(18, 'Safari', NULL, '', NULL, 1, 0),
+(19, 'Screwdriver', 'One of the most basic mixed alcoholic drinks, varieties exist changing the type of juice used, with grapefruit being a popular choice. Mixing vodka (or gin) with powdered juice (such as Tang) without the intermediary step of reconstituting the juice with water is an occasional fad in "coed gatherings" and not recommended.<br/><br/>\nSome bars use an actual screwdriver (the tool) as a stirrer/garnish.<br/><br/>\nOne variation adds a shot of Red Bull to make a "sonic screwdriver".', '1. Half fill the glass with ice and add the vodka.<br/>\n2. Top off with the orange juice.<br/>\n3. Garnish with slice of orange.', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
