@@ -4,7 +4,7 @@ var ergebnis = [];
 
 function recommend(aktuell, list) { // gibt ein array zurück mit cocktailnummern in abnehmender ähnlichkeit
             //var list = getdata(); // hole die alle Rezepte + Zutaten
-    console.log(list);
+    //console.log(list);
 
             for (var i = 1; i <= Object.keys(list).length; i++) { // iteriere durch alle Cocktails
                 if (aktuell == i) { continue; }                        // Kein selbstvergleich
@@ -16,23 +16,16 @@ function recommend(aktuell, list) { // gibt ein array zurück mit cocktailnummer
 
 
             similar.sort(compare);
-            // console.log(similar);
+          //   console.log(similar.wert);
 
             for (var i = 0; i < similar.length; i++) {
-
+               // console.log("Name + "+ similar[i].name +"wert + " +similar[i].wert);
                 ergebnis.push(similar[i].name);
 
             };
 
-            // console.log(ergebnis);
+             console.log(ergebnis);
             return ergebnis;
-
-
-            //console.log(" Menge 1 Zutat 5 :" + parseFloat(list.data[aktuell].recipe[2].id));
-
-            //console.log(Object.keys(list.data[1].recipe.id).length);
-            //console.log(Object.keys(list.data[4].recipe).length); // Anzahl der Zutaten für jeweiligen Cocktail
-            // console.log("Rezepte Länge: " + Object.keys(list.data).length); // Anzahl Vorhandene Rezepte
 
 };
 
@@ -98,7 +91,7 @@ function getDistance(list, aktuell, vergleich) {
         }
 
     }
-
+    summe = Math.sqrt(summe);
     similar.push({ name: parseFloat(vergleich), wert: parseFloat(summe) }); // weise abstand von cocktail ergebnis array zu
 
 }
@@ -106,7 +99,7 @@ function getDistance(list, aktuell, vergleich) {
 
 function calcDistance(menge1, menge2) {
 
-    return Math.abs(menge1 - menge2);
+    return (Math.abs(menge1 - menge2) * Math.abs(menge1 - menge2));
 }
 
 
